@@ -1,10 +1,10 @@
-package com.eternal.wisdom.productionmanagment;
+package com.eternal.wisdom.qualitycontrol;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProductionManagmentApplicationTests {
+class QualityControlApplicationTests {
 
 	@Test
 	void contextLoads() {

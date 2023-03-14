@@ -1,13 +1,13 @@
-package com.eternal.wisdom.productionmanagment;
+package com.eternal.wisdom.indicator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProductionManagmentApplication {
+public class IndicatorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductionManagmentApplication.class, args);
+		SpringApplication.run(IndicatorApplication.class, args);
 	}
 
 }
