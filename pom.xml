@@ -17,7 +17,8 @@
 		<module>production-management</module>
 		<module>audit-management</module>
 		<module>quality-control</module>
-		<module>indicator</module>
+		<module>api-gateway</module>
+
 	</modules>
 
 	<properties>
