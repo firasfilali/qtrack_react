@@ -14,12 +14,12 @@
 	<packaging>pom</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>production-management</module>
-		<module>audit-management</module>
-		<module>quality-control</module>
 		<module>api-gateway</module>
 		<module>discovery-server</module>
-		<module>notification</module>
+		<module>production-management-service</module>
+		<module>audit-management-service</module>
+		<module>quality-control-management-service</module>
+		<module>notification-management-service</module>
 
 	</modules>
 
