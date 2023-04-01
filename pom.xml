@@ -20,8 +20,9 @@
 		<module>audit-management-service</module>
 		<module>quality-control-management-service</module>
 		<module>notification-management-service</module>
+        <module>common</module>
 
-	</modules>
+    </modules>
 
 	<properties>
 		<maven.compiler.source>17</maven.compiler.source>

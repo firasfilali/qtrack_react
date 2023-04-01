@@ -7,8 +7,18 @@
         <groupId>com.eternal.wisdom</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>app</module>
+        <module>dom</module>
+        <module>cor</module>
+        <module>infra</module>
+
+    </modules>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.eternal.wisdom.production</groupId>
     <artifactId>production-management-service</artifactId>
 
     <properties>
