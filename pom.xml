@@ -20,7 +20,7 @@
 		<module>audit-management-service</module>
 		<module>quality-control-management-service</module>
 		<module>notification-management-service</module>
-        <module>common</module>
+
 
     </modules>
 
