@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 public class Process {
-    private String id;
+    private String processId;
     private String name;
     private String description;
     private LocalDate created_date;

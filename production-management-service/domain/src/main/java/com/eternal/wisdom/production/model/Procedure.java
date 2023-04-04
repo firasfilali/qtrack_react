@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 @Data
 public class Procedure {
-    private String id;
+    private String procedureId;
     private String description;
     private LocalDate created_date;
     private LocalDate updated_date;
