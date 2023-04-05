@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @Data
 public class ProcessOrderItem {
-    private String orderId;
+    private Integer id;
     private String productId;
     private Integer quantity;
     private String description;

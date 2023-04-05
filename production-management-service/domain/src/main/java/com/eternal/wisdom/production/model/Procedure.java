@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 public class Procedure {
-    private String procedureId;
+    private Integer id;
     private String description;
     private LocalDate created_date;
     private LocalDate updated_date;

@@ -7,7 +7,7 @@ import java.util.List;
 
 @Data
 public class Product {
-    private String productId;
+    private Integer id;
     private String name;
     private String description;
     private LocalDate created_date;
