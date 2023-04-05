@@ -10,6 +10,7 @@ public class ProcessOrderItem {
     private String productId;
     private Integer quantity;
     private String description;
+    private String reference;
     private LocalDate created_date;
     private User owner;
     private String status;

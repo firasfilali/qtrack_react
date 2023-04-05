@@ -9,6 +9,7 @@ public class ProcessOrder {
     private Integer id;
     private String type;
     private String description;
+    private String reference;
     private LocalDate created_date;
     private LocalDate updated_date;
     private User owner;
