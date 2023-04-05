@@ -16,9 +16,9 @@ import java.util.List;
 public class ProcessOrderReadService implements ReadProcessOrderPort {
     private final ProcessOrderRepositoryPort  processOrderRepositoryPort;
     @Override
-    public ProcessOrder getById(Integer integer) {
-        return processOrderRepositoryPort.getById(integer).orElseThrow((()->
-                new ProcessNotFoundException("Process order not found with id " + integer)));
+    public ProcessOrder getById(Integer id) {
+        return processOrderRepositoryPort.getById(id).orElseThrow((()->
+                new ProcessNotFoundException("Process order not found with id " + id)));
     }
 
     @Override

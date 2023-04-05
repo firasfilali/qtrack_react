@@ -22,8 +22,8 @@ public class ProcessWriteService implements WriteProcessPort {
     }
 
     @Override
-    public void delete(Integer integer) {
-        processRepositoryPort.delete(integer);
+    public void delete(Integer id) {
+        processRepositoryPort.delete(id);
 
     }
 }

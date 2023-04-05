@@ -21,8 +21,8 @@ public class ProductWriteService implements WriteProductPort {
     }
 
     @Override
-    public void delete(Integer integer) {
-        productOrderRepositoryPort.delete(integer);
+    public void delete(Integer id) {
+        productOrderRepositoryPort.delete(id);
 
     }
 }

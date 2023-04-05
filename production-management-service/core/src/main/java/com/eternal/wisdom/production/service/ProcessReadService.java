@@ -16,8 +16,8 @@ public class ProcessReadService implements ReadProcessPort {
 
 
     @Override
-    public Process getById(Integer integer) {
-        return processRepositoryPort.getById(integer).orElseThrow((() ->
+    public Process getById(Integer id) {
+        return processRepositoryPort.getById(id).orElseThrow((() ->
                 new ProcessNotFoundException("Process not found with id")));
 
     }

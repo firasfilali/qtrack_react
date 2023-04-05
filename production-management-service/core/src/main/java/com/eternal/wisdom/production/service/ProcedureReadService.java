@@ -15,9 +15,9 @@ public class ProcedureReadService implements ReadProcedurePort {
     private final ProcedureRepositoryPort procedureRepositoryPort;
 
     @Override
-    public Procedure getById(Integer integer) {
-        return procedureRepositoryPort.getById(integer).orElseThrow((() ->
-                new ProcedureNotFoundException("Procedure not found with id" + integer)));
+    public Procedure getById(Integer id) {
+        return procedureRepositoryPort.getById(id).orElseThrow((() ->
+                new ProcedureNotFoundException("Procedure not found with id" + id)));
     }
 
     @Override

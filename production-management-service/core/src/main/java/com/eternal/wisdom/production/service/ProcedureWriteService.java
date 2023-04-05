@@ -22,8 +22,8 @@ public class ProcedureWriteService implements WriteProcedurePort {
     }
 
     @Override
-    public void delete(Integer integer) {
-        procedureRepositoryPort.delete(integer);
+    public void delete(Integer id) {
+        procedureRepositoryPort.delete(id);
 
     }
 }

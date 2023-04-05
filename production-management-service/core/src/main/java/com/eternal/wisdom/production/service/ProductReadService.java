@@ -13,9 +13,9 @@ import java.util.List;
 public class ProductReadService implements ReadProductPort {
     private final ProductOrderRepositoryPort productOrderRepositoryPort;
     @Override
-    public Product getById(Integer integer) {
-        return productOrderRepositoryPort.getById(integer).orElseThrow((() ->
-                new ProductNotFoundException("Product not found with id" + integer)));
+    public Product getById(Integer id) {
+        return productOrderRepositoryPort.getById(id).orElseThrow((() ->
+                new ProductNotFoundException("Product not found with id" + id)));
     }
 
     @Override
