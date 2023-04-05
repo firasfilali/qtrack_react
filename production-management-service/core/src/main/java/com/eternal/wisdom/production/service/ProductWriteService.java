@@ -9,20 +9,20 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ProductWriteService implements WriteProductPort {
-    private final ProductOrderRepositoryPort productOrderOutputPort;
+    private final ProductOrderRepositoryPort productOrderRepositoryPort;
     @Override
     public Product create(Product in) {
-        return productOrderOutputPort.create(in);
+        return productOrderRepositoryPort.create(in);
     }
 
     @Override
     public Product update(Product in) {
-        return productOrderOutputPort.update(in);
+        return productOrderRepositoryPort.update(in);
     }
 
     @Override
     public void delete(Integer integer) {
-        productOrderOutputPort.delete(integer);
+        productOrderRepositoryPort.delete(integer);
 
     }
 }

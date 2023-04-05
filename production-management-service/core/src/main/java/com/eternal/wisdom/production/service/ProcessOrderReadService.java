@@ -14,15 +14,15 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProcessOrderReadService implements ReadProcessOrderPort {
-    private final ProcessOrderRepositoryPort  processOrderOutputPort;
+    private final ProcessOrderRepositoryPort  processOrderRepositoryPort;
     @Override
     public ProcessOrder getById(Integer integer) {
-        return processOrderOutputPort.getById(integer).orElseThrow((()->
+        return processOrderRepositoryPort.getById(integer).orElseThrow((()->
                 new ProcessNotFoundException("Process order not found with id " + integer)));
     }
 
     @Override
     public List<ProcessOrder> getAll() {
-        return processOrderOutputPort.getAll();
+        return processOrderRepositoryPort.getAll();
     }
 }

@@ -10,20 +10,20 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class ProcedureWriteService implements WriteProcedurePort {
 
-    private final ProcedureRepositoryPort procedureOutputPort;
+    private final ProcedureRepositoryPort procedureRepositoryPort;
     @Override
     public Procedure create(Procedure in) {
-        return procedureOutputPort.create(in);
+        return procedureRepositoryPort.create(in);
     }
 
     @Override
     public Procedure update(Procedure in) {
-        return procedureOutputPort.update(in);
+        return procedureRepositoryPort.update(in);
     }
 
     @Override
     public void delete(Integer integer) {
-        procedureOutputPort.delete(integer);
+        procedureRepositoryPort.delete(integer);
 
     }
 }

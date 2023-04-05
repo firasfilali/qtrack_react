@@ -11,15 +11,15 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProductReadService implements ReadProductPort {
-    private final ProductOrderRepositoryPort productOrderOutputPort;
+    private final ProductOrderRepositoryPort productOrderRepositoryPort;
     @Override
     public Product getById(Integer integer) {
-        return productOrderOutputPort.getById(integer).orElseThrow((() ->
+        return productOrderRepositoryPort.getById(integer).orElseThrow((() ->
                 new ProductNotFoundException("Product not found with id" + integer)));
     }
 
     @Override
     public List<Product> getAll() {
-        return productOrderOutputPort.getAll();
+        return productOrderRepositoryPort.getAll();
     }
 }

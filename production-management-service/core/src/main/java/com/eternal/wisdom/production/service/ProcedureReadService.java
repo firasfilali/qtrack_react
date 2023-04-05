@@ -12,16 +12,16 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class ProcedureReadService implements ReadProcedurePort {
-    private final ProcedureRepositoryPort procedureOutputPort;
+    private final ProcedureRepositoryPort procedureRepositoryPort;
 
     @Override
     public Procedure getById(Integer integer) {
-        return procedureOutputPort.getById(integer).orElseThrow((() ->
+        return procedureRepositoryPort.getById(integer).orElseThrow((() ->
                 new ProcedureNotFoundException("Procedure not found with id" + integer)));
     }
 
     @Override
     public List<Procedure> getAll() {
-        return procedureOutputPort.getAll();
+        return procedureRepositoryPort.getAll();
     }
 }

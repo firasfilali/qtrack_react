@@ -12,20 +12,20 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ProcessOrderWriteService implements WriteProcessOrderPort {
-    private final ProcessOrderRepositoryPort processOrderOutputPort;
+    private final ProcessOrderRepositoryPort processOrderRepositoryPort;
     @Override
     public ProcessOrder create(ProcessOrder in) {
-        return processOrderOutputPort.create(in);
+        return processOrderRepositoryPort.create(in);
     }
 
     @Override
     public ProcessOrder update(ProcessOrder in) {
-        return processOrderOutputPort.update(in);
+        return processOrderRepositoryPort.update(in);
     }
 
     @Override
     public void delete(Integer integer) {
-        processOrderOutputPort.delete(integer);
+        processOrderRepositoryPort.delete(integer);
 
     }
 }

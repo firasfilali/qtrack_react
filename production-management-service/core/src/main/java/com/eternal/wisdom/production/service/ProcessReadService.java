@@ -12,18 +12,18 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProcessReadService implements ReadProcessPort {
-    private final ProcessRepositoryPort processOutputPort;
+    private final ProcessRepositoryPort processRepositoryPort;
 
 
     @Override
     public Process getById(Integer integer) {
-        return processOutputPort.getById(integer).orElseThrow((() ->
+        return processRepositoryPort.getById(integer).orElseThrow((() ->
                 new ProcessNotFoundException("Process not found with id")));
 
     }
 
     @Override
     public List<Process> getAll() {
-        return processOutputPort.getAll();
+        return processRepositoryPort.getAll();
     }
 }

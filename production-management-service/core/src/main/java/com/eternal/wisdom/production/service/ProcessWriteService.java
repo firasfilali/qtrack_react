@@ -9,21 +9,21 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class ProcessWriteService implements WriteProcessPort {
-    private final ProcessRepositoryPort processOutputPort;
+    private final ProcessRepositoryPort processRepositoryPort;
 
     @Override
     public Process create(Process in) {
-        return processOutputPort.create(in);
+        return processRepositoryPort.create(in);
     }
 
     @Override
     public Process update(Process in) {
-        return processOutputPort.update(in);
+        return processRepositoryPort.update(in);
     }
 
     @Override
     public void delete(Integer integer) {
-        processOutputPort.delete(integer);
+        processRepositoryPort.delete(integer);
 
     }
 }
