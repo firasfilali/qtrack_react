@@ -10,8 +10,10 @@ import java.util.List;
 public class Procedure {
     private Integer id;
     private String description;
-    private String reference;
+    private List<String> reference;
     private LocalDate created_date;
+    private LocalDate finish_date;
+
     private LocalDate updated_date;
     private User owner;
     private String status;

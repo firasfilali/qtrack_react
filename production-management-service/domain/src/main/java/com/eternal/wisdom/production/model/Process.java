@@ -10,7 +10,7 @@ public class Process {
     private Integer id;
     private String name;
     private String description;
-    private String reference;
+    private List<String> reference;
     private LocalDate created_date;
     private LocalDate updated_date;
     private String status;
