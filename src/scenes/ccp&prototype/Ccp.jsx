@@ -9,7 +9,8 @@ export default function Ccp() {
      
         <Sidebar /> 
         
-        <div className="col p-0"><Topbar></Topbar>
+        <div className="col p-3">
+          <Topbar></Topbar>
           <div className='py-2'><h1>CCP </h1></div></div>
         
     </div>

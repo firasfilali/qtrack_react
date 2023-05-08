@@ -48,6 +48,69 @@ const Sidebar=()=>{
       >
          Controle finale
       </NavLink>
+      <NavLink
+        exact
+        to="/prototype"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('prototype')}
+      >
+         Prototype
+      </NavLink>
+      <NavLink
+        exact
+        to="/controle_operateurs"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('controle_operateurs')}
+      >
+        Controle opérateurs
+      </NavLink>
+      <NavLink
+        exact
+        to="/controle_aq"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('controle_aq')}
+      >
+        Controle des AQ
+      </NavLink>
+      <NavLink
+        exact
+        to="/matiere_premiere"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('matiere_premiere')}
+      >
+        Matiére premiére
+      </NavLink>
+      <NavLink
+        exact
+        to="/correction_action"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('correction_action')}
+      >
+        Action de correction
+      </NavLink>
+      <NavLink
+        exact
+        to="/historique"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('historique')}
+      >
+        Historique et indicateurs
+      </NavLink>
+      <NavLink
+        exact
+        to="/parametre"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('parametre')}
+      >
+        Parametres
+      </NavLink>
     </Nav>
   
 </div>

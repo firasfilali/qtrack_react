@@ -1,63 +1,17 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import Topbar from "./scenes/global/Topbar2";
-import Sidebar from "./scenes/global/Sidebar";
-
-
 import Dashboard from './scenes/dashboard/dashboard';
 import ControleFinale from './scenes/controle/controlefinale';
 import ControleAq from './scenes/controleAq/controleAq';
 import ControleOperateur from './scenes/controleoperateurs/controleOperateur';
 import CorrectionAction from './scenes/correctionAction/correctionaction';
-import Historique from './scenes/history/history';
 import MatiérePremiére from './scenes/matiérepremiére/MatiérePremiére';
-import Parametre from './scenes/parametre/parametre';
 import Prototype from './scenes/prototype/prototype';
 import Ccp from './scenes/ccp&prototype/Ccp';
+import History from './scenes/history/history';
+import Parametre from './scenes/parametre/parametre';
 import { BrowserRouter, createBrowserRouter, RouterProvider, Route, Routes } from 'react-router-dom';
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Dashboard />
-    },
-    {
-      path: "/controlefinale",
-      element: <ControleFinale />
-    },
-    {
-      path: "/controleAq",
-      element: <ControleAq />
-    },
-    {
-      path: "/controleoperateurs",
-      element: <ControleOperateur />
-    },
-    {
-      path: "/correctionAction",
-      element: <CorrectionAction />
-    },
-    {
-      path: "/historique",
-      element: <Historique />
-    },
-    {
-      path: "/matierepremiere",
-      element: <MatiérePremiére />
-    },
-    {
-      path: "/parametre",
-      element: <Parametre />
-    },
-    {
-      path: "/prototype",
-      element: <Prototype />
-    },
-    {
-      path: "/ccp",
-      element: <Ccp />
-    },
-  ])
+  
   return (
     
      <div className="App">
@@ -68,6 +22,12 @@ function App() {
       <Route path="/ccp" element={<Ccp/>}/>
       <Route path="/controle" element={<ControleFinale/>}/>
       <Route path="/prototype" element={<Prototype/>}/>
+      <Route path="/controle_operateurs" element={<ControleOperateur/>}/>
+      <Route path="/controle_aq" element={<ControleAq/>}/>
+      <Route path="/matiere_premiere" element={<MatiérePremiére/>}/>
+      <Route path="/correction_action" element={<CorrectionAction/>}/>
+      <Route path="/historique" element={<History/>}/>
+      <Route path="/parametre" element={<Parametre/>}/>
     </Routes>
     </BrowserRouter>
       
