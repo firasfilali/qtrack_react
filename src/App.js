@@ -1,25 +1,76 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Topbar from "./scenes/global/Topbar";
+import Topbar from "./scenes/global/Topbar2";
 import Sidebar from "./scenes/global/Sidebar";
-import Dashboard from "./scenes/dashboard";
-// import CCPprototype from "./scenes/ccpPrototype";
-// import FinalCtrl from "./scenes/controleFinale";
-// import Prototype from "./scenes/prototype";
-// import OperatorCtrl from "./scenes/controleOperateur";
-// import AQCtrl from "./scenes/controleAQ";
-// import MatierePremiere from "./scenes/matierePremiere";
-// import CorrectionAction from "./scenes/ActionCorrection";
-// import HistoryAndIndicator from "./scenes/Historique";
-// import Parametre from "./scenes/parametre";
 
 
+import Dashboard from './scenes/dashboard/dashboard';
+import ControleFinale from './scenes/controle/controlefinale';
+import ControleAq from './scenes/controleAq/controleAq';
+import ControleOperateur from './scenes/controleoperateurs/controleOperateur';
+import CorrectionAction from './scenes/correctionAction/correctionaction';
+import Historique from './scenes/history/history';
+import MatiérePremiére from './scenes/matiérepremiére/MatiérePremiére';
+import Parametre from './scenes/parametre/parametre';
+import Prototype from './scenes/prototype/prototype';
+import Ccp from './scenes/ccp&prototype/Ccp';
+import { BrowserRouter, createBrowserRouter, RouterProvider, Route, Routes } from 'react-router-dom';
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Dashboard />
+    },
+    {
+      path: "/controlefinale",
+      element: <ControleFinale />
+    },
+    {
+      path: "/controleAq",
+      element: <ControleAq />
+    },
+    {
+      path: "/controleoperateurs",
+      element: <ControleOperateur />
+    },
+    {
+      path: "/correctionAction",
+      element: <CorrectionAction />
+    },
+    {
+      path: "/historique",
+      element: <Historique />
+    },
+    {
+      path: "/matierepremiere",
+      element: <MatiérePremiére />
+    },
+    {
+      path: "/parametre",
+      element: <Parametre />
+    },
+    {
+      path: "/prototype",
+      element: <Prototype />
+    },
+    {
+      path: "/ccp",
+      element: <Ccp />
+    },
+  ])
   return (
     
-     <div>
-      <Sidebar />
+     <div className="App">
+     
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Dashboard/>}/>
+      <Route path="/ccp" element={<Ccp/>}/>
+      <Route path="/controle" element={<ControleFinale/>}/>
+      <Route path="/prototype" element={<Prototype/>}/>
+    </Routes>
+    </BrowserRouter>
+      
      </div>
     
    

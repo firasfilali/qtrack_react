@@ -9,7 +9,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* additions here*/
   height: 100vh;
-  background: black;
+  background: white;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

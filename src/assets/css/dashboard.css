@@ -1,0 +1,22 @@
+.card{
+    background-color: #f4f4f4 !important;
+    border: none !important;
+    width: 80% !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)    !important;
+}
+.m-30{
+    margin: 30px;
+}
+.cards{
+    justify-content: center;
+}
+.up{
+    font-size: 20px;
+    font-weight:700;
+    color: green;
+}
+.down{
+    font-size: 20px;
+    font-weight: 700;
+    color: red;
+}
