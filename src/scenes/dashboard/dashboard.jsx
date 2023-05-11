@@ -5,18 +5,17 @@ import Topbar from "../global/Topbar";
 import '../../assets/css/dashboard.css'
 import up from '../../assets/up.png'
 import down from '../../assets/down.png'
-import Topbar2 from "../global/Topbar2";
+
 
 
 
 
 const Dashboard = () => {
   return (
+    <div className="warper">
     <div class="container-fluid">
       <div class="row flex-nowrap">
-        <Sidebar />
         <div className="col p-3">
-        <Topbar2 />
           <div className="container m-30">
             <div className="row cards ">
               
@@ -76,6 +75,7 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

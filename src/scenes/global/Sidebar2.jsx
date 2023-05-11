@@ -1,93 +1,34 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import { Link } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Nav } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import logo from '../../assets/50089614.jpg';
+import {Search} from '../../assets/styleJs/Search';
+import {SearchIconWrapper} from '../../assets/styleJs/SearchIconWrapper';
+import {NotifIconWrapper} from '../../assets/styleJs/NotifIconWrapper';
+import {StyledInputBase} from '../../assets/styleJs/StyledInputBase';
+
 
 const drawerWidth = 240;
 
-const theme = createTheme({
-  components: {
-    MuiListItemButton: {
-      styleOverrides: {
-        root: {
-          fontSize: '1rem',
-          borderLeft: '3px solid green'
-        },
-      },
-    },
-  },
-});
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: '#F4F4F4',
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(1),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  left: 0,
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color:'black'
-}));
-const NotifIconWrapper = styled('div')(({ theme }) => ({
-  color:'black'
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'grey',
-  '& .MuiInputBase-input': {
-    borderRadius:'6px',
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
 function Sidebar(props) {
+  const [activeLink, setActiveLink] = useState('dashboard');
+
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+  };
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -97,29 +38,102 @@ function Sidebar(props) {
 
   const drawer = (
     <div>
-      <Toolbar sx={{bgcolor: '#18202c'}} >
-        <ListItemButton>
-          <ListItemAvatar>
-            <Avatar
-              alt="Logo" src=
-"https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190710102234/download3.png"
-              shape="" />
-            </ListItemAvatar>
-        </ListItemButton>
-      </Toolbar>
-      <List sx={{bgcolor: '#18202c'}}>
-        {['Dashboard', 'CCP & prototype', 'Controle finale', 'Prototype', 'Controle opérateurs','Controle des AQ', 'Matiére 1ere', 'Action de correction', 'Historiques et indicateurs',
-        'Parametres'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ThemeProvider theme={theme}>
-            <ListItemButton alignItems='center'>
-            
-            <ListItemText primary={text} sx={{ color: '#a9acaf', ml:'40px', police:'Poppins', marginBottom: '10px'}}/>
-            </ListItemButton>
-            </ThemeProvider>
-          </ListItem>
-        ))}
-      </List>
+      <img src={logo} alt="logo"  width="20%" />
+       <Nav as="div"
+        className="flex-column mt-5 "
+       >
+      <NavLink
+        exact
+        to="/"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('dashboard')}
+      >
+     Dashboard  
+      </NavLink>
+      <NavLink
+        exact
+        to="/ccp"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('ccp')}
+      >
+        CCP & prototype 
+      </NavLink>
+      <NavLink
+        exact
+        to="/controle"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('controle')}
+      >
+         Controle finale
+      </NavLink>
+      <NavLink
+        exact
+        to="/prototype"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('prototype')}
+      >
+         Prototype
+      </NavLink>
+      <NavLink
+        exact
+        to="/controle_operateurs"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('controle_operateurs')}
+      >
+        Controle opérateurs
+      </NavLink>
+      <NavLink
+        exact
+        to="/controle_aq"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('controle_aq')}
+      >
+        Controle des AQ
+      </NavLink>
+      <NavLink
+        exact
+        to="/matiere_premiere"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('matiere_premiere')}
+      >
+        Matiére premiére
+      </NavLink>
+      <NavLink
+        exact
+        to="/correction_action"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('correction_action')}
+      >
+        Action de correction
+      </NavLink>
+      <NavLink
+        exact
+        to="/historique"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('historique')}
+      >
+        Historique et indicateurs
+      </NavLink>
+      <NavLink
+        exact
+        to="/parametre"
+        className="nav-link"
+        activeClassName="active"
+        onClick={() => handleLinkClick('parametre')}
+      >
+        Parametres
+      </NavLink>
+      </Nav>
+      
     </div>
   );
 
@@ -127,16 +141,15 @@ function Sidebar(props) {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
       <AppBar position="fixed" sx={{bgcolor:'white', width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` }, boxShadow: "none"}}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
+        <IconButton
+            color="black"
             aria-label="open drawer"
-            sx={{ mr: 2 }}
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
@@ -144,7 +157,7 @@ function Sidebar(props) {
             variant="h6"
             noWrap
             component="div"
-            sx={{ color:'black', flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+            sx={{ color:'black', flexGrow: 1, display: { xs: 'none', sm: 'block' }, ml:"20px" }}
           >
             Home
           </Typography>
@@ -182,7 +195,7 @@ function Sidebar(props) {
           }}
           sx={{ 
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth}}
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, bgcolor:'#18202c'}}
           }
         >
           {drawer}

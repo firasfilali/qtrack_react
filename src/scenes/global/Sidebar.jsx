@@ -4,17 +4,17 @@ import { Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import Topbar from './Topbar';
-const Sidebar=()=>{
+import Drawer from '@mui/material/Drawer';
+
+
+const Sidebar = () => {
     const [activeLink, setActiveLink] = useState('dashboard');
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
     return (
-        
-      
-     
-        <div className='col-2 px-0 bg-sideBar'>
+        <div className='px-0 bg-sideBar'>
             
             
             <img src={logo} alt="logo"  width="20%" />
@@ -115,8 +115,6 @@ const Sidebar=()=>{
   
 </div>
 
-      
-   
     )
 }
 

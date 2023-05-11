@@ -8,31 +8,38 @@ import Prototype from './scenes/prototype/prototype';
 import Ccp from './scenes/ccp&prototype/Ccp';
 import History from './scenes/history/history';
 import Parametre from './scenes/parametre/parametre';
-import { BrowserRouter, createBrowserRouter, RouterProvider, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, createBrowserRouter, RouterProvider, Route, Routes, React } from 'react-router-dom';
+import Layout from './Layout';
+import Sidebar from './scenes/global/Sidebar'
+
 
 function App() {
+
+  const routes = [
+    { path: "/", component: <Dashboard /> },
+    { path: "/ccp", component: <Ccp /> },
+    { path: "/controle", component: <ControleFinale /> },
+    { path: "/prototype", component: <Prototype /> },
+    { path: "/controle_operateurs", component: <ControleOperateur /> },
+    { path: "/controle_aq", component: <ControleAq /> },
+    { path: "/matiere_premiere", component: <MatiérePremiére /> },
+    { path: "/correction_action", component: <CorrectionAction /> },
+    { path: "/historique", component: <History /> },
+    { path: "/parametre", component: <Parametre /> },
+  ];
   
   return (
-    
-     <div className="App">
-     
-    <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Dashboard/>}/>
-      <Route path="/ccp" element={<Ccp/>}/>
-      <Route path="/controle" element={<ControleFinale/>}/>
-      <Route path="/prototype" element={<Prototype/>}/>
-      <Route path="/controle_operateurs" element={<ControleOperateur/>}/>
-      <Route path="/controle_aq" element={<ControleAq/>}/>
-      <Route path="/matiere_premiere" element={<MatiérePremiére/>}/>
-      <Route path="/correction_action" element={<CorrectionAction/>}/>
-      <Route path="/historique" element={<History/>}/>
-      <Route path="/parametre" element={<Parametre/>}/>
-    </Routes>
-    </BrowserRouter>
-      
-     </div>
-    
+    <div>
+      <BrowserRouter>
+        <Routes>
+          
+          {routes.map((route, index) => (
+            <Route key={index} path = {route.path} element = {<Layout>{route.component}</Layout> } />
+          ))}
+          
+        </Routes>
+      </BrowserRouter>
+    </div>
    
   );
 }

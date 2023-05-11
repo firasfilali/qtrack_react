@@ -79,7 +79,7 @@ function Topbar() {
        <div className='col-md-6'><p>title</p></div> 
        <div className='col-md-6'> <form className="form-inline mt-2 mt-md-0 col-5">
           {/* <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/> */}
-          <div className='d-flex alignItems-center'>
+          <div className='d-flex alignItems-center justifyContent-end' style={{width: '50%'}}>
             <Search sx={{marginLeft: '20px'}}>
               <SearchIconWrapper>
                 <SearchIcon />
@@ -94,12 +94,7 @@ function Topbar() {
               <AccountCircleRoundedIcon />
             </NotifIconWrapper>
           </div>
-          <div className='d-flex alignItems-center'>
-           
-             
-            
-            
-          </div>
+         
         
         
        

@@ -6,7 +6,6 @@ export default function prototype() {
   return (
     <div class="container-fluid">
     <div class="row flex-nowrap">
-        <Sidebar />
         <div className="col p-3">
 
         
@@ -15,6 +14,6 @@ export default function prototype() {
         </div>
         
     </div>
-</div>
+    </div>
   )
 }

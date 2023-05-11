@@ -5,7 +5,6 @@ export default function ControleOperateur() {
   return (
     <div class="container-fluid">
     <div class="row flex-nowrap">
-        <Sidebar />
         <div className="col p-3">
 
         
