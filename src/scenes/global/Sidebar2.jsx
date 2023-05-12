@@ -24,14 +24,13 @@ const drawerWidth = 240;
 
 function Sidebar(props) {
   const [activeLink, setActiveLink] = useState('dashboard');
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
   };
-
-  const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
