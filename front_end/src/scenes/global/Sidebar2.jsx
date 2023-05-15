@@ -17,15 +17,24 @@ import {Search} from '../../assets/styleJs/Search';
 import {SearchIconWrapper} from '../../assets/styleJs/SearchIconWrapper';
 import {NotifIconWrapper} from '../../assets/styleJs/NotifIconWrapper';
 import {StyledInputBase} from '../../assets/styleJs/StyledInputBase';
+import { useDispatch, useSelector } from 'react-redux';
+import store from '../../store/reducer';
 
 
 const drawerWidth = 240;
 
 
 function Sidebar(props) {
+
   const [activeLink, setActiveLink] = useState('dashboard');
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const currentPage = useSelector(state => state.currentPage);
+
+
+  const handleButtonClick = (pageName) => {
+    store.dispatch({type: 'SET_CURRENT_PAGE', payload: pageName});
+  };
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -46,7 +55,10 @@ function Sidebar(props) {
         to="/"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('dashboard')}
+        onClick={() => {
+          handleLinkClick('dashboard');
+          handleButtonClick('Dashboard');
+        }}
       >
      Dashboard  
       </NavLink>
@@ -55,7 +67,10 @@ function Sidebar(props) {
         to="/ccp"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('ccp')}
+        onClick={() => {
+          handleLinkClick('ccp');
+          handleButtonClick('CCP & prototype');
+        }}
       >
         CCP & prototype 
       </NavLink>
@@ -64,7 +79,10 @@ function Sidebar(props) {
         to="/controle"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('controle')}
+        onClick={() => {
+          handleLinkClick('controle');
+          handleButtonClick('Controle finale');
+        }}
       >
          Controle finale
       </NavLink>
@@ -73,7 +91,10 @@ function Sidebar(props) {
         to="/prototype"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('prototype')}
+        onClick={() => {
+          handleLinkClick('prototype');
+          handleButtonClick('Prototype');
+        }}
       >
          Prototype
       </NavLink>
@@ -82,7 +103,10 @@ function Sidebar(props) {
         to="/controle_operateurs"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('controle_operateurs')}
+        onClick={() => {
+          handleLinkClick('controle_operateurs');
+          handleButtonClick('Controle opérateurs');
+        }}
       >
         Controle opérateurs
       </NavLink>
@@ -91,7 +115,10 @@ function Sidebar(props) {
         to="/controle_aq"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('controle_aq')}
+        onClick={() => {
+          handleLinkClick('controle_aq');
+          handleButtonClick('Controle des AQ');
+        }}
       >
         Controle des AQ
       </NavLink>
@@ -100,7 +127,10 @@ function Sidebar(props) {
         to="/matiere_premiere"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('matiere_premiere')}
+        onClick={() => {
+          handleLinkClick('matiere_premiere');
+          handleButtonClick('Matiére 1ere');
+        }}
       >
         Matiére premiére
       </NavLink>
@@ -109,7 +139,10 @@ function Sidebar(props) {
         to="/correction_action"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('correction_action')}
+        onClick={() => {
+          handleLinkClick('correction_action');
+          handleButtonClick('Action de correction');
+        }}
       >
         Action de correction
       </NavLink>
@@ -118,7 +151,10 @@ function Sidebar(props) {
         to="/historique"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('historique')}
+        onClick={() => {
+          handleLinkClick('historique');
+          handleButtonClick('Historiques et indicateurs');
+        }}
       >
         Historique et indicateurs
       </NavLink>
@@ -127,7 +163,10 @@ function Sidebar(props) {
         to="/parametre"
         className="nav-link"
         activeClassName="active"
-        onClick={() => handleLinkClick('parametre')}
+        onClick={() => {
+          handleLinkClick('parametre');
+          handleButtonClick('Parametre');
+        }}
       >
         Parametres
       </NavLink>
@@ -158,7 +197,7 @@ function Sidebar(props) {
             component="div"
             sx={{ color:'black', flexGrow: 1, display: { xs: 'none', sm: 'block' }, ml:"20px" }}
           >
-            Home
+            {currentPage}
           </Typography>
           <Search sx={{marginRight: '20px'}}>
             <SearchIconWrapper>

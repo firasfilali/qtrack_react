@@ -3,7 +3,7 @@ import Sidebar from '../global/Sidebar'
 
 export default function parametre() {
   return (
-    <div style={{display: "flex" , flexWrap: "wrap", marginTop: "50px", marginLeft:"20px"}}>
+    <div style={{display: "flex" , flexWrap: "wrap", marginLeft:"20px"}}>
     <div class="row flex-nowrap">
         <div className="col p-3">
 

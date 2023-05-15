@@ -1,6 +1,8 @@
 import React from 'react'
 import '../src/assets/css/dashboard.css'
 import Sidebar2 from './scenes/global/Sidebar2'
+import Toolbar from '@mui/material/Toolbar';
+
 
 
 const Layout = ({children}) => {
@@ -12,7 +14,8 @@ const Layout = ({children}) => {
            </div>
           <div>
                
-               <div>
+               <div >
+                    <Toolbar />
                 {children}
                </div>
 
