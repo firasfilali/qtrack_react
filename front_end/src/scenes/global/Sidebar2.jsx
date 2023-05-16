@@ -19,9 +19,13 @@ import {NotifIconWrapper} from '../../assets/styleJs/NotifIconWrapper';
 import {StyledInputBase} from '../../assets/styleJs/StyledInputBase';
 import { useDispatch, useSelector } from 'react-redux';
 import store from '../../store/reducer';
+import {route} from '../../utils/data';
+
 
 
 const drawerWidth = 240;
+
+// const data [] = route;
 
 
 function Sidebar(props) {
@@ -50,126 +54,23 @@ function Sidebar(props) {
        <Nav as="div"
         className="flex-column mt-5 "
        >
-      <NavLink
+      
+      { route.map((item, index) => ( 
+        <NavLink
         exact
-        to="/"
+        to={item.url}
         className="nav-link"
         activeClassName="active"
         onClick={() => {
-          handleLinkClick('dashboard');
-          handleButtonClick('Dashboard');
-        }}
-      >
-     Dashboard  
-      </NavLink>
-      <NavLink
-        exact
-        to="/ccp"
-        className="nav-link"
-        activeClassName="active"
-        onClick={() => {
-          handleLinkClick('ccp');
-          handleButtonClick('CCP & prototype');
-        }}
-      >
-        CCP & prototype 
-      </NavLink>
-      <NavLink
-        exact
-        to="/controle"
-        className="nav-link"
-        activeClassName="active"
-        onClick={() => {
-          handleLinkClick('controle');
-          handleButtonClick('Controle finale');
-        }}
-      >
-         Controle finale
-      </NavLink>
-      <NavLink
-        exact
-        to="/prototype"
-        className="nav-link"
-        activeClassName="active"
-        onClick={() => {
-          handleLinkClick('prototype');
-          handleButtonClick('Prototype');
-        }}
-      >
-         Prototype
-      </NavLink>
-      <NavLink
-        exact
-        to="/controle_operateurs"
-        className="nav-link"
-        activeClassName="active"
-        onClick={() => {
-          handleLinkClick('controle_operateurs');
-          handleButtonClick('Controle opérateurs');
-        }}
-      >
-        Controle opérateurs
-      </NavLink>
-      <NavLink
-        exact
-        to="/controle_aq"
-        className="nav-link"
-        activeClassName="active"
-        onClick={() => {
-          handleLinkClick('controle_aq');
-          handleButtonClick('Controle des AQ');
-        }}
-      >
-        Controle des AQ
-      </NavLink>
-      <NavLink
-        exact
-        to="/matiere_premiere"
-        className="nav-link"
-        activeClassName="active"
-        onClick={() => {
-          handleLinkClick('matiere_premiere');
-          handleButtonClick('Matiére 1ere');
-        }}
-      >
-        Matiére premiére
-      </NavLink>
-      <NavLink
-        exact
-        to="/correction_action"
-        className="nav-link"
-        activeClassName="active"
-        onClick={() => {
-          handleLinkClick('correction_action');
-          handleButtonClick('Action de correction');
-        }}
-      >
-        Action de correction
-      </NavLink>
-      <NavLink
-        exact
-        to="/historique"
-        className="nav-link"
-        activeClassName="active"
-        onClick={() => {
-          handleLinkClick('historique');
-          handleButtonClick('Historiques et indicateurs');
-        }}
-      >
-        Historique et indicateurs
-      </NavLink>
-      <NavLink
-        exact
-        to="/parametre"
-        className="nav-link"
-        activeClassName="active"
-        onClick={() => {
-          handleLinkClick('parametre');
-          handleButtonClick('Parametre');
-        }}
-      >
-        Parametres
-      </NavLink>
+          handleLinkClick(item.handleLinkClick);
+          handleButtonClick(item.handleButtonClick);
+        }
+        }
+        >
+        {item.title} 
+        </NavLink>
+      ))}
+      
       </Nav>
       
     </div>
