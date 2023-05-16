@@ -10,7 +10,7 @@ import History from './scenes/history/history';
 import Parametre from './scenes/parametre/parametre';
 import { BrowserRouter, createBrowserRouter, RouterProvider, Route, Routes, React } from 'react-router-dom';
 import Layout from './Layout';
-import Sidebar from './scenes/global/Sidebar'
+
 
 
 function App() {

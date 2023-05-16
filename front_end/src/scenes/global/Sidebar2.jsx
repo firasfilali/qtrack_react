@@ -21,12 +21,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import store from '../../store/reducer';
 import {route} from '../../utils/data';
 
-
-
 const drawerWidth = 240;
-
-// const data [] = route;
-
 
 function Sidebar(props) {
 
@@ -34,7 +29,6 @@ function Sidebar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const currentPage = useSelector(state => state.currentPage);
-
 
   const handleButtonClick = (pageName) => {
     store.dispatch({type: 'SET_CURRENT_PAGE', payload: pageName});
@@ -69,10 +63,8 @@ function Sidebar(props) {
         >
         {item.title} 
         </NavLink>
-      ))}
-      
-      </Nav>
-      
+      ))}  
+      </Nav>     
     </div>
   );
 

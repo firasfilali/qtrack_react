@@ -1,7 +1,5 @@
 import { Box } from "@mui/material";
 import React from "react";
-import Sidebar from "../global/Sidebar";
-import Layout from "../../Layout";
 
 
 const Controle = () => {

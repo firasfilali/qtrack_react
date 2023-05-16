@@ -1,5 +1,4 @@
 import React from 'react'
-import Sidebar from '../global/Sidebar'
 
 export default function MatiérePremiére() {
   return (

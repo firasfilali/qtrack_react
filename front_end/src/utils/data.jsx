@@ -69,3 +69,48 @@ export const route = [{
     title:'Parametre'
 },
 ]
+
+export const data = [{
+    id: 0,
+    section: 'Controle à la chaine',
+    reference: 'A200',
+    conforme: '4.15',
+    Nconforme: '2.15'
+  },
+  {
+    id: 1,
+    section: 'Controle à la chaine',
+    reference: 'A300',
+    conforme: '4.15',
+    Nconforme: '2.15'
+  },
+  {
+    id: 2,
+    section: 'Controle à la chaine',
+    reference: 'A200',
+    conforme: '4.15',
+    Nconforme: '2.15'
+  },
+  {
+    id: 3,
+    section: 'Controle à la chaine',
+    reference: 'A200',
+    conforme: '4.15',
+    Nconforme: '2.15'
+  },
+  {
+    id: 4,
+    section: 'Controle à la chaine',
+    reference: 'A200',
+    conforme: '4.15',
+    Nconforme: '2.15'
+  },
+  {
+    id: 5,
+    section: 'Controle à la chaine',
+    reference: 'A200',
+    conforme: '4.15',
+    Nconforme: '2.15'
+  },
+  ]
+

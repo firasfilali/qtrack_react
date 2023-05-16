@@ -1,107 +1,77 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
 import '../../assets/css/sidebar.css';
-import { styled, alpha } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
+import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import NotificationsNoneRoundedIcon from '@mui/icons-material/NotificationsNoneRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
+import {Search} from '../../assets/styleJs/Search';
+import {SearchIconWrapper} from '../../assets/styleJs/SearchIconWrapper';
+import {NotifIconWrapper} from '../../assets/styleJs/NotifIconWrapper';
+import {StyledInputBase} from '../../assets/styleJs/StyledInputBase';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 
-const theme = createTheme({
-  components: {
-    MuiListItemButton: {
-      styleOverrides: {
-        root: {
-          fontSize: '1rem',
-          borderLeft: '3px solid green',
-          
-        },
-      },
-    },
-  },
-});
-const NotifIconWrapper = styled('div')(({ theme }) => ({
-  color:'black'
-}));
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: '#F4F4F4',
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: '10px',
-    width: 'auto',
-  },
-}));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  left: 0,
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color:'black'
-}));
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'grey',
-  '& .MuiInputBase-input': {
-    borderRadius:'6px',
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      width: '12ch',
-      '&:focus': {
-        width: '20ch',
-      },
-    },
-  },
-}));
+const drawerWidth = 240;
 
 function Topbar() {
+
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const currentPage = useSelector(state => state.currentPage);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+
   return (
-   <div className='top-bar'>
-    <div className="row px-3">
-       <div className='col-md-6'><p>title</p></div> 
-       <div className='col-md-6'> <form className="form-inline mt-2 mt-md-0 col-5">
-          {/* <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/> */}
-          <div className='d-flex alignItems-center justifyContent-end' style={{width: '50%'}}>
-            <Search sx={{marginLeft: '20px'}}>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-              />
-            </Search>
-            <NotifIconWrapper>
-              <NotificationsNoneRoundedIcon />
-              <AccountCircleRoundedIcon />
-            </NotifIconWrapper>
-          </div>
-         
-        
-        
-       
-        </form>
-        </div>
-      </div>
-   </div>
+   <Box sx={{ display: 'flex' }}>
+    <AppBar position="fixed" sx={{bgcolor:'white', width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` }, boxShadow: "none"}}>
+        <Toolbar>
+        <IconButton
+            color="black"
+            aria-label="open drawer"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: 'none' } }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ color:'black', flexGrow: 1, display: { xs: 'none', sm: 'block' }, ml:"20px" }}
+          >
+            {currentPage}
+          </Typography>
+          <Search sx={{marginRight: '20px'}}>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
+          <NotifIconWrapper sx={{marginRight: '20px'}}>
+          <NotificationsNoneRoundedIcon />
+          </NotifIconWrapper>
+          <NotifIconWrapper>
+          <AccountCircleRoundedIcon />
+          </NotifIconWrapper>
+        </Toolbar>
+      </AppBar>
+
+   </Box>
   );
 }
 
