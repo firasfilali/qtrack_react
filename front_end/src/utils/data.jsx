@@ -113,4 +113,85 @@ export const data = [{
     Nconforme: '2.15'
   },
   ]
+export const PhaseColumns = [
+    { field: 'id', headerName: 'Contrôle', flex: 0.3,align: "center",headerAlign: 'center'  },
+    {
+      field: 'conformité',
+      headerName: '% conformité',
+      flex: 0.3,
+      editable: true,
+      align: "center",headerAlign: 'center' ,
+    },
+    {
+      field: 'nonconformité',
+      headerName: '% non-conformité',
+      flex: 0.4,
+      editable: true,
+      align: "center",headerAlign: 'center' 
+    },
+  ];
 
+export const PhaseRows = [
+  { id: 1,  conformité: 'Jon' ,nonconformité: 'Snow' },
+  { id: 2, conformité: 'Cersei',nonconformité: 'Snow' },
+  { id: 3,  conformité: 'Jaime',nonconformité: 'Snow' },
+  { id: 4,  conformité: 'Arya',nonconformité: 'Snow' },
+  { id: 5,  conformité: 'Daenerys',nonconformité: 'Snow' },
+  { id: 6,  conformité: null,nonconformité: 'Snow'},
+  { id: 7,  conformité: 'Jon' ,nonconformité: 'Snow' },
+  { id: 8, conformité: 'Cersei',nonconformité: 'Snow' },
+  { id: 9,  conformité: 'Jaime',nonconformité: 'Snow' },
+  { id: 4,  conformité: 'Arya',nonconformité: 'Snow' },
+  { id: 5,  conformité: 'Daenerys',nonconformité: 'Snow' },
+  { id: 6,  conformité: null,nonconformité: 'Snow'},
+  { id: 1,  conformité: 'Jon' ,nonconformité: 'Snow' },
+  { id: 2, conformité: 'Cersei',nonconformité: 'Snow' },
+  { id: 3,  conformité: 'Jaime',nonconformité: 'Snow' },
+  
+]
+
+export const TypeColumns = [
+  { field: 'id', headerName: 'Type', flex:0.3, align: "center",headerAlign: 'center'},
+  {
+    field: 'percent',
+    headerName: '%',
+    flex: 0.7,
+    editable: true,
+    align: 'center',headerAlign: 'center',
+  },
+
+];
+export const TypeRows = [
+  { id: 1,  percent: 'Jon'  },
+  { id: 2, percent: 'Cersei' },
+  { id: 1,  percent: 'Jon'  },
+  { id: 2, percent: 'Cersei' },{ id: 1,  percent: 'Jon'  },
+  { id: 2, percent: 'Cersei' },{ id: 1,  percent: 'Jon'  },
+  { id: 2, percent: 'Cersei' },
+  { id: 1,  percent: 'Jon'  },
+  { id: 2, percent: 'Cersei' },
+
+];
+
+export const StatiqueColumns = [
+  { field: 'id', headerName: 'Références', flex:0.2, align: "center",headerAlign: 'center' },
+  {field: 'firstName', headerName: 'Famille',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
+  {field: 'lastName', headerName: 'Taux de conformité',flex: 0.3, editable: true,align: "center",headerAlign: 'center'},
+  {field: 'age',headerName: 'Taux de non-conformité',type: 'number',flex: 0.3,editable: true,align: "center",headerAlign: 'center'},
+];
+
+export const StatiqueRows = [
+  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+ 
+];

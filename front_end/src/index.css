@@ -19,6 +19,16 @@ code {
 .css-10hburv-MuiTypography-root{
   font-size: '10px';
 }
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(150, 151, 150);
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
 
 
 

@@ -8,16 +8,16 @@ import Toolbar from '@mui/material/Toolbar';
 const Layout = ({children}) => {
     return (
 
-       <div style={{flex: 1, flexDirection: "row", display: "flex"}}>
-            <div style={{flex: 0.15}}>
+       <div className='row w-100'>
+            <div className='col-md-2'>
                 <Sidebar2 />
            </div>
-          <div>
+          <div className='col'>
                
-               <div >
+               
                     <Toolbar />
                 {children}
-               </div>
+               
 
                </div>
                 
