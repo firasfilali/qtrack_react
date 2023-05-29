@@ -32,6 +32,7 @@ const Controle = () => {
                 <CustomDataGrid 
                 rows={StatiqueRows}
                 columns={StatiqueColumns}
+                className="custom-header"
                 Toolbar={CustomToolbar}
                 Pagination={CustomPagination}
                 rowHeight={60}
@@ -58,6 +59,7 @@ const Controle = () => {
                     <CustomDataGrid
                       rows={PhaseRows}
                       columns={PhaseColumns}
+                      className="custom-header"
                       hideFooter={true}
                       height="200px"
                       borderRadius="9px"
@@ -72,6 +74,7 @@ const Controle = () => {
                       <CustomDataGrid
                         rows={TypeRows}
                         columns={TypeColumns}
+                        className="custom-header"
                         hideFooter={true}
                         height="250px"
                         borderRadius="9px"

@@ -195,3 +195,42 @@ export const StatiqueRows = [
   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
  
 ];
+
+export const PhaseColumnsCcp = [
+  { field: 'id', headerName: 'Phase', flex: 0.3,align: "center",headerAlign: 'center'  },
+  {
+    field: 'conformité',
+    headerName: '% conformité',
+    flex: 0.3,
+    editable: true,
+    align: "center",headerAlign: 'center' ,
+  },
+  {
+    field: 'nonconformité',
+    headerName: '% non-conformité',
+    flex: 0.4,
+    editable: true,
+    align: "center",headerAlign: 'center' 
+  },
+];
+
+export const OperateurColumns = [
+  { field: 'id', headerName: 'Code', flex:0.2, align: "center",headerAlign: 'center' },
+  {field: 'firstName', headerName: 'Non',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
+  {field: 'lastName', headerName: '% conformité',flex: 0.2, editable: true,align: "center",headerAlign: 'center'},
+  {field: 'age',headerName: '% non-conformité',type: 'number',flex: 0.4,editable: true,align: "center",headerAlign: 'center'},
+];
+
+export const OperateurRows = [
+  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+ 
+];

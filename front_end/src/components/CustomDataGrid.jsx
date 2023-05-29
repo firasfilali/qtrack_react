@@ -3,7 +3,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import '../assets/css/controlefinale.css'
 
 const CustomDataGrid = ({ rows, columns, height, paginationPageSize,
-     borderRadius, hideFooter, marginBottom, Toolbar, Pagination, rowHeight }) => {
+     borderRadius, hideFooter, marginBottom, Toolbar, Pagination, rowHeight, className }) => {
     
    
     
@@ -16,7 +16,7 @@ const CustomDataGrid = ({ rows, columns, height, paginationPageSize,
             columns={columns}
             slots={{toolbar: Toolbar,
             pagination: Pagination}}
-            className='custom-header'
+            className= {className}
             columnHeaderHeight={40}
             rowHeight={rowHeight}
             hideFooter={hideFooter}

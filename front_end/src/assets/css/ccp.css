@@ -1,0 +1,27 @@
+.custom-ccp .MuiDataGrid-columnHeaders {
+    background-color: #D4D4D4;
+
+}
+
+.custom-ccp .MuiDataGrid-columnHeaderTitle{
+    color: #808080;
+    
+   
+}
+
+.custom-ccp .MuiDataGrid-cellContent{
+    color: black; 
+    
+}
+
+.custom-ccp .MuiDataGrid-footerContainer{
+  background-color: #F0F0F0;
+  height: 100px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.custom-ccp .MuiDataGrid-columnHeaderTitleContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
