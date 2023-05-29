@@ -2,6 +2,7 @@
 .bb{
   border: 1px solid black; /* You can change the color code (#FF0000) to your desired color */
   border-radius: 10px;
+  
 }
 
 .custom-header .MuiDataGrid-columnHeaders {

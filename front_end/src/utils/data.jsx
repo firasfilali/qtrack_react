@@ -216,7 +216,7 @@ export const PhaseColumnsCcp = [
 
 export const OperateurColumns = [
   { field: 'id', headerName: 'Code', flex:0.2, align: "center",headerAlign: 'center' },
-  {field: 'firstName', headerName: 'Non',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
+  {field: 'firstName', headerName: 'Nom',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
   {field: 'lastName', headerName: '% conformité',flex: 0.2, editable: true,align: "center",headerAlign: 'center'},
   {field: 'age',headerName: '% non-conformité',type: 'number',flex: 0.4,editable: true,align: "center",headerAlign: 'center'},
 ];
