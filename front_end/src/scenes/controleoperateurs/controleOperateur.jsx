@@ -4,14 +4,23 @@ import {
   GridToolbarExport,
 } from '@mui/x-data-grid';
 import { CustomPagination } from "../../assets/styleJs/Pagination";
-import { PhaseColumnsCcp, PhaseRows, OperateurColumns, OperateurRows, StatiqueColumns, StatiqueRows } from "../../utils/data";
+import { PhaseColumnsCcp, PhaseRows, OperateurColumns, OperateurRows,top100Films, StatiqueRows, OpColumns } from "../../utils/data";
 import CustomDataGrid from '../../components/CustomDataGrid';
-import IconButton from '@mui/material/IconButton';
-import InputBase from '@mui/material/InputBase';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import '../../assets/css/controleoperateur.css'
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
+const theme = createTheme({
+  palette: {
+    custom:{
+      main: '#808080',
+      contrastText: '#fff',
+
+    },
+  },
+});
 
 function CustomToolbar() {
   return (
@@ -41,31 +50,31 @@ export default function ControleOperateur() {
           borderRadius="10px" 
           />
         </div>
-        <div className="col-md-4">
+        <div className="col-md-5">
           <div className="bbb">
             <div className="cc">
               <div className="input-base-operateur">
-                <InputBase
-                  sx={{ ml: 1, flex: 1 }}
-                  placeholder="Insérer Code"
-                  inputProps={{ 'aria-label': 'search google maps' }}
+              <Autocomplete
+                  disablePortal
+                  id="combo-box-demo"
+                  options={top100Films}
+                  sx={{ width: 300 }}
+                  renderInput={(params) =>
+                    <ThemeProvider theme={theme}>  
+                  <TextField {...params} label="Insérer Code"
+                  className='auto'
+                  color='custom'
+                   /></ThemeProvider>}
+                  className='auto'
                 />
-                <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-                 <ArrowForwardIosIcon fontSize='small'/>
-                </IconButton>
-              
               </div>
-              <div className="input-base-operateur2">
-                <InputBase
-                  sx={{ ml: 1, flex: 1, paddingLeft: '5px' }}
-                  placeholder="Nom Opérateur"
-                  inputProps={{ 'aria-label': 'search google maps' }}
-                />
+              <div className='input-base-operateur2'>
+              <span class="number2">Nom Opérateur</span>
                 </div>
               </div>
               <CustomDataGrid
                 rows={StatiqueRows}
-                columns={StatiqueColumns}
+                columns={OpColumns}
                 hideFooter={true}
                 className="custom-ccp"
                 height="200px"
@@ -73,17 +82,15 @@ export default function ControleOperateur() {
                 paginationPageSize={6}
                 borderRadius="10px" 
               />
-
               <CustomDataGrid
-                rows={StatiqueRows}
-                columns={StatiqueColumns}
+                rows={PhaseRows}
+                columns={PhaseColumnsCcp}
                 hideFooter={true}
                 className="custom-ccp"
                 height="200px"
                 paginationPageSize={6}
                 borderRadius="10px" 
               />
-
               <div className='table-title-op'>
                 <h7>Quantité Controlée :</h7>
                 <div className='square'>
@@ -91,11 +98,6 @@ export default function ControleOperateur() {
 
                 </div>
               </div>
-              
-
-
-
-
           </div>
 
         </div>

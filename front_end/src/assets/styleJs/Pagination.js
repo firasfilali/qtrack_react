@@ -14,6 +14,12 @@ const theme = createTheme({
         main: '#18202c',
         contrastText: '#fff',
       },
+
+      custom:{
+        main: '#000000',
+        contrastText: '#fff',
+
+      },
     },
 });
   

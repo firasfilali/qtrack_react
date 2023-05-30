@@ -197,11 +197,11 @@ export const StatiqueRows = [
 ];
 
 export const PhaseColumnsCcp = [
-  { field: 'id', headerName: 'Phase', flex: 0.3,align: "center",headerAlign: 'center'  },
+  { field: 'id', headerName: 'Phase', flex: 0.2,align: "center",headerAlign: 'center'  },
   {
     field: 'conformité',
     headerName: '% conformité',
-    flex: 0.3,
+    flex: 0.4,
     editable: true,
     align: "center",headerAlign: 'center' ,
   },
@@ -217,8 +217,8 @@ export const PhaseColumnsCcp = [
 export const OperateurColumns = [
   { field: 'id', headerName: 'Code', flex:0.2, align: "center",headerAlign: 'center' },
   {field: 'firstName', headerName: 'Nom',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
-  {field: 'lastName', headerName: '% conformité',flex: 0.2, editable: true,align: "center",headerAlign: 'center'},
-  {field: 'age',headerName: '% non-conformité',type: 'number',flex: 0.4,editable: true,align: "center",headerAlign: 'center'},
+  {field: 'lastName', headerName: 'Taux de conformité',flex: 0.2, editable: true,align: "center",headerAlign: 'center'},
+  {field: 'age',headerName: 'Taux de non-conformité',type: 'number',flex: 0.4,editable: true,align: "center",headerAlign: 'center'},
 ];
 
 export const OperateurRows = [
@@ -234,3 +234,19 @@ export const OperateurRows = [
   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
  
 ];
+
+export const OpColumns = [
+  { field: 'id', headerName: 'Références', flex:0.2, align: "center",headerAlign: 'center' },
+  {field: 'firstName', headerName: 'Famille',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
+  {field: 'lastName', headerName: '% conformité',flex: 0.3, editable: true,align: "center",headerAlign: 'center'},
+  {field: 'age',headerName: '% non-conformité',type: 'number',flex: 0.3,editable: true,align: "center",headerAlign: 'center'},
+];
+
+export const top100Films = [
+  { label: 'The Shawshank Redemption', year: 1994 },
+  { label: 'The Godfather', year: 1972 },
+  { label: 'The Godfather: Part II', year: 1974 },
+  { label: 'The Dark Knight', year: 2008 },
+  { label: '12 Angry Men', year: 1957 },
+  { label: "Schindler's List", year: 1993 },
+  { label: 'Pulp Fiction', year: 1994 }];

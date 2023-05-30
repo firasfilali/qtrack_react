@@ -7,7 +7,7 @@
   }
 .input-base-operateur{
     background-color: white;
-    box-sizing: border-box;
+    width: 40% ;
     border-radius: 10px;
     display: flex;
     margin: 8px;
@@ -18,9 +18,11 @@
 
 .input-base-operateur2{
     background-color: white;
-    box-sizing: border-box;
+    width: 60%;
     border-radius: 10px;
     display: flex;
+    justify-content: left;
+    align-items: center;
     margin: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     
@@ -29,7 +31,7 @@
 .cc{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    margin-bottom: 6px;
 }
 
 .table-title-op{
@@ -54,10 +56,31 @@
     align-items: center;
     font-size: 24px;
     color: black;
-    margin-left: 5px;
+    margin-left: 6px;
 }
 
 .number {
    font-size: 15px;
-} 
+   
+}
+
+.number2 {
+  font-size: 15px;
+   margin-left: 20px;
+}
+
+
+
+.auto .MuiFormControl-root{
+  
+  color: forestgreen;
+  border-radius: 10px;
+  
+  
+}
+
+.auto .MuiAutocomplete-input{
+  border-radius: 10px;
+  
+}
 
