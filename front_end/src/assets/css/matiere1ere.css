@@ -1,0 +1,21 @@
+.input-base-matiere{
+    width: 100% ;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+  }
+
+.cc-m{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(220, 31, 226);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.number3 {
+    font-size: 15px;
+     margin-left: 10px;
+     font-weight: bold;
+  }

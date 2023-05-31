@@ -174,7 +174,7 @@ export const TypeRows = [
 ];
 
 export const StatiqueColumns = [
-  { field: 'id', headerName: 'Références', flex:0.2, align: "center",headerAlign: 'center' },
+  { field: 'id', headerName: 'Références', flex:0.2, align: "center",headerAlign: 'center'},
   {field: 'firstName', headerName: 'Famille',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
   {field: 'lastName', headerName: 'Taux de conformité',flex: 0.3, editable: true,align: "center",headerAlign: 'center'},
   {field: 'age',headerName: 'Taux de non-conformité',type: 'number',flex: 0.3,editable: true,align: "center",headerAlign: 'center'},
@@ -249,4 +249,26 @@ export const top100Films = [
   { label: 'The Dark Knight', year: 2008 },
   { label: '12 Angry Men', year: 1957 },
   { label: "Schindler's List", year: 1993 },
-  { label: 'Pulp Fiction', year: 1994 }];
+  { label: 'Pulp Fiction', year: 1994 },
+];
+
+export const matiereColumns = [
+  { field: 'id', headerName: 'Références', flex:0.2, align: "center",headerAlign: 'center' },
+  {field: 'firstName', headerName: 'Type',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
+  {field: 'lastName', headerName: 'Fournisseur',flex: 0.3, editable: true,align: "center",headerAlign: 'center'},
+  {field: 'age',headerName: 'Etat',type: 'number',flex: 0.3,editable: true,align: "center",headerAlign: 'center'},
+
+];
+
+export const matiereRows = [
+  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+];

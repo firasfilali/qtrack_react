@@ -2,8 +2,10 @@ import React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import '../assets/css/controlefinale.css'
 
-const CustomDataGrid = ({ rows, columns, height, paginationPageSize,
-     borderRadius, hideFooter, marginBottom, Toolbar, Pagination, rowHeight, className }) => {
+const CustomDataGrid = (props) => {
+
+ const { rows, columns, height, paginationPageSize,
+     borderRadius, hideFooter, marginBottom, Toolbar, Pagination, rowHeight, className }  = props
     
    
     

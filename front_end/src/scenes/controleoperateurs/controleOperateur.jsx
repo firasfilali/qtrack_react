@@ -38,7 +38,8 @@ export default function ControleOperateur() {
   return (
     <div className="container mt-5">
       <div className="row" style={{justifyContent: 'space-evenly'}}>
-        <div className="col-md-7">
+        <div className="col-md-7 ">
+          
         <CustomDataGrid
           rows={OperateurRows}
           columns={OperateurColumns}
