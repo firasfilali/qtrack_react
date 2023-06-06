@@ -19,3 +19,58 @@
      margin-left: 10px;
      font-weight: bold;
   }
+
+   .autocomplete .Mui-focused {
+    
+    border-radius: 5px;
+   
+  } 
+
+  .autocomplete .MuiFormControl-root{
+    
+    border-radius: 10px;
+    
+  }
+
+.autocomple .MuiTextField-root {
+  border-color: blueviolet;
+}
+
+.cart{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+}
+
+.card-title{
+  text-align: center;
+}
+
+.div-corr{
+  text-align: center;
+}
+
+.list-custom{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  
+}
+
+.span-corr{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+ 
+}
+
+  
+ 

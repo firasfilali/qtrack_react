@@ -5,7 +5,7 @@ import down from '../../assets/down.png'
 const Card = (props) => {
   return(
 
-    <div {...props} className="col-md-4">
+    <div {...props} >
                 <div class="card w-60 mx-auto mb-5">
                   <div class="card-body">
                     <h5 class="card-title">{props.title}</h5>

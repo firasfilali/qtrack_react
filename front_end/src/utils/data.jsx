@@ -1,3 +1,11 @@
+import '../assets/css/customColumns.css'
+
+const cellClass = () => {
+  return {
+    backgroundColor: '#ffaaaa',
+  }
+}
+
 export const route = [{
 
     url:'/',
@@ -253,15 +261,28 @@ export const top100Films = [
 ];
 
 export const matiereColumns = [
-  { field: 'id', headerName: 'Références', flex:0.2, align: "center",headerAlign: 'center' },
-  {field: 'firstName', headerName: 'Type',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
+  { field: 'id', headerName: 'Références', flex:0.2, align: "center",headerAlign: 'center',
+  renderCell: (cellValues) => {
+    return (
+      <div
+      style={{
+        color: "blue",
+        fontSize: 18,
+      }}
+      >
+        {cellValues.value}
+      </div>
+    )
+  }
+  },
+  {field: 'firstName', headerName: 'Type',flex: 0.2,editable: true,align: "center",headerAlign: 'center',},
   {field: 'lastName', headerName: 'Fournisseur',flex: 0.3, editable: true,align: "center",headerAlign: 'center'},
   {field: 'age',headerName: 'Etat',type: 'number',flex: 0.3,editable: true,align: "center",headerAlign: 'center'},
 
 ];
 
 export const matiereRows = [
-  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35, cellClass: cellClass },
   { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
   { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
   { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
