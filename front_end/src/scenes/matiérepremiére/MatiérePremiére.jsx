@@ -66,16 +66,16 @@ export default function MatiérePremiére() {
             </div>
             <div className="row">
               <div className="col-md-6">
-                <span class="number3">Type :</span>
+                <span className="number3">Type :</span>
                 <div style={{ marginTop: "30px" }}>
                   <div>
-                    <span class="number3">Etat :</span>
+                    <span className="number3">Etat :</span>
                   </div>
                   <div>
-                    <span class="number3">Type NC :</span>
+                    <span className="number3">Type NC :</span>
                   </div>
                   <div>
-                    <span class="number3">Action :</span>
+                    <span className="number3">Action :</span>
                   </div>
                 </div>
               </div>
@@ -110,7 +110,7 @@ export default function MatiérePremiére() {
               title="Famille"
               reference="A100"
               conforme="3.48"
-              nonConforme="3.48"
+              nonconforme="3.48"
               style={{width: "80%"}}
             />
           </div>

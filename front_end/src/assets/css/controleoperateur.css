@@ -85,15 +85,17 @@
 }
 
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 550px) {
   .col-md-7{
       margin-bottom: 10px ;
       
   }
+  .col-md-6{
+    margin-bottom: 10px ;
+    
+}
 
-  .ins{
-    width: 80%;
-  }
+ 
   
 }  
 

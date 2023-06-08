@@ -26,7 +26,7 @@ export default function Correctionaction() {
                 disablePortal
                 id="combo-box-demo"
                 options={top100Films}
-                sx={{ width: 590, backgroundColor: "white", marginLeft: "8px" }}
+                sx={{ width: 590, backgroundColor: "white", marginTop: "30px"  }}
                 renderInput={(params) => (
                   <ThemeProvider theme={theme}>
                     <TextField

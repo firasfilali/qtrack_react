@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function history() {
   return (
-    <div class="container-fluid">
-    <div class="row flex-nowrap">
+    <div className="container-fluid">
+    <div className="row flex-nowrap">
         <div className="col p-3">
 
         

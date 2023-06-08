@@ -51,10 +51,11 @@ function Sidebar(props) {
       
       { route.map((item, index) => ( 
         <NavLink
-        exact
+        key={index}
+        exact="true"
         to={item.url}
         className="nav-link"
-        activeClassName="active"
+        activeclassname="active"
         onClick={() => {
           handleLinkClick(item.handleLinkClick);
           handleButtonClick(item.handleButtonClick);

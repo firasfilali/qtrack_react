@@ -70,7 +70,7 @@ export default function ControleOperateur() {
                 />
               </div>
               <div className='input-base-operateur2'>
-              <span class="number2">Nom Opérateur</span>
+              <span className="number2">Nom Opérateur</span>
                 </div>
               </div>
               <CustomDataGrid
@@ -93,9 +93,9 @@ export default function ControleOperateur() {
                 borderRadius="10px" 
               />
               <div className='table-title-op'>
-                <h7>Quantité Controlée :</h7>
+                <h6>Quantité Controlée :</h6>
                 <div className='square'>
-                <span class="number">30</span>
+                <span className="number">30</span>
 
                 </div>
               </div>

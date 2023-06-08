@@ -8,19 +8,19 @@ import Card from "../../components/cards/card";
 const Dashboard = (props) => {
   return (
     <div className="warper">
-      <div class="container-fluid">
-        <div class="row flex-nowrap">
+      <div className="container-fluid">
+        <div className="row flex-nowrap">
           <div className="col p-3">
             <div className="container m-30">
               <div className="row ">
                 {data.map((item, index) => {
                   return (
-                    <div className="col-md-4">
+                    <div className="col-md-4" key={index}>
                       <Card
                         title={item.section}
                         reference={item.reference}
                         conforme={item.conforme}
-                        nonConforme={item.Nconforme}
+                        nonconforme={item.Nconforme}
                         key={item.id}
                         onClick={() => console.log("hello")}
                       />

@@ -30,6 +30,7 @@ const Controle = () => {
        <div className="row " style={{justifyContent: 'space-evenly'}}>
         <div className="col-md-7  ">
                 <CustomDataGrid 
+                key="statiqueGrid"
                 rows={StatiqueRows}
                 columns={StatiqueColumns}
                 className="custom-header"
@@ -57,6 +58,7 @@ const Controle = () => {
                       <h6>% Phase</h6>
                     </div>
                     <CustomDataGrid
+                      key="phaseGrid"
                       rows={PhaseRows}
                       columns={PhaseColumns}
                       className="custom-header"
@@ -72,6 +74,7 @@ const Controle = () => {
                     <h6>% Type de non-conformité</h6>
                   </div>
                       <CustomDataGrid
+                        key="conformiteGrid"
                         rows={TypeRows}
                         columns={TypeColumns}
                         className="custom-header"

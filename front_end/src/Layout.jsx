@@ -12,7 +12,7 @@ const Layout = ({children}) => {
             <div className='col-md-2'>
                 <Sidebar2 />
            </div>
-          <div className='col'>
+          <div className='col-md-10'>
                
                
                     <Toolbar />
