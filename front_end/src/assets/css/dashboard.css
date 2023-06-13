@@ -4,6 +4,7 @@
     width: 100% !important;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)    !important;
 }
+
 .m-30{
     margin: 30px;
 }
@@ -23,8 +24,36 @@
 .warper{
     display: flex;
     flex-wrap: wrap;
+    height: 100vh;
+   
 }
 
 .w-60{
    width: 60% !important;
 }
+
+
+/* .container-fluid {
+    background-color: red; 
+    justify-content: center !important;
+    height: 90vh;
+}
+
+.col-md-4 {
+    flex: 1;
+    background-color: red; 
+    justify-content: center !important;
+    align-items: center !important;
+
+} */
+
+/* @media screen and (max-width: 750px) {
+    .dashboard-cards{
+        width: 50% ;
+        
+    }
+  
+
+   
+    
+  }   */

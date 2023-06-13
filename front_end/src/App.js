@@ -10,6 +10,8 @@ import History from './scenes/history/history';
 import Parametre from './scenes/parametre/parametre';
 import { BrowserRouter, Route, Routes, React } from 'react-router-dom';
 import Layout from './Layout';
+import Sidebar from './scenes/global/Sidebar2';
+
 
 
 
@@ -30,15 +32,17 @@ function App() {
   
   return (
     <div>
-      <BrowserRouter>
+
+      
+     <BrowserRouter>
         <Routes>
           
           {routes.map((route, index) => (
-            <Route key={index} path = {route.path} element = {<Layout>{route.component}</Layout> } />
+            <Route key={index} path = {route.path} element = {<Sidebar>{route.component}</Sidebar> } />
           ))}
           
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> 
     </div>
    
   );
