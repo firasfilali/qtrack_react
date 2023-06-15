@@ -9,7 +9,7 @@
 .cc-m{
     display: flex;
     flex-direction: column;
-    background-color: rgb(220, 31, 226);
+    background-color: #f4f4f4;
     padding: 10px;
     border-radius: 10px;
 }

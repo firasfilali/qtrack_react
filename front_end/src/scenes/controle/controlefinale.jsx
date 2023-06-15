@@ -14,7 +14,7 @@ import {
 } from "../../utils/data";
 import { CustomPagination } from "../../assets/styleJs/Pagination";
 import CustomDataGrid from "../../components/CustomDataGrid";
-import {Row,Col ,Card} from "react-bootstrap"
+import { Row, Col } from "react-bootstrap";
 
 function CustomToolbar() {
   return (
@@ -29,83 +29,73 @@ function CustomToolbar() {
 
 const Controle = () => {
   return (
-    
-      <div>
-        <Row>
-          <Col xl="7" lg="7" >
-             
-         
-                <CustomDataGrid
-                  key="statiqueGrid"
-                  rows={StatiqueRows}
-                  columns={StatiqueColumns}
-                  className="custom-header"
-                  Toolbar={CustomToolbar}
-                  Pagination={CustomPagination}
-                  rowHeight={60}
-                  paginationPageSize={6}
-                  borderRadius="10px"
+    <div>
+      <Row>
+        <Col xl="7" lg="7">
+          <CustomDataGrid
+            key="statiqueGrid"
+            rows={StatiqueRows}
+            columns={StatiqueColumns}
+            className="custom-header"
+            Toolbar={CustomToolbar}
+            Pagination={CustomPagination}
+            rowHeight={60}
+            paginationPageSize={6}
+            borderRadius="10px"
+          />
+        </Col>
+        <Col xl="5" lg="5">
+          {" "}
+          <div className="bb">
+            <div>
+              <div className="input-base">
+                <IconButton
+                  type="button"
+                  sx={{ p: "10px" }}
+                  aria-label="search"
+                >
+                  <SearchIcon />
+                </IconButton>
+                <InputBase
+                  sx={{ ml: 1, flex: 1 }}
+                  placeholder="Insérer famille ou référence"
+                  inputProps={{ "aria-label": "search google maps" }}
                 />
-           
-             
-            
-          </Col>
-          <Col xl="5" lg="5" >   <div className="bb">
-                  <div>
-                    <div className="input-base">
-                      <IconButton
-                        type="button"
-                        sx={{ p: "10px" }}
-                        aria-label="search"
-                      >
-                        <SearchIcon />
-                      </IconButton>
-                      <InputBase
-                        sx={{ ml: 1, flex: 1 }}
-                        placeholder="Insérer famille ou référence"
-                        inputProps={{ "aria-label": "search google maps" }}
-                      />
-                    </div>
-                    <div className="table-title2">
-                      <h6>% Phase</h6>
-                    </div>
-                    <CustomDataGrid
-                      key="phaseGrid"
-                      rows={PhaseRows}
-                      columns={PhaseColumns}
-                      className="custom-header"
-                      hideFooter={true}
-                      height="200px"
-                      borderRadius="9px"
-                      marginBottom="10px"
-                      paginationPageSize={8}
-                    />
-                  </div>
-                  <div>
-                    <div className="table-title2">
-                      <h6>% Type de non-conformité</h6>
-                    </div>
-                    <CustomDataGrid
-                      key="conformiteGrid"
-                      rows={TypeRows}
-                      columns={TypeColumns}
-                      className="custom-header"
-                      hideFooter={true}
-                      height="250px"
-                      borderRadius="9px"
-                      paginationPageSize={6}
-                    />
-                  </div>
-                </div>
-           
-              
-              
-            
-          </Col>
-        </Row>
-      </div>
-     
-    
+              </div>
+              <div className="table-title2">
+                <h6>% Phase</h6>
+              </div>
+              <CustomDataGrid
+                key="phaseGrid"
+                rows={PhaseRows}
+                columns={PhaseColumns}
+                className="custom-header"
+                hideFooter={true}
+                height="200px"
+                borderRadius="9px"
+                marginBottom="10px"
+                paginationPageSize={8}
+              />
+            </div>
+            <div>
+              <div className="table-title2">
+                <h6>% Type de non-conformité</h6>
+              </div>
+              <CustomDataGrid
+                key="conformiteGrid"
+                rows={TypeRows}
+                columns={TypeColumns}
+                className="custom-header"
+                hideFooter={true}
+                height="250px"
+                borderRadius="9px"
+                paginationPageSize={6}
+              />
+            </div>
+          </div>
+        </Col>
+      </Row>
+    </div>
   );
 };
 

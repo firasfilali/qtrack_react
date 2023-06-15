@@ -8,6 +8,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "../../assets/css/matiere1ere.css";
 import Card from "../../components/cards/card";
+import { Row, Col, Container  } from "react-bootstrap";
 
 const theme = createTheme({
   palette: {
@@ -31,9 +32,9 @@ function CustomToolbar() {
 
 export default function MatiérePremiére() {
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-md-7 ">
+    <div>
+      <Row>
+        <Col xl="7" lg="7">
           <CustomDataGrid
             rows={matiereRows}
             columns={matiereColumns}
@@ -44,15 +45,17 @@ export default function MatiérePremiére() {
             paginationPageSize={6}
             borderRadius="10px"
           />
-        </div>
-        <div className="col-md-5">
+        </Col>
+
+        <Col xl="5" lg="5">
           <div className="cc-m">
-            <div className="row">
+          
+            <Row>
+           
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
                 options={top100Films}
-                sx={{ width: 500 }}
                 renderInput={(params) => (
                   <ThemeProvider theme={theme}>
                     <TextField
@@ -63,7 +66,10 @@ export default function MatiérePremiére() {
                   </ThemeProvider>
                 )}
               />
-            </div>
+              
+              </Row>
+              
+            
             <div className="row">
               <div className="col-md-6">
                 <span className="number3">Type :</span>
@@ -90,7 +96,6 @@ export default function MatiérePremiére() {
               disablePortal
               id="combo-box-demo"
               options={top100Films}
-              sx={{ width: 550 }}
               className="autocomplete"
               renderInput={(params) => (
                 <ThemeProvider theme={theme}>
@@ -105,17 +110,17 @@ export default function MatiérePremiére() {
             />
           </div>
 
-          <div className="cart mt-3" >
+          <div className="cart mt-3">
             <Card
               title="Famille"
               reference="A100"
               conforme="3.48"
               nonconforme="3.48"
-              style={{width: "80%"}}
+              style={{ width: "80%" }}
             />
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </div>
   );
 }
