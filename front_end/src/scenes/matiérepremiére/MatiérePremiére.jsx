@@ -1,6 +1,6 @@
 import React from "react";
 import { CustomPagination } from "../../assets/styleJs/Pagination";
-import { matiereColumns, matiereRows, top100Films } from "../../utils/data";
+import { matiereColumns, matiereRows, references } from "../../utils/data";
 import { GridToolbarContainer, GridToolbarExport } from "@mui/x-data-grid";
 import CustomDataGrid from "../../components/CustomDataGrid";
 import TextField from "@mui/material/TextField";
@@ -8,7 +8,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "../../assets/css/matiere1ere.css";
 import Card from "../../components/cards/card";
-import { Row, Col, Container  } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
+import { useState } from "react";
 
 const theme = createTheme({
   palette: {
@@ -31,6 +32,37 @@ function CustomToolbar() {
 }
 
 export default function MatiérePremiére() {
+  const [selectedValues, setSelectedValues] = useState({
+    selectedReference: "",
+    selectedEtat: "",
+    selectedAction: "",
+    selectedFournisseur: "",
+    selectedTypeNc: "",
+  });
+
+  const handleChange = (event, newValue) => {
+    setSelectedValues((prevState) => ({
+      ...prevState,
+      selectedReference: newValue ? newValue.type : "",
+      selectedEtat: newValue ? newValue.etat : "",
+      selectedAction: newValue ? newValue.action : "",
+      selectedFournisseur: newValue ? newValue.fournisseur : "",
+      selectedTypeNc: newValue ? newValue.typeNc : "",
+    }));
+  };
+
+  const [selectedReference, setSelectedReference] = useState("");
+
+  const handleEvent = (event, newValue) => {
+    setSelectedReference((prevState) => ({
+      ...prevState,
+      selectedRef: newValue ? newValue.ref : "",
+      selectedFamille: newValue ? newValue.famille : "",
+      selectedUp: newValue ? newValue.up : "",
+      selectedDown: newValue ? newValue.down : "",
+    }));
+  };
+
   return (
     <div>
       <Row>
@@ -49,13 +81,13 @@ export default function MatiérePremiére() {
 
         <Col xl="5" lg="5">
           <div className="cc-m">
-          
             <Row>
-           
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
-                options={top100Films}
+                options={references}
+                getOptionLabel={(option) => option.ref}
+                onChange={handleChange}
                 renderInput={(params) => (
                   <ThemeProvider theme={theme}>
                     <TextField
@@ -66,27 +98,35 @@ export default function MatiérePremiére() {
                   </ThemeProvider>
                 )}
               />
-              
-              </Row>
-              
-            
+            </Row>
+
             <div className="row">
-              <div className="col-md-6">
-                <span className="number3">Type :</span>
+              <div className="col-md-6" style={{ marginTop: "10px" }}>
+                <span className="number3">
+                  Type : {selectedValues.selectedReference || "type"}
+                </span>
                 <div style={{ marginTop: "30px" }}>
                   <div>
-                    <span className="number3">Etat :</span>
+                    <span className="number3">
+                      Etat : {selectedValues.selectedEtat || ""}
+                    </span>
                   </div>
                   <div>
-                    <span className="number3">Type NC :</span>
+                    <span className="number3">
+                      Type NC : {selectedValues.selectedTypeNc || ""}
+                    </span>
                   </div>
                   <div>
-                    <span className="number3">Action :</span>
+                    <span className="number3">
+                      Action : {selectedValues.selectedAction || ""}
+                    </span>
                   </div>
                 </div>
               </div>
-              <div className="col-md-6">
-                <span className="number3">Fournisseur :</span>
+              <div className="col-md-6" style={{ marginTop: "10px" }}>
+                <span className="number3">
+                  Fournisseur : {selectedValues.selectedFournisseur || ""}
+                </span>
               </div>
             </div>
           </div>
@@ -95,7 +135,9 @@ export default function MatiérePremiére() {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={top100Films}
+              options={references}
+              getOptionLabel={(option) => option.ref}
+              onChange={handleEvent}
               className="autocomplete"
               renderInput={(params) => (
                 <ThemeProvider theme={theme}>
@@ -112,10 +154,10 @@ export default function MatiérePremiére() {
 
           <div className="cart mt-3">
             <Card
-              title="Famille"
-              reference="A100"
-              conforme="3.48"
-              nonconforme="3.48"
+              title={selectedReference.selectedFamille || "Famille"}
+              reference={selectedReference.selectedRef || "XXXX"}
+              conforme={selectedReference.selectedUp || "__"}
+              nonconforme={selectedReference.selectedDown || "__"}
               style={{ width: "80%" }}
             />
           </div>

@@ -1,10 +1,6 @@
 import '../assets/css/customColumns.css'
 
-const cellClass = () => {
-  return {
-    backgroundColor: '#ffaaaa',
-  }
-}
+
 
 export const route = [{
 
@@ -29,24 +25,10 @@ export const route = [{
 },
 {
 
-    url:'/prototype',
-    handleLinkClick: 'prototype',
-    handleButtonClick: 'Prototype',
-    title:'Prototype'
-},
-{
-
     url:'/controle_operateurs',
     handleLinkClick: 'controle_operateurs',
     handleButtonClick: 'Controle opérateurs',
     title:'Controle opérateurs'
-},
-{
-
-    url:'/controle_aq',
-    handleLinkClick: 'controle_aq',
-    handleButtonClick: 'Controle des AQ',
-    title:'Controle des AQ'
 },
 {
 
@@ -80,42 +62,42 @@ export const route = [{
 
 export const data = [{
     id: 0,
-    section: 'Controle à la chaine',
+    section: 'Contrôle à la chaine',
     reference: 'A200',
     conforme: '4.15',
     Nconforme: '2.15'
   },
   {
     id: 1,
-    section: 'Controle à la chaine',
+    section: 'Contrôle finale',
     reference: 'A300',
     conforme: '4.15',
     Nconforme: '2.15'
   },
   {
     id: 2,
-    section: 'Controle à la chaine',
+    section: 'Prototype',
     reference: 'A200',
     conforme: '4.15',
     Nconforme: '2.15'
   },
   {
     id: 3,
-    section: 'Controle à la chaine',
+    section: 'Contrôle opérateur',
     reference: 'A200',
     conforme: '4.15',
     Nconforme: '2.15'
   },
   {
     id: 4,
-    section: 'Controle à la chaine',
+    section: 'Contrôle AQ',
     reference: 'A200',
     conforme: '4.15',
     Nconforme: '2.15'
   },
   {
     id: 5,
-    section: 'Controle à la chaine',
+    section: 'Alerte',
     reference: 'A200',
     conforme: '4.15',
     Nconforme: '2.15'
@@ -182,25 +164,38 @@ export const TypeRows = [
 ];
 
 export const StatiqueColumns = [
-  { field: 'id', headerName: 'Références', flex:0.2, align: "center",headerAlign: 'center'},
+  { field: 'id', headerName: 'Références', flex:0.2, align: "center",headerAlign: 'center',
+ renderCell: (cellValues) => {
+    return (
+      <div
+      style={{
+        color: "black",
+        fontWeight: 'bold'
+
+      }}
+      >
+        {cellValues.value}
+      </div>
+    )
+  }},
   {field: 'firstName', headerName: 'Famille',flex: 0.2,editable: true,align: "center",headerAlign: 'center'},
   {field: 'lastName', headerName: 'Taux de conformité',flex: 0.3, editable: true,align: "center",headerAlign: 'center'},
   {field: 'age',headerName: 'Taux de non-conformité',type: 'number',flex: 0.3,editable: true,align: "center",headerAlign: 'center'},
 ];
 
 export const StatiqueRows = [
-  { id: 24, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 25, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 26, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-  { id: 27, lastName: 'Stark', firstName: 'Arya', age: 16 },
-  { id: 28, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-  { id: 29, lastName: 'Melisandre', firstName: null, age: 150 },
-  { id: 30, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-  { id: 31, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-  { id: 32, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-  { id: 33, lastName: 'Snow', firstName: 'Jon', age: 35 },
-  { id: 34, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-  { id: 35, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 'A100', lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 'A101', lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 'A102', lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 'A103', lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 'A104', lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 'A105', lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 'A106', lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 'A107', lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 'A108', lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  { id: 'A109', lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 'A110', lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 'A111', lastName: 'Lannister', firstName: 'Jaime', age: 45 },
  
 ];
 
@@ -250,14 +245,21 @@ export const OpColumns = [
   {field: 'age',headerName: '% non-conformité',type: 'number',flex: 0.3,editable: true,align: "center",headerAlign: 'center'},
 ];
 
-export const top100Films = [
-  { label: 'The Shawshank Redemption', year: 1994 },
-  { label: 'The Godfather', year: 1972 },
-  { label: 'The Godfather: Part II', year: 1974 },
-  { label: 'The Dark Knight', year: 2008 },
-  { label: '12 Angry Men', year: 1957 },
-  { label: "Schindler's List", year: 1993 },
-  { label: 'Pulp Fiction', year: 1994 },
+export const listOperateurs = [
+  { label: 'Operateur A', year: 1994},
+  { label: 'Operateur B', year: 1972},
+  { label: 'Operateur C', year: 1974},
+  { label: 'Operateur D', year: 2008},
+  { label: 'Operateur E', year: 1957},
+  { label: "Operateur F", year: 1993 },
+  { label: 'Operateur G', year: 1994 },
+];
+
+export const references=[
+{ref: 'A200',type: 'pantalon', fournisseur: 'Lacoste', etat: 'good', typeNc: 'dechet' , action: 'En cours de correction', famille: 'Controle opérateur', up: '3.80', down: '2.69'},
+{ref: 'A206',type: 'chaussure', fournisseur: 'Lacoste', etat: 'bad', typeNc: 'dechet' , action: 'En cours de correction',famille: 'Controle finale', up: '3.82', down: '2.60' },
+{ref: 'A300',type: 'T-shirt', fournisseur: 'Lacoste', etat: 'good', typeNc: 'dechet' , action: 'En cours de correction', famille: 'Matiére 1ere', up: '3.89', down: '2.61'},
+{ref: 'A221',type: 'maillot', fournisseur: 'Lacoste', etat: 'good', typeNc: 'dechet' , action: 'En cours de correction', famille: 'Action de correction', up: '3.80', down: '2.65' },
 ];
 
 export const matiereColumns = [
@@ -282,7 +284,7 @@ export const matiereColumns = [
 ];
 
 export const matiereRows = [
-  { id: 46, lastName: 'Snow', firstName: 'Jon', age: 35, cellClass: cellClass },
+  { id: 46, lastName: 'Snow', firstName: 'Jon', age: 35, },
   { id: 47, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
   { id: 48, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
   { id: 49, lastName: 'Stark', firstName: 'Arya', age: 16 },

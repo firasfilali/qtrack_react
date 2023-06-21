@@ -6,7 +6,7 @@ import {
   PhaseRows,
   OperateurColumns,
   OperateurRows,
-  top100Films,
+  listOperateurs,
   StatiqueRows,
   OpColumns,
 } from "../../utils/data";
@@ -15,7 +15,8 @@ import "../../assets/css/controleoperateur.css";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col} from "react-bootstrap";
+import { useState } from "react";
 
 const theme = createTheme({
   palette: {
@@ -38,6 +39,12 @@ function CustomToolbar() {
 }
 
 export default function ControleOperateur() {
+  const [selectedCode, setSelectedCode] = useState("");
+
+  const handleChange = (event, newValue) => {
+    setSelectedCode(newValue ? newValue.label : "");
+  };
+
   return (
     <div>
       <Row>
@@ -61,7 +68,9 @@ export default function ControleOperateur() {
                 <Autocomplete
                   disablePortal
                   id="combo-box-demo"
-                  options={top100Films}
+                  options={listOperateurs}
+                  getOptionLabel={(option) => option.year}
+                  onChange={handleChange}
                   renderInput={(params) => (
                     <ThemeProvider theme={theme}>
                       <TextField
@@ -77,7 +86,9 @@ export default function ControleOperateur() {
               </Col>
 
               <Col className="input-base-operateur2">
-                <span className="number2">Nom Opérateur</span>
+                <span className="number2">
+                  {selectedCode || "Nom Opérateur"}
+                </span>
               </Col>
             </div>
 
