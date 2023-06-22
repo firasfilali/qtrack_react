@@ -1,9 +1,8 @@
-import { Box } from "@mui/material";
 import React from "react";
 import "../../assets/css/dashboard.css";
 import { data } from "../../utils/data";
 import Card from "../../components/cards/card";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 const Dashboard = (props) => {
   return (

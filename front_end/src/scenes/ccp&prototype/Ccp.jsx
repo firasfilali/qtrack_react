@@ -14,7 +14,7 @@ import {
   StatiqueColumns,
   StatiqueRows,
 } from "../../utils/data";
-import { Row, Col, Card } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 function CustomToolbar() {
   return (
@@ -37,9 +37,10 @@ export default function Ccp() {
             columns={StatiqueColumns}
             className="custom-ccp"
             Toolbar={CustomToolbar}
+            height="85vh"
             Pagination={CustomPagination}
             rowHeight={60}
-            paginationPageSize={6}
+            paginationPageSize={7}
             borderRadius="10px"
           />
         </Col>
@@ -59,12 +60,13 @@ export default function Ccp() {
             <div className="table-title2">
               <h6>% Phase</h6>
             </div>
+
             <CustomDataGrid
               rows={PhaseRows}
               columns={PhaseColumnsCcp}
+              height="250px"
               className="custom-ccp"
               hideFooter={true}
-              height="200px"
               borderRadius="9px"
               marginBottom="10px"
               paginationPageSize={8}
@@ -76,9 +78,9 @@ export default function Ccp() {
               <CustomDataGrid
                 rows={OperateurRows}
                 columns={OperateurColumns}
+                height="250px"
                 className="custom-ccp"
                 hideFooter={true}
-                height="250px"
                 borderRadius="9px"
                 paginationPageSize={8}
               />

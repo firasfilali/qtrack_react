@@ -52,6 +52,7 @@ export default function ControleOperateur() {
           <CustomDataGrid
             rows={OperateurRows}
             columns={OperateurColumns}
+            height="90vh"
             className="custom-ccp"
             Toolbar={CustomToolbar}
             Pagination={CustomPagination}
@@ -69,7 +70,7 @@ export default function ControleOperateur() {
                   disablePortal
                   id="combo-box-demo"
                   options={listOperateurs}
-                  getOptionLabel={(option) => option.year}
+                  getOptionLabel={(option) => option.code}
                   onChange={handleChange}
                   renderInput={(params) => (
                     <ThemeProvider theme={theme}>
@@ -97,7 +98,7 @@ export default function ControleOperateur() {
               columns={OpColumns}
               hideFooter={true}
               className="custom-ccp"
-              height="200px"
+              height="220px"
               marginBottom="10px"
               paginationPageSize={6}
               borderRadius="10px"
@@ -107,7 +108,7 @@ export default function ControleOperateur() {
               columns={PhaseColumnsCcp}
               hideFooter={true}
               className="custom-ccp"
-              height="200px"
+              height="220px"
               paginationPageSize={6}
               borderRadius="10px"
             />

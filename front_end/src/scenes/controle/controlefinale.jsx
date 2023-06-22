@@ -36,11 +36,12 @@ const Controle = () => {
             key="statiqueGrid"
             rows={StatiqueRows}
             columns={StatiqueColumns}
+            height="85vh"
             className="custom-header"
             Toolbar={CustomToolbar}
             Pagination={CustomPagination}
             rowHeight={60}
-            paginationPageSize={6}
+            paginationPageSize={7}
             borderRadius="10px"
           />
         </Col>
@@ -71,7 +72,7 @@ const Controle = () => {
                 columns={PhaseColumns}
                 className="custom-header"
                 hideFooter={true}
-                height="200px"
+                height="250px"
                 borderRadius="9px"
                 marginBottom="10px"
                 paginationPageSize={8}

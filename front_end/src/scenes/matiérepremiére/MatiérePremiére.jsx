@@ -70,6 +70,7 @@ export default function MatiérePremiére() {
           <CustomDataGrid
             rows={matiereRows}
             columns={matiereColumns}
+            height="85vh"
             className="custom-ccp"
             Toolbar={CustomToolbar}
             Pagination={CustomPagination}
