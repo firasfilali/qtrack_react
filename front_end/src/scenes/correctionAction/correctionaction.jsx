@@ -4,6 +4,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { listOperateurs } from "../../utils/data";
 import PinnedSubheaderList from "../../components/lists/customList";
+import "../../assets/css/correction.css"
+import { Row, Col } from "react-bootstrap";
 
 const theme = createTheme({
   palette: {
@@ -16,43 +18,39 @@ const theme = createTheme({
 
 export default function Correctionaction() {
   return (
-    <div className="container mt-5">
-      <div className="row">
-        <div className="col-md-6" >
-            <div style={{ backgroundColor: "#F4F4F4", paddingBottom: "50px" }}>
-            <span className="span-corr">Action de correction</span>
-            <div className="row">
-              <Autocomplete
-                disablePortal
-                id="combo-box-demo"
-                options={listOperateurs}
-                sx={{ width: 590, backgroundColor: "white", marginTop: "30px"  }}
-                renderInput={(params) => (
-                  <ThemeProvider theme={theme}>
-                    <TextField
-                      {...params}
-                      label="Insérer Référence"
-                      color="custom"
-                    />
-                  </ThemeProvider>
-                )}
-              />
-            </div>
-            <div className="list-custom">
-              <PinnedSubheaderList />
-            </div>
-            </div>
-          
-        </div>
-        <div className="col-md-6 " >
-          <div style={{ backgroundColor: "#F4F4F4", paddingBottom: "50px"}}>
-            <span className="span-corr" >Planifier une action</span>
-            
-            </div>
-            
-          
-        </div>
-      </div>
+    <div>
+      <Row>
+        <Col xl="6" lg="6" >
+          <div className="corr">
+          <span className="span-corr">Action de correction</span>
+
+          <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+            options={listOperateurs}
+            sx={{backgroundColor: "white", marginTop: "30px" }}
+            renderInput={(params) => (
+              <ThemeProvider theme={theme}>
+                <TextField
+                  {...params}
+                  label="Insérer Référence"
+                  color="custom"
+                />
+              </ThemeProvider>
+            )}
+          />
+
+          <div className="list">
+            <PinnedSubheaderList />
+          </div>
+          </div>
+        </Col>
+        <Col xl="6" lg="6" >
+          <div className="corr">
+          <span className="span-corr">Planifier une action</span>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 }

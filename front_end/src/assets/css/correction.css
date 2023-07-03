@@ -1,0 +1,12 @@
+.corr{
+    background-color: aqua;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 88vh;
+}
+
+.list{
+    margin-top: 40px;
+}

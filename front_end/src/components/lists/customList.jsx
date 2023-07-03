@@ -11,7 +11,7 @@ export default function PinnedSubheaderList() {
         width: "100%",
         bgcolor: "white",
         overflow: "auto",
-        maxHeight: 180,
+        maxHeight: 250,
         borderRadius: "20px",
 
         "& ul": { padding: 0 },

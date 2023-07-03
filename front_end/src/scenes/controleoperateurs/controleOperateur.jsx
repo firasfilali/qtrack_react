@@ -52,7 +52,7 @@ export default function ControleOperateur() {
           <CustomDataGrid
             rows={OperateurRows}
             columns={OperateurColumns}
-            height="90vh"
+            height="88vh"
             className="custom-ccp"
             Toolbar={CustomToolbar}
             Pagination={CustomPagination}
@@ -63,7 +63,7 @@ export default function ControleOperateur() {
         </Col>
 
         <Col xl="5" lg="5">
-          <div className="bbb">
+          <div className="bb">
             <div className="input-container">
               <Col xl="4" lg="4">
                 <Autocomplete

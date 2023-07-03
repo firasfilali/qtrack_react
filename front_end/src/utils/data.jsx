@@ -34,8 +34,8 @@ export const route = [
   {
     url: "/correction_action",
     handleLinkClick: "correction_action",
-    handleButtonClick: "Action de correction",
-    title: "Action de correction",
+    handleButtonClick: "Action Correctives & Préventives",
+    title: "Action Correctives",
   },
   {
     url: "/historique",
