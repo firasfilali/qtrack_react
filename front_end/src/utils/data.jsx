@@ -433,6 +433,7 @@ export const references = [
     famille: "Controle opérateur",
     up: "3.80",
     down: "2.69",
+    pilote:"Joe"
   },
   {
     ref: "A206",
@@ -444,6 +445,7 @@ export const references = [
     famille: "Controle finale",
     up: "3.82",
     down: "2.60",
+    pilote:"Dart"
   },
   {
     ref: "A300",
@@ -455,6 +457,7 @@ export const references = [
     famille: "Matiére 1ere",
     up: "3.89",
     down: "2.61",
+    pilote:"Amine"
   },
   {
     ref: "A221",
@@ -466,6 +469,7 @@ export const references = [
     famille: "Action de correction",
     up: "3.80",
     down: "2.65",
+    pilote:"Firas"
   },
 ];
 
