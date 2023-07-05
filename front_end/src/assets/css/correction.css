@@ -1,12 +1,84 @@
 .corr{
-    background-color: aqua;
+    background-color: #F4F4F4;
     border-radius: 10px;
     padding-bottom: 10px;
     padding-left: 8px;
     padding-right: 8px;
-    height: 88vh;
+    
 }
 
 .list{
     margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.span2{
+    font-size: 18px;
+    font-weight: bold;
+    
+}
+
+.span-pilote{
+    font-size: 18px;
+    font-weight: bold;
+}
+.div-span-pilote{
+    text-align: center;
+}
+.k{
+    margin-top: 20px;    
+}
+.e{
+    margin-left: 50px;  
+}
+
+.mm{
+    
+    text-align: center;
+    
+
+}
+
+.type-conf{
+    background-color: white;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+   
+}
+
+.type-date{
+    background-color: white;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 25vh;
+}
+.type-confir{
+   
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 25vh;
+   
+    
+}
+
+.right{
+    display: flex;
+    justify-content: flex-end;
 }
