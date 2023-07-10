@@ -18,13 +18,18 @@ import { Search } from "../../assets/styleJs/Search";
 import { SearchIconWrapper } from "../../assets/styleJs/SearchIconWrapper";
 import { NotifIconWrapper } from "../../assets/styleJs/NotifIconWrapper";
 import { StyledInputBase } from "../../assets/styleJs/StyledInputBase";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import store from "../../store/reducer";
 import { route } from "../../utils/data";
 
-const drawerWidth = 240;
+
+const drawerWidth = 260;
 
 function Sidebar(props) {
+  
+
+
+
   const [activeLink, setActiveLink] = useState("dashboard");
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -45,21 +50,22 @@ function Sidebar(props) {
   const drawer = (
     <div>
       <img src={logo} alt="logo" width="20%" />
-      <Nav as="div" className="flex-column mt-5 ">
+      <Nav as="div" className="flex-column mt-5">
         {route.map((item, index) => (
-          <NavLink
-            key={index}
-            exact="true"
-            to={item.url}
-            className="nav-link"
-            activeclassname="active"
-            onClick={() => {
-              handleLinkClick(item.handleLinkClick);
-              handleButtonClick(item.handleButtonClick);
-            }}
-          >
-            {item.title}
-          </NavLink>
+            <NavLink
+              key={index}
+              exact="true"
+              to={item.url}
+              className="nav-link"
+              activeclassname="active"
+              onClick={() => {
+                handleLinkClick(item.handleLinkClick);
+                handleButtonClick(item.handleButtonClick);
+              }}
+            >
+              {item.title}
+            </NavLink>
+          
         ))}
       </Nav>
     </div>

@@ -76,5 +76,71 @@
   height: 100vh;
   overflow: hidden;
  }
+
+ .insere{
+  display: flex;
+  width: 100%;
+ }
+
+ .typenc{
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 20px;
+ padding-top: 30px;
+ }
+
+
+ .typenc-2{
+  font-size: 18px;
+  color: grey;
+ }
+
+ .typenc-3{
+  font-size: 18px;
+  font-weight: bold;
+ }
+
+ .cadre{
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding-bottom: 30px;
+  margin-top: 15px;
+  
+ }
+ .cadre-2{
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+ }
+
+ .cadre-3{
+  text-align: center;
+ }
+
+ .img{
+  width: 6vh;
+  height: auto;
+ }
+
+ .card-cont{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+ }
+
+ .www .MuiResponsiveChart-container{
+  color: blue;
+ }
+
+
+
+
   
  

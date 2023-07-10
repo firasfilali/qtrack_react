@@ -1,5 +1,9 @@
 import "../assets/css/customColumns.css";
 
+export const data1 = [
+  { id: 0, value: 10, label: 'Non conformité',  color:"#F90219" },
+  { id: 1, value: 15, label: 'Conformité',color: "#2DCE98" },
+];
 export const route = [
   {
     url: "/",
@@ -28,8 +32,8 @@ export const route = [
   {
     url: "/matiere_premiere",
     handleLinkClick: "matiere_premiere",
-    handleButtonClick: "Matiére 1ere",
-    title: "Matiére 1ere",
+    handleButtonClick: "Matière 1ere",
+    title: "Matière 1ere",
   },
   {
     url: "/correction_action",
@@ -42,6 +46,12 @@ export const route = [
     handleLinkClick: "historique",
     handleButtonClick: "Historiques et indicateurs",
     title: "Historiques et indicateurs",
+  },
+  {
+    url: "/matiere_1ere&fournisseur",
+    handleLinkClick: "matiere_1ere&fournisseur",
+    handleButtonClick: "Matière 1ere & Fournisseur",
+    title: "Matière 1ere & Fournisseur",
   },
   {
     url: "/parametre",

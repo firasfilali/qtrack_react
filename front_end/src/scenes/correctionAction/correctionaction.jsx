@@ -83,7 +83,7 @@ export default function Correctionaction() {
             </Row>
           </div>
         </Col>
-
+        
         <Col xl="6" lg="6">
           <div className="corr">
             <span className="span-corr">Planifier une action</span>
@@ -165,9 +165,10 @@ export default function Correctionaction() {
             </div>
             </div>
 
-          </div>
+        </div>  
         </Col>
-      </Row>
+        </Row>
+      
     </div>
   );
 }

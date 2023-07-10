@@ -6,6 +6,7 @@ import MatiérePremiére from './scenes/matiérepremiére/MatiérePremiére';
 import Ccp from './scenes/ccp&prototype/Ccp';
 import History from './scenes/history/history';
 import Parametre from './scenes/parametre/parametre';
+import Fournisseur from './scenes/history/mat1ere&fournisseur';
 import { BrowserRouter, Route, Routes, React } from 'react-router-dom';
 import Sidebar from './scenes/global/Sidebar2';
 
@@ -22,6 +23,7 @@ function App() {
     { path: "/matiere_premiere", component: <MatiérePremiére /> },
     { path: "/correction_action", component: <CorrectionAction /> },
     { path: "/historique", component: <History /> },
+    { path: "/matiere_1ere&fournisseur", component: <Fournisseur />},
     { path: "/parametre", component: <Parametre /> },
   ];
   
