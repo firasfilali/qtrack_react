@@ -1,7 +1,7 @@
 import "../assets/css/customColumns.css";
 
 export const data1 = [
-  { id: 0, value: 10, label: 'Non conformité',  color:"#F90219" },
+  { id: 0, value: 10, label: 'Non conformité', color:"#F90219" },
   { id: 1, value: 15, label: 'Conformité',color: "#2DCE98" },
 ];
 export const route = [
@@ -47,12 +47,26 @@ export const route = [
     handleButtonClick: "Historiques et indicateurs",
     title: "Historiques et indicateurs",
   },
+
   {
     url: "/matiere_1ere&fournisseur",
     handleLinkClick: "matiere_1ere&fournisseur",
     handleButtonClick: "Matière 1ere & Fournisseur",
     title: "Matière 1ere & Fournisseur",
   },
+  {
+    url: "/action_correctives",
+    handleLinkClick: "action_correctives",
+    handleButtonClick: "Actions Correctives",
+    title: "Actions Correctives",
+  },
+  {
+    url: "/operateurs",
+    handleLinkClick: "operateurs",
+    handleButtonClick: "Opérateurs",
+    title: "Opérateurs",
+  },
+ 
   {
     url: "/parametre",
     handleLinkClick: "parametre",
@@ -541,4 +555,48 @@ export const matiereRows = [
   { id: 53, lastName: "Frances", firstName: "Rossini", age: 36 },
   { id: 54, lastName: "Roxie", firstName: "Harvey", age: 65 },
   { id: 55, lastName: "Lannister", firstName: "Jaime", age: 45 },
+];
+
+export const actionRows = [
+  { id: 56, lastName: "Snow", firstName: "Jon", age: 35 },
+  { id: 57, lastName: "Lannister", firstName: "Cersei", age: 42 },
+  { id: 58, lastName: "Lannister", firstName: "Jaime", age: 45 },
+  { id: 59, lastName: "Stark", firstName: "Arya", age: 16 },
+  { id: 60, lastName: "Targaryen", firstName: "Daenerys", age: null },
+  { id: 61, lastName: "Melisandre", firstName: null, age: 150 },
+  { id: 62, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+  { id: 63, lastName: "Frances", firstName: "Rossini", age: 36 },
+  { id: 64, lastName: "Roxie", firstName: "Harvey", age: 65 },
+  { id: 65, lastName: "Lannister", firstName: "Jaime", age: 45 },
+];
+
+export const actionColumns = [
+  {
+    field: "id",
+    headerName: "Type NC",
+    flex: 0.1,
+    align: "center",
+    headerAlign: "center",
+    renderCell: (cellValues) => {
+      return (
+        <div
+          style={{
+            color: "black",
+            fontWeight: "bold",
+          }}
+        >
+          {cellValues.value}
+        </div>
+      );
+    },
+  },
+  {
+    field: "percent",
+    headerName: "% non-conformité",
+    flex: 0.9,
+    editable: true,
+    align: "right",
+    headerAlign: "right",
+    marginRight: '10px',
+  },
 ];

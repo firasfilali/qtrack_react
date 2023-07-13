@@ -16,9 +16,9 @@ import "../../assets/css/matiere1ere.css";
 import up from "../../assets/up.png";
 import { PieChart } from "@mui/x-charts/PieChart";
 import InputAdornment from "@mui/material/InputAdornment";
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { DateRangePicker } from 'rsuite';
+import '../../assets/css/datepicker.css'
+
 
 
 
@@ -34,16 +34,17 @@ const theme = createTheme({
 
 export default function history() {
   return (
-    <div>
+    <div style={{height: "82vh"}}>
       <Row>
+        
         <Col xl="7" lg="7">
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker />
-    </LocalizationProvider>
+          <div className="datepicker">
+          <DateRangePicker showOneCalendar format="dd/MM/yy" size="lg" character=" - "/>
+          </div>
           <CustomDataGrid
             rows={matiereRows}
             columns={matiereColumns}
-            height="85vh"
+            height="75vh"
             className="custom-ccp"
             Pagination={CustomPagination}
             rowHeight={40}

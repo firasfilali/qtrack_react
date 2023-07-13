@@ -107,6 +107,12 @@
   margin-top: 15px;
   
  }
+.cadre-graph{
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  padding-bottom: 30px;
+}
+
  .cadre-2{
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -135,9 +141,27 @@
  
  }
 
- .www .MuiResponsiveChart-container{
-  color: blue;
+ .tttt{
+  font-size: 20px;
+  font-weight: bold;
  }
+
+ .ttt{
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+ }
+
+ .custom-header-action .MuiDataGrid-columnHeaders {
+  background-color: #D4D4D4;
+ }
+
+ .barchart{
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+ }
+
+
 
 
 

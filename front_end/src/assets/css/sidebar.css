@@ -9,6 +9,7 @@
     padding: 17px 17px 17px 30px !important;
     
 }
+
 .nav-link.active {
     background-color: #2e3541;
 
@@ -18,6 +19,15 @@
     font-weight: 700;
     
   }
+  .MuiListItemButton-gutters{
+  background-color: #2e3541;
+
+    color: white !important;
+    border-left: 4px solid green;
+    padding-left: 8px;
+    font-weight: 700;
+}
+
   .top-bar{
     padding: 15px;
    
