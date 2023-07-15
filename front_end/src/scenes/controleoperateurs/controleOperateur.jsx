@@ -46,7 +46,7 @@ export default function ControleOperateur() {
   };
 
   return (
-    <div>
+    <div style={{height: "80vh"}}>
       <Row>
         <Col xl="7" lg="7">
           <CustomDataGrid
@@ -98,7 +98,7 @@ export default function ControleOperateur() {
               columns={OpColumns}
               hideFooter={true}
               className="custom-ccp"
-              height="220px"
+              height="33vh"
               marginBottom="10px"
               paginationPageSize={6}
               borderRadius="10px"
@@ -108,7 +108,7 @@ export default function ControleOperateur() {
               columns={PhaseColumnsCcp}
               hideFooter={true}
               className="custom-ccp"
-              height="220px"
+              height="33vh"
               paginationPageSize={6}
               borderRadius="10px"
             />

@@ -27,8 +27,8 @@ const theme = createTheme({
 
 export default function operateur() {
   return (
-    <div>
-      <Row style={{height: "78vh"}}>
+    <div style={{height: "79vh"}}>
+      <Row >
         <Col xl="7" lg="7">
           <div className="datepicker">
             <DateRangePicker
@@ -41,7 +41,7 @@ export default function operateur() {
           <CustomDataGrid
             rows={OperateurRows}
             columns={OperateurColumns}
-            height="83vh"
+            height="79vh"
             className="custom-ccp"
             Pagination={CustomPagination}
             rowHeight={65}

@@ -95,7 +95,7 @@ export default function actioncorrectives() {
         <Col xl="5" lg="5">
           <div className="cadre-graph">
             <div className="cadre-3">
-              <span className="typenc-3">Statistiques</span>
+              <span className="typenc-3">Graphe de non-conformité</span>
             </div>
 
             <Row>

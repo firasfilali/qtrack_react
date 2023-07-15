@@ -9,6 +9,7 @@ import Parametre from './scenes/parametre/parametre';
 import Fournisseur from './scenes/history/mat1ere&fournisseur';
 import ActionCorrectives from './scenes/history/actioncorrectives';
 import Operateurs from './scenes/history/operateur';
+import CycleProductionCf from './scenes/history/cycleProductionCf';
 import { BrowserRouter, Route, Routes, React } from 'react-router-dom';
 import Sidebar from './scenes/global/Sidebar2';
 
@@ -28,6 +29,7 @@ function App() {
     { path: "/matiere_1ere&fournisseur", component: <Fournisseur />},
     { path: "/action_correctives", component: <ActionCorrectives />},
     { path: "/operateurs", component: <Operateurs />},
+    { path: "/cycle-production", component: <CycleProductionCf />},
     { path: "/parametre", component: <Parametre /> },
   ];
   

@@ -29,7 +29,7 @@ function CustomToolbar() {
 
 const Controle = () => {
   return (
-    <div>
+    <div style={{height: "80vh"}}>
       <Row>
         <Col xl="7" lg="7">
           <CustomDataGrid

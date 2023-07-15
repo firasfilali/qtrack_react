@@ -11,8 +11,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Nav } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import { useState, useContext, memo, Fragment } from "react";
 import logo from "../../assets/50089614.jpg";
 import { Search } from "../../assets/styleJs/Search";
 import { SearchIconWrapper } from "../../assets/styleJs/SearchIconWrapper";
@@ -21,12 +21,11 @@ import { StyledInputBase } from "../../assets/styleJs/StyledInputBase";
 import { useDispatch, useSelector } from "react-redux";
 import store from "../../store/reducer";
 import { route } from "../../utils/data";
-
+import "../../assets/css/side.css";
 
 const drawerWidth = 260;
 
-function Sidebar(props) {
-
+const Sidebar = (props) => {
   const [activeLink, setActiveLink] = useState("dashboard");
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -49,7 +48,6 @@ function Sidebar(props) {
       <img src={logo} alt="logo" width="20%" />
       <Nav as="div" className="flex-column mt-5">
         {route.map((item, index) => (
-         
           <NavLink
             key={index}
             exact="true"
@@ -62,11 +60,8 @@ function Sidebar(props) {
             }}
           >
             {item.title}
-
           </NavLink>
-         
         ))}
-         
       </Nav>
     </div>
   );
@@ -182,6 +177,6 @@ function Sidebar(props) {
       </Box>
     </Box>
   );
-}
+};
 
 export default Sidebar;

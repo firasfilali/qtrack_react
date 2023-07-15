@@ -4,6 +4,14 @@ export const data1 = [
   { id: 0, value: 10, label: 'Non conformité', color:"#F90219" },
   { id: 1, value: 15, label: 'Conformité',color: "#2DCE98" },
 ];
+
+export const dataPieChart = [
+  { id: 0, value: 10, label: 'Matière 1ere', color:"#F90219" },
+  { id: 1, value: 15, label: 'Fournisseur',color: "#2DCE98" },
+  { id: 2, value: 15, label: 'Operateur',color: "#091B6C" },
+];
+
+
 export const route = [
   {
     url: "/",
@@ -65,6 +73,12 @@ export const route = [
     handleLinkClick: "operateurs",
     handleButtonClick: "Opérateurs",
     title: "Opérateurs",
+  },
+  {
+    url: "/cycle-production",
+    handleLinkClick: "cycle-production",
+    handleButtonClick: "Cycle Production & CF",
+    title: "Cycle Production & CF",
   },
  
   {
@@ -204,6 +218,41 @@ export const TypeColumns = [
     headerAlign: "center",
   },
 ];
+
+export const controleFinalCol = [
+  {
+    field: "conformité",
+    headerName: "% conformité",
+    flex: 0.3,
+    editable: true,
+    align: "center",
+    headerAlign: "center",
+  },
+  {
+    field: "nonconformité",
+    headerName: "% non-conformité",
+    flex: 0.4,
+    editable: true,
+    align: "center",
+    headerAlign: "center",
+  },
+];
+
+export const controleFinalRow = [
+  { id: 1222, conformité: "Jon", nonconformité: "Snow" },
+  { id: 2555, conformité: "Cersei", nonconformité: "Snow" },
+  { id: 3777, conformité: "Jaime", nonconformité: "Snow" },
+  { id: 4444, conformité: "Arya", nonconformité: "Snow" },
+  { id: 5555, conformité: "Daenerys", nonconformité: "Snow" },
+  { id: 6666, conformité: null, nonconformité: "Snow" },
+  { id: 7777, conformité: "Jon", nonconformité: "Snow" },
+  { id: 8888, conformité: "Cersei", nonconformité: "Snow" },
+  { id: 9999, conformité: "Jaime", nonconformité: "Snow" },
+  { id: 1000, conformité: "Arya", nonconformité: "Snow" },
+
+]
+
+
 export const TypeRows = [
   { id: 16, percent: "Jon" },
   { id: 17, percent: "Cersei" },
@@ -292,6 +341,7 @@ export const PhaseColumnsCcp = [
           style={{
             color: "black",
             fontWeight: "bold",
+            
           }}
         >
           {cellValues.value}
@@ -577,12 +627,15 @@ export const actionColumns = [
     flex: 0.1,
     align: "center",
     headerAlign: "center",
+    
     renderCell: (cellValues) => {
       return (
         <div
           style={{
             color: "black",
             fontWeight: "bold",
+            
+           
           }}
         >
           {cellValues.value}
@@ -597,6 +650,19 @@ export const actionColumns = [
     editable: true,
     align: "right",
     headerAlign: "right",
-    marginRight: '10px',
+    renderCell: (cellValues) => {
+      return (
+        <div
+          style={{
+            marginRight:"30px"
+            
+           
+          }}
+        >
+          {cellValues.value}
+        </div>
+      );
+    },
+   
   },
 ];
