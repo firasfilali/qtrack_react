@@ -1,53 +1,65 @@
-import Dashboard from './scenes/dashboard/dashboard';
-import ControleFinale from './scenes/controle/controlefinale';
-import ControleOperateur from './scenes/controleoperateurs/controleOperateur';
-import CorrectionAction from './scenes/correctionAction/correctionaction';
-import MatiérePremiére from './scenes/matiérepremiére/MatiérePremiére';
-import Ccp from './scenes/ccp&prototype/Ccp';
-import History from './scenes/history/history';
-import Parametre from './scenes/parametre/parametre';
-import Fournisseur from './scenes/history/mat1ere&fournisseur';
-import ActionCorrectives from './scenes/history/actioncorrectives';
-import Operateurs from './scenes/history/operateur';
-import CycleProductionCf from './scenes/history/cycleProductionCf';
-import { BrowserRouter, Route, Routes, React } from 'react-router-dom';
-import Sidebar from './scenes/global/Sidebar2';
+import Dashboard from "./scenes/dashboard/dashboard";
+import ControleFinale from "./scenes/controle/controlefinale";
+import ControleOperateur from "./scenes/controleoperateurs/controleOperateur";
+import CorrectionAction from "./scenes/correctionAction/correctionaction";
+import MatiérePremiére from "./scenes/matiérepremiére/MatiérePremiére";
+import Ccp from "./scenes/ccp&prototype/Ccp";
+import History from "./scenes/history/history";
+import Parametre from "./scenes/parametre/parametre";
+import Fournisseur from "./scenes/history/mat1ere&fournisseur";
+import ActionCorrectives from "./scenes/history/actioncorrectives";
+import Operateurs from "./scenes/history/operateur";
+import CycleProductionCf from "./scenes/history/cycleProductionCf";
+import Ops from "./scenes/parametre/operateurs";
+import { BrowserRouter, Route, Routes, React } from "react-router-dom";
+import Sidebar from "./scenes/global/Sidebar2";
+import Login from "./scenes/login";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 
-
+const queryClient = new QueryClient();
 
 function App() {
-
   const routes = [
-    { path: "/", component: <Dashboard /> },
+    { path: "/", component: <Login /> },
+    { path: "/dashboard", component: <Dashboard /> },
     { path: "/ccp", component: <Ccp /> },
     { path: "/controle", component: <ControleFinale /> },
     { path: "/controle_operateurs", component: <ControleOperateur /> },
     { path: "/matiere_premiere", component: <MatiérePremiére /> },
     { path: "/correction_action", component: <CorrectionAction /> },
     { path: "/historique", component: <History /> },
-    { path: "/matiere_1ere&fournisseur", component: <Fournisseur />},
-    { path: "/action_correctives", component: <ActionCorrectives />},
-    { path: "/operateurs", component: <Operateurs />},
-    { path: "/cycle-production", component: <CycleProductionCf />},
+    { path: "/matiere_1ere&fournisseur", component: <Fournisseur /> },
+    { path: "/action_correctives", component: <ActionCorrectives /> },
+    { path: "/operateurs", component: <Operateurs /> },
+    { path: "/cycle-production", component: <CycleProductionCf /> },
     { path: "/parametre", component: <Parametre /> },
+    { path: "/oprateurs", component: <Ops /> },
+
   ];
-  
+
   return (
     <div>
-
-      
-     <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
         <Routes>
-          
           {routes.map((route, index) => (
-            <Route key={index} path = {route.path} element = {<Sidebar>{route.component}</Sidebar> } />
+            <Route
+              key={index}
+              path={route.path}
+              element={
+                route.path === "/" ? (
+                  route.component
+                ) : (
+                  <Sidebar>{route.component}</Sidebar>
+                )
+                }
+            />
           ))}
-          
         </Routes>
-      </BrowserRouter> 
+      </BrowserRouter>
+      </QueryClientProvider>
     </div>
-   
   );
 }
 

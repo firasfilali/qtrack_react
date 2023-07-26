@@ -1,0 +1,76 @@
+.log-img{
+    width:100%
+}
+.black-bg{
+    background-color: #18202C;
+    display: flex;
+    align-items: center;
+}
+.vh-100{
+height: 100vh;
+width:100%
+
+}
+.btn-submit .btn-primary{
+    width: 100%;
+    background-color: #18202C;
+    color: #fff;
+    border-radius: 8px;
+    border-color: #18202C;
+
+}
+.top60{
+    padding-top:60px;
+}
+.p-50{
+    padding: 50px;
+}
+.username {
+    background-image: url('../img/user.png');
+    padding: 15px 30px !important;
+  
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 3%;
+  }
+  .password {
+    background-image: url('../img/padlock.png');
+    padding:15px 30px !important;
+  
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 3%;
+  }
+.link{
+    text-decoration: none;
+    color:#18202C;
+    font-weight: 700;
+    
+}
+.text-login{
+    color:#C8CACC;
+    font-weight: 500;
+}
+.form-group input[type='text'],
+.form-group input[type='password']{
+    background-color: #F4F4F4 !important;
+    border-radius: 8px !important;
+    border:none !important;
+}
+.form-group label{
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.title-login{
+    font-weight: 700;
+}
+@media screen and (max-width:425px) {
+    .username {
+      
+        background-size: 4%;
+      }
+      .password {
+        
+        background-size: 4%;
+      } 
+}

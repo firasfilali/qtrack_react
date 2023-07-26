@@ -40,7 +40,6 @@ export default function Correctionaction() {
         <Col xl="6" lg="6">
           <div className="corr">
             <span className="span-corr">Action de correction</span>
-
             <Autocomplete
               disablePortal
               id="combo-box-demo"

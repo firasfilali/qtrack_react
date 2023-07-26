@@ -1,12 +1,34 @@
 import React from "react";
 import "../../assets/css/dashboard.css";
-import { data } from "../../utils/data";
 import Card from "../../components/cards/card";
 import { Row } from "react-bootstrap";
+import { useQuery } from "react-query";
+
+
+const fetchData = async () => {
+  const response = await fetch("http://localhost:3030/posts");
+  const data = await response.json();
+  return data;
+  
+};
+
+
 
 const Dashboard = (props) => {
+
+  const {data, isLoading} = useQuery({
+    queryKey: ["stats"],
+    queryFn: function() {
+      return fetchData();
+    },
+  });
+
+  if (isLoading) {
+    return <div>loading ......</div>
+  }
+
   return (
-    <div style={{marginTop: "10px"}}>
+    <div style={{marginTop: "20px", height:"80vh"}}>
       <Row>
       {data.map((item, index) => {
         return (

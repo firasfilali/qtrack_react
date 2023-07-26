@@ -1,0 +1,56 @@
+{
+  "posts": [
+    {
+      "id": 0,
+      "section": "Contrôle à la chaine",
+      "reference": "A200",
+      "conforme": "4.15",
+      "Nconforme": "2.15"
+    },
+    {
+      "id": 1,
+      "section": "Contrôle finale",
+      "reference": "A911",
+      "conforme": "4.15",
+      "Nconforme": "2.15"
+    },
+    {
+      "id": 2,
+      "section": "Prototype",
+      "reference": "A200",
+      "conforme": "4.15",
+      "Nconforme": "2.15"
+    },
+    {
+      "id": 3,
+      "section": "Contrôle opérateur",
+      "reference": "A200",
+      "conforme": "4.15",
+      "Nconforme": "2.15"
+    },
+    {
+      "id": 4,
+      "section": "Contrôle AQ",
+      "reference": "A200",
+      "conforme": "4.15",
+      "Nconforme": "2.15"
+    },
+    {
+      "id": 5,
+      "section": "Alerte",
+      "reference": "A200",
+      "conforme": "4.15",
+      "Nconforme": "2.15"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -3,30 +3,50 @@
     height: 100vh;
     
     
+    
 }
 .nav-link{
-    color:#A9ACAF !important;
+    color:#a7abae !important;
     padding: 17px 17px 17px 30px !important;
-    
+  
+}
+
+.nav-link2{
+  color:#a7abae !important;
+  text-decoration-line: none;
+  
 }
 
 .nav-link.active {
     background-color: #2e3541;
-
-    color: white !important;
-    border-left: 4px solid green;
+    color: #ffffff !important;
+    border-left: 4px solid #008000;
     padding-left: 8px;
-    font-weight: 700;
-    
-  }
-  .MuiListItemButton-gutters{
-  background-color: #2e3541;
-
-    color: white !important;
-    border-left: 4px solid green;
-    padding-left: 8px;
-    font-weight: 700;
+    font-weight: 700; 
 }
+
+.nav-link2.active {
+  color: #ffffff !important;
+  font-weight: 700; 
+  text-decoration-line: none;
+}
+
+.testt li::marker {
+  color: #008000;
+  font-size: 1.2em;
+}
+
+.testt li{
+  margin-top: 17px;
+}
+
+
+.testt ul{
+  list-style-position: inside;
+  
+}
+
+
 
   .top-bar{
     padding: 15px;
@@ -38,4 +58,7 @@
     color:#2e3541 !important;
   }
 
-  
+
+
+
+

@@ -14,7 +14,7 @@ export const dataPieChart = [
 
 export const route = [
   {
-    url: "/",
+    url: "/dashboard",
     handleLinkClick: "dashboard",
     handleButtonClick: "Dashboard",
     title: "Dashboard",
@@ -54,39 +54,48 @@ export const route = [
     handleLinkClick: "historique",
     handleButtonClick: "Historiques et indicateurs",
     title: "Historiques et indicateurs",
+    children:[
+      {
+        url: "/matiere_1ere&fournisseur",
+        handleLinkClick: "matiere_1ere&fournisseur",
+        handleButtonClick: "Matière 1ere & Fournisseur",
+        title: "Matière & Fournisseur",
+      },
+      {
+        url: "/action_correctives",
+        handleLinkClick: "action_correctives",
+        handleButtonClick: "Actions Correctives",
+        title: "Actions Correctives",
+      },
+      {
+        url: "/operateurs",
+        handleLinkClick: "operateurs",
+        handleButtonClick: "Opérateurs",
+        title: "Opérateurs",
+      },
+      {
+        url: "/cycle-production",
+        handleLinkClick: "cycle-production",
+        handleButtonClick: "Cycle Production & CF",
+        title: "Cycle Production & CF",
+      },
+    ]
   },
-
-  {
-    url: "/matiere_1ere&fournisseur",
-    handleLinkClick: "matiere_1ere&fournisseur",
-    handleButtonClick: "Matière 1ere & Fournisseur",
-    title: "Matière 1ere & Fournisseur",
-  },
-  {
-    url: "/action_correctives",
-    handleLinkClick: "action_correctives",
-    handleButtonClick: "Actions Correctives",
-    title: "Actions Correctives",
-  },
-  {
-    url: "/operateurs",
-    handleLinkClick: "operateurs",
-    handleButtonClick: "Opérateurs",
-    title: "Opérateurs",
-  },
-  {
-    url: "/cycle-production",
-    handleLinkClick: "cycle-production",
-    handleButtonClick: "Cycle Production & CF",
-    title: "Cycle Production & CF",
-  },
- 
+  
   {
     url: "/parametre",
     handleLinkClick: "parametre",
     handleButtonClick: "Parametre",
     title: "Parametre",
   },
+
+  {
+    url: "/oprateurs",
+    handleLinkClick: "operateur",
+    handleButtonClick: "Opérateur",
+    title: "Opérateur",
+  },
+
 ];
 
 export const data = [

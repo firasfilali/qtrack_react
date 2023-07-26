@@ -13,7 +13,7 @@ import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Nav } from "react-bootstrap";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { useState, useContext, memo, Fragment } from "react";
-import logo from "../../assets/50089614.jpg";
+import logo from "../../assets/logo.jpg";
 import { Search } from "../../assets/styleJs/Search";
 import { SearchIconWrapper } from "../../assets/styleJs/SearchIconWrapper";
 import { NotifIconWrapper } from "../../assets/styleJs/NotifIconWrapper";
@@ -21,11 +21,14 @@ import { StyledInputBase } from "../../assets/styleJs/StyledInputBase";
 import { useDispatch, useSelector } from "react-redux";
 import store from "../../store/reducer";
 import { route } from "../../utils/data";
-import "../../assets/css/side.css";
+
 
 const drawerWidth = 260;
 
-const Sidebar = (props) => {
+function Sidebar(props) {
+
+  const [showSubMenu, setShowSubMenu] = useState(false);
+
   const [activeLink, setActiveLink] = useState("dashboard");
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -43,26 +46,61 @@ const Sidebar = (props) => {
     setMobileOpen(!mobileOpen);
   };
 
+  const [open, setOpen] = useState(false);
+
   const drawer = (
-    <div>
-      <img src={logo} alt="logo" width="20%" />
-      <Nav as="div" className="flex-column mt-5">
-        {route.map((item, index) => (
-          <NavLink
-            key={index}
-            exact="true"
-            to={item.url}
-            className="nav-link"
-            activeclassname="active"
-            onClick={() => {
-              handleLinkClick(item.handleLinkClick);
-              handleButtonClick(item.handleButtonClick);
-            }}
-          >
-            {item.title}
-          </NavLink>
-        ))}
-      </Nav>
+    <div className="testt">
+     
+     <img src={logo} alt="logo" width="20%" />
+
+     <Nav
+			as="div"
+			className="flex-column">
+			{route.map((item, index) => (
+				<React.Fragment key={index}>
+					{item.title === "Historiques et indicateurs" ? ( // Check if it's the "Historique" NavLink
+						<>
+							<NavLink
+								to={item.url}
+								className="nav-link"
+								activeclassname="active"
+								onClick={() => {
+									handleLinkClick(item.handleLinkClick);
+									handleButtonClick(item.handleButtonClick);
+									setShowSubMenu(!showSubMenu); // Toggle sub-menu visibility on NavLink click
+								}}>
+								{item.title}
+							</NavLink>
+							{showSubMenu && ( // Render the sub-menu if showSubMenu is true
+								<ul className="sub-menu">
+									{item.children.map((subItem, subIndex) => (
+										<li key={subIndex}>
+											<NavLink
+												to={subItem.url}
+												className="nav-link2"
+												activeclassname="active">
+												{subItem.title}
+											</NavLink>
+										</li>
+									))}
+								</ul>
+							)}
+						</>
+					) : (
+						<NavLink
+							to={item.url}
+							className="nav-link"
+							activeclassname="active"
+							onClick={() => {
+								handleLinkClick(item.handleLinkClick);
+								handleButtonClick(item.handleButtonClick);
+							}}>
+							{item.title}
+						</NavLink>
+					)}
+				</React.Fragment>
+			))}
+		</Nav>
     </div>
   );
 
@@ -177,6 +215,30 @@ const Sidebar = (props) => {
       </Box>
     </Box>
   );
-};
-
+}
 export default Sidebar;
+
+{
+  /* <Nav as="div" className="flex-column mt-5">
+        {route.map((item, index) => (
+          <NavLink
+            key={index}
+            exact="true"
+            to={item.url}
+            className="nav-link"
+            activeclassname="active"
+            onClick={() => {
+              handleLinkClick(item.handleLinkClick);
+              handleButtonClick(item.handleButtonClick);
+            }}
+          >
+            {item.title}
+          </NavLink>
+        ))}
+      </Nav> */
+}
+
+// <div style={{marginTop:'10px'}}>
+
+// {route.map((item, index )=> <Verticalnav key={index} item={item} />)}
+// </div>
