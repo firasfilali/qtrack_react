@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { BootstrapButton } from "../../assets/styleJs/theme";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { CustomPagination } from "../../assets/styleJs/Pagination";
+import CustomDataGrid from "../../components/CustomDataGrid";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { Row } from "react-bootstrap";
+
 const Data = () => {
   const [tableData, setTableData] = useState([]);
   const [chipLabel, setChipLabel] = useState("Active");
@@ -103,23 +109,46 @@ const Data = () => {
 
   console.log(tableData);
   const columns = [
-    { field: "code", headerName: "Code", width: 200 },
-    { field: "nom", headerName: "Nom", width: 200 },
-    { field: "prénom", headerName: "Prénom", width: 200 },
+    {
+      field: "code",
+      headerName: "Code",
+      flex: 0.2,
+      align: "center",
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    { field: "nom", headerName: "Nom", flex: 0.2, align: "center" },
+    {
+      field: "prénom",
+      headerName: "Prénom",
+      flex: 0.2,
+      align: "center",
+    },
     {
       field: "status",
+      align: "center",
+      flex: 0.2,
       headerName: "Status",
       type: "actions",
-      width: 200,
       getActions: (params) => [
         <Chip label={params.row.chipLabel} color={params.row.chipColor} />,
       ],
     },
     {
       field: "actions",
+      flex: 0.2,
       headerName: "Actions",
       type: "actions",
-      width: 200,
       getActions: (params) => [
         <GridActionsCellItem
           icon={<CheckCircleOutlineIcon color="success" />}
@@ -145,8 +174,30 @@ const Data = () => {
     },
   ];
   return (
-    <div style={{ height: 700, width: "100%" }}>
-      <DataGrid rows={tableData} columns={columns} pageSize={12} />
+    <div style={{ height: "80vh", width: "100%" }}>
+      <div style={{ marginBottom: "20px" }}>
+        <BootstrapButton
+          variant="contained"
+          style={{borderRadius: 10}}
+          size="small"
+          startIcon={<AddRoundedIcon fontSize="small" />}
+        >
+          Ajouter opérateur
+        </BootstrapButton>
+      </div>
+
+      <CustomDataGrid
+        rows={tableData}
+        columns={columns}
+        height="79vh"
+        className="custom-opp"
+        Pagination={CustomPagination}
+        rowHeight={40}
+        paginationPageSize={10}
+        borderRadius="10px"
+      />
+
+      {/* <DataGrid rows={tableData} columns={columns} pageSize={12} /> */}
     </div>
   );
 };
