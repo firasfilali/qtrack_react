@@ -11,6 +11,7 @@ import ActionCorrectives from "./scenes/history/actioncorrectives";
 import Operateurs from "./scenes/history/operateur";
 import CycleProductionCf from "./scenes/history/cycleProductionCf";
 import Ops from "./scenes/parametre/operateurs";
+import QualityAgent from "./scenes/parametre/qualityAgent";
 import { BrowserRouter, Route, Routes, React } from "react-router-dom";
 import Sidebar from "./scenes/global/Sidebar2";
 import Login from "./scenes/login";
@@ -35,6 +36,8 @@ function App() {
     { path: "/cycle-production", component: <CycleProductionCf /> },
     { path: "/parametre", component: <Parametre /> },
     { path: "/oprateurs", component: <Ops /> },
+    { path: "/quality_agent", component: <QualityAgent /> },
+
 
   ];
 

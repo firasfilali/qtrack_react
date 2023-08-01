@@ -1,18 +1,35 @@
 import React, { useState, useEffect } from "react";
 import { BootstrapButton } from "../../assets/styleJs/theme";
-import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { GridActionsCellItem } from "@mui/x-data-grid";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { CustomPagination } from "../../assets/styleJs/Pagination";
 import CustomDataGrid from "../../components/CustomDataGrid";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import { Row } from "react-bootstrap";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import Input from "@mui/joy/Input";
+import Stack from "@mui/joy/Stack";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
+import { Typography } from "@mui/material";
+
 
 const Data = () => {
   const [tableData, setTableData] = useState([]);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   const [chipLabel, setChipLabel] = useState("Active");
   const [chipColor, setChipColor] = useState("success");
   const [rows, setRows] = React.useState(tableData);
@@ -93,7 +110,7 @@ const Data = () => {
   };
 
   const fetchData = () => {
-    fetch("http://localhost:3030/rows")
+    fetch("http://localhost:3030/operator_rows")
       .then((response) => {
         return response.json();
       })
@@ -152,6 +169,7 @@ const Data = () => {
       getActions: (params) => [
         <GridActionsCellItem
           icon={<CheckCircleOutlineIcon color="success" />}
+          label="Active"
           onClick={() => {
             changeChipActive(params.row.id);
             // handleSave(params.row.id, {
@@ -162,6 +180,7 @@ const Data = () => {
         />,
         <GridActionsCellItem
           icon={<CancelOutlinedIcon color="error" />}
+          label="Desactive"
           onClick={() => {
             changeChipDesactive(params.row.id);
             // handleSave(params.row.id, {
@@ -177,6 +196,7 @@ const Data = () => {
     <div style={{ height: "80vh", width: "100%" }}>
       <div style={{ marginBottom: "20px" }}>
         <BootstrapButton
+        onClick={handleClickOpen}
           variant="contained"
           style={{borderRadius: 10}}
           size="small"
@@ -184,6 +204,103 @@ const Data = () => {
         >
           Ajouter opérateur
         </BootstrapButton>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+          PaperProps={{
+            sx: {
+              width: "100vh",
+              height: "60vh",
+              borderRadius: "0",
+            },
+          }}
+        >
+          <DialogTitle id="alert-dialog-title" sx={{ marginTop: "17px" }}>
+            <Typography component="div" paragraph
+              style={{ fontWeight: "bold" }}
+              variant="h5"
+              align="center"
+            >
+              Ajouter Opérateur
+            </Typography>
+          </DialogTitle>
+          <DialogContent>
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                setOpen(false);
+              }}
+            >
+              <Stack spacing={3}>
+                <FormControl>
+                  <FormLabel>Code</FormLabel>
+                  <Input
+                    sx={{
+                      "--Input-focusedThickness": "white",
+                      borderColor: "white",
+                      
+                    }}
+                    variant="soft"
+                    placeholder="Saisir code agent qualité"
+                    autoFocus
+                    required
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>Nom</FormLabel>
+                  <Input
+                    sx={{
+                      "--Input-focusedThickness": "white",
+                      borderColor: "white",
+                    }}
+                    variant="soft"
+                    placeholder="Saisir nom"
+                    required
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel>Prénom</FormLabel>
+                  <Input
+                    sx={{
+                      "--Input-focusedThickness": "white",
+                      borderColor: "white",
+                    }}
+                    variant="soft"
+                    placeholder="Saisir prénom"
+                    required
+                  />
+                </FormControl>
+                <DialogActions>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    style={{
+                      backgroundColor: "#18202c",
+                      color: "white",
+                      textTransform: "none",
+                    }}
+                  >
+                    Ajouter
+                  </Button>
+                  <Button
+                    onClick={handleClose}
+                    variant="outlined"
+                    style={{
+                      backgroundColor: "white",
+                      color: "black",
+                      textTransform: "none",
+                      borderColor: "#18202c",
+                    }}
+                  >
+                    Annuler
+                  </Button>
+                </DialogActions>
+              </Stack>
+            </form>
+          </DialogContent>
+        </Dialog>
       </div>
 
       <CustomDataGrid

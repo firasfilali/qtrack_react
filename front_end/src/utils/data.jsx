@@ -1,16 +1,15 @@
 import "../assets/css/customColumns.css";
 
 export const data1 = [
-  { id: 0, value: 10, label: 'Non conformité', color:"#F90219" },
-  { id: 1, value: 15, label: 'Conformité',color: "#2DCE98" },
+  { id: 0, value: 10, label: "Non conformité", color: "#F90219" },
+  { id: 1, value: 15, label: "Conformité", color: "#2DCE98" },
 ];
 
 export const dataPieChart = [
-  { id: 0, value: 10, label: 'Matière 1ere', color:"#F90219" },
-  { id: 1, value: 15, label: 'Fournisseur',color: "#2DCE98" },
-  { id: 2, value: 15, label: 'Operateur',color: "#091B6C" },
+  { id: 0, value: 10, label: "Matière 1ere", color: "#F90219" },
+  { id: 1, value: 15, label: "Fournisseur", color: "#2DCE98" },
+  { id: 2, value: 15, label: "Operateur", color: "#091B6C" },
 ];
-
 
 export const route = [
   {
@@ -50,11 +49,11 @@ export const route = [
     title: "Action Correctives",
   },
   {
-    url: "/historique",
+    url: "/matiere_1ere&fournisseur",
     handleLinkClick: "historique",
     handleButtonClick: "Historiques et indicateurs",
     title: "Historiques et indicateurs",
-    children:[
+    children: [
       {
         url: "/matiere_1ere&fournisseur",
         handleLinkClick: "matiere_1ere&fournisseur",
@@ -79,23 +78,30 @@ export const route = [
         handleButtonClick: "Cycle Production & CF",
         title: "Cycle Production & CF",
       },
-    ]
+    ],
   },
-  
+
   {
     url: "/parametre",
     handleLinkClick: "parametre",
-    handleButtonClick: "Parametre",
+    handleButtonClick: "Parametres",
     title: "Parametre",
-  },
+    children: [
+      {
+      url: "/oprateurs",
+      handleLinkClick: "operateur",
+      handleButtonClick: "Parametres - Opérateur",
+      title: "Opérateur",
+    },
+    {
+      url: "/quality_agent",
+      handleLinkClick: "quality_agen",
+      handleButtonClick: "Parametres - Agent quality",
+      title: "Agent qualité",
+    },
 
-  {
-    url: "/oprateurs",
-    handleLinkClick: "operateur",
-    handleButtonClick: "Opérateur",
-    title: "Opérateur",
+    ]
   },
-
 ];
 
 export const data = [
@@ -258,9 +264,7 @@ export const controleFinalRow = [
   { id: 8888, conformité: "Cersei", nonconformité: "Snow" },
   { id: 9999, conformité: "Jaime", nonconformité: "Snow" },
   { id: 1000, conformité: "Arya", nonconformité: "Snow" },
-
-]
-
+];
 
 export const TypeRows = [
   { id: 16, percent: "Jon" },
@@ -350,7 +354,6 @@ export const PhaseColumnsCcp = [
           style={{
             color: "black",
             fontWeight: "bold",
-            
           }}
         >
           {cellValues.value}
@@ -516,7 +519,7 @@ export const references = [
     famille: "Controle opérateur",
     up: "3.80",
     down: "2.69",
-    pilote:"Joe"
+    pilote: "Joe",
   },
   {
     ref: "A206",
@@ -528,7 +531,7 @@ export const references = [
     famille: "Controle finale",
     up: "3.82",
     down: "2.60",
-    pilote:"Dart"
+    pilote: "Dart",
   },
   {
     ref: "A300",
@@ -540,7 +543,7 @@ export const references = [
     famille: "Matiére 1ere",
     up: "3.89",
     down: "2.61",
-    pilote:"Amine"
+    pilote: "Amine",
   },
   {
     ref: "A221",
@@ -552,7 +555,7 @@ export const references = [
     famille: "Action de correction",
     up: "3.80",
     down: "2.65",
-    pilote:"Firas"
+    pilote: "Firas",
   },
 ];
 
@@ -636,15 +639,13 @@ export const actionColumns = [
     flex: 0.1,
     align: "center",
     headerAlign: "center",
-    
+
     renderCell: (cellValues) => {
       return (
         <div
           style={{
             color: "black",
             fontWeight: "bold",
-            
-           
           }}
         >
           {cellValues.value}
@@ -663,15 +664,12 @@ export const actionColumns = [
       return (
         <div
           style={{
-            marginRight:"30px"
-            
-           
+            marginRight: "30px",
           }}
         >
           {cellValues.value}
         </div>
       );
     },
-   
   },
 ];

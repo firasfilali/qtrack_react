@@ -43,7 +43,7 @@
       "Nconforme": "2.15"
     }
   ],
-  "rows": [
+  "operator_rows": [
     {
       "id": 2,
       "code": "A200",
@@ -70,6 +70,35 @@
       "chipColor": "success"
     }
   ],
+  "agentquality_rows": [
+    {
+      "id": 0,
+      "code": "A411",
+      "nom": "Delpiero",
+      "prénom": "Alex",
+      "chipLabel": "Active",
+      "chipColor": "success"
+      
+    },
+    {
+      "id": 1,
+      "code": "A300",
+      "nom": "Nedved",
+      "prénom": "Pavel",
+      "chipLabel": "Active",
+      "chipColor": "success"
+    },
+    {
+      "id": 2,
+      "code": "A111",
+      "nom": "Buffon",
+      "prénom": "Gianluigi",
+      "chipLabel": "Active",
+      "chipColor": "success"
+    }
+  ],
+
+
   "profile": {
     "name": "typicode"
   }

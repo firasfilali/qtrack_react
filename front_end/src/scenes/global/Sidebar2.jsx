@@ -28,6 +28,7 @@ const drawerWidth = 260;
 function Sidebar(props) {
 
   const [showSubMenu, setShowSubMenu] = useState(false);
+  const [showSubMenuParam, setShowSubMenuParam] = useState(false);
 
   const [activeLink, setActiveLink] = useState("dashboard");
   const { window } = props;
@@ -78,7 +79,10 @@ function Sidebar(props) {
 											<NavLink
 												to={subItem.url}
 												className="nav-link2"
-												activeclassname="active">
+												activeclassname="active"
+                        onClick={() => {
+                          handleButtonClick(subItem.handleButtonClick);
+                        }}>
 												{subItem.title}
 											</NavLink>
 										</li>
@@ -86,7 +90,40 @@ function Sidebar(props) {
 								</ul>
 							)}
 						</>
-					) : (
+					) : item.title === "Parametre" ? ( // Check if it's the "Historique" NavLink
+          <>
+            <NavLink
+              to={item.url}
+              className="nav-link"
+              activeclassname="active"
+              onClick={() => {
+                handleLinkClick(item.handleLinkClick);
+                handleButtonClick(item.handleButtonClick);
+                setShowSubMenuParam(!showSubMenuParam); // Toggle sub-menu visibility on NavLink click
+              }}>
+              {item.title}
+            </NavLink>
+            {showSubMenuParam && ( // Render the sub-menu if showSubMenu is true
+              <ul className="sub-menu">
+                {item.children.map((subItem, subIndex) => (
+                  <li key={subIndex}>
+                    <NavLink
+                      to={subItem.url}
+                      className="nav-link2"
+                      activeclassname="active"
+                      onClick={() => {
+                        handleButtonClick(subItem.handleButtonClick);
+                      }}
+                      >
+                      {subItem.title}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
+        ) 
+           : (
 						<NavLink
 							to={item.url}
 							className="nav-link"
@@ -129,10 +166,11 @@ function Sidebar(props) {
             <MenuIcon />
           </IconButton>
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="div"
             sx={{
+              fontWeight:"bold",
               color: "black",
               flexGrow: 1,
               display: { xs: "none", sm: "block" },
@@ -218,27 +256,3 @@ function Sidebar(props) {
 }
 export default Sidebar;
 
-{
-  /* <Nav as="div" className="flex-column mt-5">
-        {route.map((item, index) => (
-          <NavLink
-            key={index}
-            exact="true"
-            to={item.url}
-            className="nav-link"
-            activeclassname="active"
-            onClick={() => {
-              handleLinkClick(item.handleLinkClick);
-              handleButtonClick(item.handleButtonClick);
-            }}
-          >
-            {item.title}
-          </NavLink>
-        ))}
-      </Nav> */
-}
-
-// <div style={{marginTop:'10px'}}>
-
-// {route.map((item, index )=> <Verticalnav key={index} item={item} />)}
-// </div>
