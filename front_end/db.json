@@ -98,6 +98,62 @@
     }
   ],
 
+  "ref_rows": [
+    {
+      "id": 0,
+      "ref": "A200",
+      "famille": "Chemises",
+      "phase": "Prototypage"
+    },
+    {
+      "id": 1,
+      "ref": "A210",
+      "famille": "Pantalons",
+      "phase": "Coupe"
+    },
+    {
+      "id": 2,
+      "ref": "A250",
+      "famille": "Polos",
+      "phase": "Prototypage"
+    },
+    {
+      "id": 3,
+      "ref": "A233",
+      "famille": "Chemises",
+      "phase": "Piquage et montage"
+    },
+    {
+      "id": 4,
+      "ref": "A250",
+      "famille": "Polos",
+      "phase": " Finition"
+    },
+    {
+      "id": 5,
+      "ref": "A271",
+      "famille": "Pantalons",
+      "phase": "Prototypage"
+    },
+    {
+      "id": 6,
+      "ref": "A296",
+      "famille": "Chemises",
+      "phase": "Prototypage"
+    },
+    {
+      "id": 7,
+      "ref": "A225",
+      "famille": "Chemises",
+      "phase": "Finition"
+    },
+    {
+      "id": 8,
+      "ref": "A200",
+      "famille": "Chemises",
+      "phase": "Prototypage"
+    }
+  ],
 
   "profile": {
     "name": "typicode"

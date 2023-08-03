@@ -21,7 +21,7 @@ export const BootstrapButton = styled(Button)({
   
   boxShadow: 'none',
   textTransform: 'none',
-  fontSize: 16,
+  fontSize: 14,
   padding: '6px 12px',
   border: '1px solid',
   lineHeight: 2,

@@ -12,6 +12,7 @@ import Operateurs from "./scenes/history/operateur";
 import CycleProductionCf from "./scenes/history/cycleProductionCf";
 import Ops from "./scenes/parametre/operateurs";
 import QualityAgent from "./scenes/parametre/qualityAgent";
+import Reference from "./scenes/parametre/reference";
 import { BrowserRouter, Route, Routes, React } from "react-router-dom";
 import Sidebar from "./scenes/global/Sidebar2";
 import Login from "./scenes/login";
@@ -37,6 +38,7 @@ function App() {
     { path: "/parametre", component: <Parametre /> },
     { path: "/oprateurs", component: <Ops /> },
     { path: "/quality_agent", component: <QualityAgent /> },
+    { path: "/reference", component: <Reference /> },
 
 
   ];

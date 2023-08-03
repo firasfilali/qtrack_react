@@ -88,6 +88,18 @@ export const route = [
     title: "Parametre",
     children: [
       {
+        url: "/reference",
+        handleLinkClick: "reference",
+        handleButtonClick: "Parametres - Reférence & Famille",
+        title: "Reférence / Famille",
+      },
+      {
+        url: "/param_matiere_fournisseur",
+        handleLinkClick: "fournisseur",
+        handleButtonClick: "Parametres - Matière 1ere & Fournisseur",
+        title: "Matière 1ere / Fournisseur",
+      },
+      {
       url: "/oprateurs",
       handleLinkClick: "operateur",
       handleButtonClick: "Parametres - Opérateur",
@@ -99,7 +111,7 @@ export const route = [
       handleButtonClick: "Parametres - Agent quality",
       title: "Agent qualité",
     },
-
+ 
     ]
   },
 ];
