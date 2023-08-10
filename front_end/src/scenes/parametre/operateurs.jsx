@@ -16,13 +16,33 @@ import Input from "@mui/joy/Input";
 import Stack from "@mui/joy/Stack";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Typography } from "@mui/material";
 
 
+
+
+const theme = createTheme({
+  palette: {
+    neutral: {
+      main: '#2bc48a',
+      contrastText: '#fff',
+    },
+
+    custom:{
+      main: '#ea2525',
+      contrastText: '#fff',
+
+    },
+  },
+});
+
 const Data = () => {
+
   const [tableData, setTableData] = useState([]);
   const [open, setOpen] = React.useState(false);
-
+  
+ 
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -30,8 +50,8 @@ const Data = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const [chipLabel, setChipLabel] = useState("Active");
-  const [chipColor, setChipColor] = useState("success");
+  const [chipLabel, setChipLabel] = useState();
+  const [chipColor, setChipColor] = useState();
   const [rows, setRows] = React.useState(tableData);
 
   // const handleDelete = (postIndex) => {
@@ -93,7 +113,7 @@ const Data = () => {
     setTableData((prevData) =>
       prevData.map((item) =>
         item.id === id
-          ? { ...item, chipLabel: "Active", chipColor: "success" }
+          ? { ...item, chipLabel: "Active", chipColor: "neutral" }
           : item
       )
     );
@@ -103,7 +123,7 @@ const Data = () => {
     setTableData((prevData) =>
       prevData.map((item) =>
         item.id === id
-          ? { ...item, chipLabel: "Desactive", chipColor: "error" }
+          ? { ...item, chipLabel: "Desactive", chipColor: "custom" }
           : item
       )
     );
@@ -128,7 +148,7 @@ const Data = () => {
   const columns = [
     {
       field: "code",
-      headerName: "Code",
+      headerName: "Code Opérateur",
       flex: 0.2,
       align: "center",
       renderCell: (cellValues) => {
@@ -158,7 +178,9 @@ const Data = () => {
       headerName: "Status",
       type: "actions",
       getActions: (params) => [
-        <Chip label={params.row.chipLabel} color={params.row.chipColor} />,
+        <ThemeProvider theme={theme}>
+        <Chip label={params.row.chipLabel} color={params.row.chipColor} />
+        </ThemeProvider>
       ],
     },
     {
@@ -167,8 +189,9 @@ const Data = () => {
       headerName: "Actions",
       type: "actions",
       getActions: (params) => [
+        <ThemeProvider theme={theme}>
         <GridActionsCellItem
-          icon={<CheckCircleOutlineIcon color="success" />}
+          icon={<CheckCircleOutlineIcon color="neutral" />}
           label="Active"
           onClick={() => {
             changeChipActive(params.row.id);
@@ -177,9 +200,9 @@ const Data = () => {
             //   chipColor: "error",
             // });
           }}
-        />,
+        />
         <GridActionsCellItem
-          icon={<CancelOutlinedIcon color="error" />}
+          icon={<CancelOutlinedIcon color="custom" />}
           label="Desactive"
           onClick={() => {
             changeChipDesactive(params.row.id);
@@ -188,14 +211,19 @@ const Data = () => {
             //   chipColor: "success",
             // });
           }}
-        />,
+        />
+        </ThemeProvider>
       ],
     },
   ];
   return (
+    
+   
     <div style={{ height: "80vh"}}>
       <div style={{ marginBottom: "20px" }}>
+        
         <BootstrapButton
+        
         onClick={handleClickOpen}
           variant="contained"
           style={{borderRadius: 10}}
@@ -214,6 +242,8 @@ const Data = () => {
               width: "100vh",
               height: "60vh",
               borderRadius: "0",
+              paddingLeft:"10px",
+              paddingRight:"10px"
             },
           }}
         >
@@ -314,8 +344,9 @@ const Data = () => {
         borderRadius="10px"
       />
 
-      {/* <DataGrid rows={tableData} columns={columns} pageSize={12} /> */}
+     
     </div>
+    
   );
 };
 

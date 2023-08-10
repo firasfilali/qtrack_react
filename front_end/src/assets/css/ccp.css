@@ -20,7 +20,7 @@
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
 }
-.custom-ccp  .MuiDataGrid-columnHeaderTitleContainer{
+.custom-ccp .MuiDataGrid-columnHeaderTitleContainer{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,8 +40,10 @@
 
 .custom-opp .MuiDataGrid-cellContent{
   color: black; 
-  
+
 }
+
+
 
 .custom-opp .MuiDataGrid-footerContainer{
 background-color: #F0F0F0;
@@ -62,3 +64,8 @@ justify-content: center;
   background-color: aqua;
  
 }
+.MuiModal-backdrop{
+  background-color: #0a0808 !important;
+    opacity: .3 !important;
+}
+

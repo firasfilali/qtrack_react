@@ -64,7 +64,7 @@ const Controle = () => {
                 />
               </div>
               <div className="table-title2">
-                <h6>% Phase</h6>
+                <h6> Quantité contrôlé </h6>
               </div>
               <CustomDataGrid
                 key="phaseGrid"

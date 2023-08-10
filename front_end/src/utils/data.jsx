@@ -100,6 +100,12 @@ export const route = [
         title: "Matière 1ere / Fournisseur",
       },
       {
+        url: "/param_typeNC-AC",
+        handleLinkClick: "typeNC-AC",
+        handleButtonClick: "Parametres - Type de NC/AC",
+        title: "Type de NC/AC",
+      },
+      {
       url: "/oprateurs",
       handleLinkClick: "operateur",
       handleButtonClick: "Parametres - Opérateur",
@@ -110,6 +116,12 @@ export const route = [
       handleLinkClick: "quality_agen",
       handleButtonClick: "Parametres - Agent quality",
       title: "Agent qualité",
+    },
+    {
+      url: "/prototype",
+      handleLinkClick: "prototype",
+      handleButtonClick: "Parametres - Prototype",
+      title: "Prototype",
     },
  
     ]
@@ -163,7 +175,7 @@ export const data = [
 export const PhaseColumns = [
   {
     field: "id",
-    headerName: "Contrôle",
+    headerName: "Quantité contrôlé",
     flex: 0.3,
     align: "center",
     headerAlign: "center",
@@ -239,7 +251,7 @@ export const TypeColumns = [
   {
     field: "percent",
     headerName: "%",
-    flex: 0.7,
+    flex: 0.5,
     editable: true,
     align: "center",
     headerAlign: "center",

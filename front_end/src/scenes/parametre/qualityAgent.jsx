@@ -17,9 +17,27 @@ import Stack from "@mui/joy/Stack";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import "../../assets/css/sidebar.css";
 
+const theme = createTheme({
+  palette: {
+    neutral: {
+      main: '#2bc48a',
+      contrastText: '#fff',
+    },
+
+    custom:{
+      main: '#ea2525',
+      contrastText: '#fff',
+
+    },
+  },
+});
+
 export default function QualityAgent() {
+
+  
   const [tableData, setTableData] = useState([]);
   const [open, setOpen] = React.useState(false);
 
@@ -35,7 +53,7 @@ export default function QualityAgent() {
     setTableData((prevData) =>
       prevData.map((item) =>
         item.id === id
-          ? { ...item, chipLabel: "Active", chipColor: "success" }
+          ? { ...item, chipLabel: "Active", chipColor: "neutral" }
           : item
       )
     );
@@ -45,7 +63,7 @@ export default function QualityAgent() {
     setTableData((prevData) =>
       prevData.map((item) =>
         item.id === id
-          ? { ...item, chipLabel: "Desactive", chipColor: "error" }
+          ? { ...item, chipLabel: "Desactive", chipColor: "custom" }
           : item
       )
     );
@@ -100,7 +118,9 @@ export default function QualityAgent() {
       headerName: "Status",
       type: "actions",
       getActions: (params) => [
-        <Chip label={params.row.chipLabel} color={params.row.chipColor} />,
+        <ThemeProvider theme={theme}>
+        <Chip label={params.row.chipLabel} color={params.row.chipColor} />
+        </ThemeProvider>
       ],
     },
     {
@@ -109,25 +129,29 @@ export default function QualityAgent() {
       headerName: "Actions",
       type: "actions",
       getActions: (params) => [
+        <ThemeProvider theme={theme}>
         <GridActionsCellItem
-          icon={<CheckCircleOutlineIcon color="success" />}
+          icon={<CheckCircleOutlineIcon color="neutral" />}
           label="Active"
           onClick={() => {
             changeChipActive(params.row.id);
           }}
-        />,
+        />
         <GridActionsCellItem
-          icon={<CancelOutlinedIcon color="error" />}
+          icon={<CancelOutlinedIcon color="custom" />}
           label="Desactive"
           onClick={() => {
             changeChipDesactive(params.row.id);
           }}
-        />,
+        />
+        </ThemeProvider>
       ],
     },
   ];
 
   return (
+    
+   
     <div style={{ height: "80vh", width: "100%" }}>
       <div style={{ marginBottom: "20px" }}>
         <BootstrapButton
@@ -249,5 +273,7 @@ export default function QualityAgent() {
         borderRadius="10px"
       />
     </div>
+    
+  
   );
 }

@@ -13,7 +13,7 @@ import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Nav } from "react-bootstrap";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { useState, useContext, memo, Fragment } from "react";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 import { Search } from "../../assets/styleJs/Search";
 import { SearchIconWrapper } from "../../assets/styleJs/SearchIconWrapper";
 import { NotifIconWrapper } from "../../assets/styleJs/NotifIconWrapper";
@@ -23,7 +23,7 @@ import store from "../../store/reducer";
 import { route } from "../../utils/data";
 
 
-const drawerWidth = 260;
+const drawerWidth = 270;
 
 function Sidebar(props) {
 
@@ -52,7 +52,7 @@ function Sidebar(props) {
   const drawer = (
     <div className="testt">
      
-     <img src={logo} alt="logo" width="20%" />
+     <img src={logo} alt="logo" width="50%" style={{marginLeft:"50px"}} />
 
      <Nav
 			as="div"
