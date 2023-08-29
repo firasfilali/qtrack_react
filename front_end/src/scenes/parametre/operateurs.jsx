@@ -16,33 +16,27 @@ import Input from "@mui/joy/Input";
 import Stack from "@mui/joy/Stack";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Typography } from "@mui/material";
-
-
-
 
 const theme = createTheme({
   palette: {
     neutral: {
-      main: '#2bc48a',
-      contrastText: '#fff',
+      main: "#2bc48a",
+      contrastText: "#fff",
     },
 
-    custom:{
-      main: '#ea2525',
-      contrastText: '#fff',
-
+    custom: {
+      main: "#ea2525",
+      contrastText: "#fff",
     },
   },
 });
 
 const Data = () => {
-
   const [tableData, setTableData] = useState([]);
   const [open, setOpen] = React.useState(false);
-  
- 
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -50,9 +44,6 @@ const Data = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  const [chipLabel, setChipLabel] = useState();
-  const [chipColor, setChipColor] = useState();
-  const [rows, setRows] = React.useState(tableData);
 
   // const handleDelete = (postIndex) => {
   //   setTableData((prevPosts) =>
@@ -179,8 +170,8 @@ const Data = () => {
       type: "actions",
       getActions: (params) => [
         <ThemeProvider theme={theme}>
-        <Chip label={params.row.chipLabel} color={params.row.chipColor} />
-        </ThemeProvider>
+          <Chip label={params.row.chipLabel} color={params.row.chipColor} />
+        </ThemeProvider>,
       ],
     },
     {
@@ -190,43 +181,39 @@ const Data = () => {
       type: "actions",
       getActions: (params) => [
         <ThemeProvider theme={theme}>
-        <GridActionsCellItem
-          icon={<CheckCircleOutlineIcon color="neutral" />}
-          label="Active"
-          onClick={() => {
-            changeChipActive(params.row.id);
-            // handleSave(params.row.id, {
-            //   chipLabel: "Desactive",
-            //   chipColor: "error",
-            // });
-          }}
-        />
-        <GridActionsCellItem
-          icon={<CancelOutlinedIcon color="custom" />}
-          label="Desactive"
-          onClick={() => {
-            changeChipDesactive(params.row.id);
-            // handleSave(params.row.id, {
-            //   chipLabel: "Active",
-            //   chipColor: "success",
-            // });
-          }}
-        />
-        </ThemeProvider>
+          <GridActionsCellItem
+            icon={<CheckCircleOutlineIcon color="neutral" />}
+            label="Active"
+            onClick={() => {
+              changeChipActive(params.row.id);
+              // handleSave(params.row.id, {
+              //   chipLabel: "Desactive",
+              //   chipColor: "error",
+              // });
+            }}
+          />
+          <GridActionsCellItem
+            icon={<CancelOutlinedIcon color="custom" />}
+            label="Desactive"
+            onClick={() => {
+              changeChipDesactive(params.row.id);
+              // handleSave(params.row.id, {
+              //   chipLabel: "Active",
+              //   chipColor: "success",
+              // });
+            }}
+          />
+        </ThemeProvider>,
       ],
     },
   ];
   return (
-    
-   
-    <div style={{ height: "80vh"}}>
+    <div style={{ height: "80vh" }}>
       <div style={{ marginBottom: "20px" }}>
-        
         <BootstrapButton
-        
-        onClick={handleClickOpen}
+          onClick={handleClickOpen}
           variant="contained"
-          style={{borderRadius: 10}}
+          style={{ borderRadius: 10 }}
           size="small"
           startIcon={<AddRoundedIcon fontSize="small" />}
         >
@@ -242,13 +229,15 @@ const Data = () => {
               width: "100vh",
               height: "60vh",
               borderRadius: "0",
-              paddingLeft:"10px",
-              paddingRight:"10px"
+              paddingLeft: "10px",
+              paddingRight: "10px",
             },
           }}
         >
           <DialogTitle id="alert-dialog-title" sx={{ marginTop: "17px" }}>
-            <Typography component="div" paragraph
+            <Typography
+              component="div"
+              paragraph
               style={{ fontWeight: "bold" }}
               variant="h5"
               align="center"
@@ -270,10 +259,9 @@ const Data = () => {
                     sx={{
                       "--Input-focusedThickness": "white",
                       borderColor: "white",
-                      
                     }}
                     variant="soft"
-                    placeholder="Saisir code agent qualité"
+                    placeholder="saisir code agent qualité"
                     autoFocus
                     required
                   />
@@ -286,7 +274,7 @@ const Data = () => {
                       borderColor: "white",
                     }}
                     variant="soft"
-                    placeholder="Saisir nom"
+                    placeholder="saisir nom"
                     required
                   />
                 </FormControl>
@@ -298,7 +286,7 @@ const Data = () => {
                       borderColor: "white",
                     }}
                     variant="soft"
-                    placeholder="Saisir prénom"
+                    placeholder="saisir prénom"
                     required
                   />
                 </FormControl>
@@ -343,10 +331,7 @@ const Data = () => {
         paginationPageSize={10}
         borderRadius="10px"
       />
-
-     
     </div>
-    
   );
 };
 

@@ -17,27 +17,24 @@ import Stack from "@mui/joy/Stack";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "../../assets/css/sidebar.css";
 
 const theme = createTheme({
   palette: {
     neutral: {
-      main: '#2bc48a',
-      contrastText: '#fff',
+      main: "#2bc48a",
+      contrastText: "#fff",
     },
 
-    custom:{
-      main: '#ea2525',
-      contrastText: '#fff',
-
+    custom: {
+      main: "#ea2525",
+      contrastText: "#fff",
     },
   },
 });
 
 export default function QualityAgent() {
-
-  
   const [tableData, setTableData] = useState([]);
   const [open, setOpen] = React.useState(false);
 
@@ -119,8 +116,8 @@ export default function QualityAgent() {
       type: "actions",
       getActions: (params) => [
         <ThemeProvider theme={theme}>
-        <Chip label={params.row.chipLabel} color={params.row.chipColor} />
-        </ThemeProvider>
+          <Chip label={params.row.chipLabel} color={params.row.chipColor} />
+        </ThemeProvider>,
       ],
     },
     {
@@ -130,28 +127,26 @@ export default function QualityAgent() {
       type: "actions",
       getActions: (params) => [
         <ThemeProvider theme={theme}>
-        <GridActionsCellItem
-          icon={<CheckCircleOutlineIcon color="neutral" />}
-          label="Active"
-          onClick={() => {
-            changeChipActive(params.row.id);
-          }}
-        />
-        <GridActionsCellItem
-          icon={<CancelOutlinedIcon color="custom" />}
-          label="Desactive"
-          onClick={() => {
-            changeChipDesactive(params.row.id);
-          }}
-        />
-        </ThemeProvider>
+          <GridActionsCellItem
+            icon={<CheckCircleOutlineIcon color="neutral" />}
+            label="Active"
+            onClick={() => {
+              changeChipActive(params.row.id);
+            }}
+          />
+          <GridActionsCellItem
+            icon={<CancelOutlinedIcon color="custom" />}
+            label="Desactive"
+            onClick={() => {
+              changeChipDesactive(params.row.id);
+            }}
+          />
+        </ThemeProvider>,
       ],
     },
   ];
 
   return (
-    
-   
     <div style={{ height: "80vh", width: "100%" }}>
       <div style={{ marginBottom: "20px" }}>
         <BootstrapButton
@@ -177,7 +172,9 @@ export default function QualityAgent() {
           }}
         >
           <DialogTitle id="alert-dialog-title" sx={{ marginTop: "17px" }}>
-            <Typography component="div" paragraph
+            <Typography
+              component="div"
+              paragraph
               style={{ fontWeight: "bold" }}
               variant="h5"
               align="center"
@@ -199,10 +196,9 @@ export default function QualityAgent() {
                     sx={{
                       "--Input-focusedThickness": "white",
                       borderColor: "white",
-                      
                     }}
                     variant="soft"
-                    placeholder="Saisir code agent qualité"
+                    placeholder="saisir code agent qualité"
                     autoFocus
                     required
                   />
@@ -215,7 +211,7 @@ export default function QualityAgent() {
                       borderColor: "white",
                     }}
                     variant="soft"
-                    placeholder="Saisir nom"
+                    placeholder="saisir nom"
                     required
                   />
                 </FormControl>
@@ -227,7 +223,7 @@ export default function QualityAgent() {
                       borderColor: "white",
                     }}
                     variant="soft"
-                    placeholder="Saisir prénom"
+                    placeholder="saisir prénom"
                     required
                   />
                 </FormControl>
@@ -273,7 +269,5 @@ export default function QualityAgent() {
         borderRadius="10px"
       />
     </div>
-    
-  
   );
 }

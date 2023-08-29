@@ -51,7 +51,6 @@
       "prénom": "Firas",
       "chipLabel": "Active",
       "chipColor": "neutral"
-      
     },
     {
       "id": 3,
@@ -78,7 +77,6 @@
       "prénom": "Alex",
       "chipLabel": "Active",
       "chipColor": "neutral"
-      
     },
     {
       "id": 1,
@@ -97,7 +95,6 @@
       "chipColor": "neutral"
     }
   ],
-
   "ref_rows": [
     {
       "id": 0,
@@ -142,49 +139,42 @@
       "ref": "A200",
       "type": "Cuire",
       "fournisseur": "MMB"
-    
     },
     {
       "id": 1,
       "ref": "A210",
       "type": "Soie",
       "fournisseur": "ABD"
-
     },
     {
       "id": 2,
       "ref": "A250",
       "type": "Laine",
       "fournisseur": "XXW"
-    
     },
     {
       "id": 3,
       "ref": "A233",
       "type": "Fourrure",
       "fournisseur": "AZE"
-
     },
     {
       "id": 4,
       "ref": "A250",
       "type": "Cuire",
       "fournisseur": "SDF"
- 
     },
     {
       "id": 5,
       "ref": "A271",
       "type": "Fourrure",
       "fournisseur": "AQW"
- 
     },
     {
       "id": 6,
       "ref": "A296",
       "type": "Laine",
       "fournisseur": "FGH"
-   
     },
     {
       "id": 7,
@@ -230,7 +220,6 @@
       "ref": "A200",
       "nom": "CCC"
     }
-   
   ],
   "typeNC_rows": [
     {
@@ -239,45 +228,36 @@
     },
     {
       "id": 1,
-     
       "typenc": "Non-conformité de processus"
     },
     {
       "id": 2,
-     
       "typenc": "Non-conformité réglementaire"
     },
     {
       "id": 3,
- 
       "typenc": "Non-conformité documentaire "
     },
     {
       "id": 4,
-     
       "typenc": "Non-conformité du fournisseur "
     },
     {
       "id": 5,
-    
       "typenc": "Non-conformité réglementaire"
     }
   ],
   "typeAC_rows": [
     {
       "id": 0,
-     
       "typeac": "Correction immédiate"
- 
     },
     {
       "id": 1,
-  
       "typeac": "Analyse de la cause racine"
     },
     {
       "id": 2,
-    
       "typeac": "Modification du processus"
     },
     {
@@ -292,7 +272,6 @@
       "id": 5,
       "typeac": "Mesures préventives"
     }
-   
   ],
   "famille_rows": [
     {
@@ -347,49 +326,42 @@
       "ref": "A200",
       "phase": "Phase 1",
       "famille": "Pantalon"
-    
     },
     {
       "id": 1,
       "ref": "A210",
       "phase": "Phase 3",
       "famille": "Jupe"
-
     },
     {
       "id": 2,
       "ref": "A250",
       "phase": "Phase 2",
       "famille": "Short"
-    
     },
     {
       "id": 3,
       "ref": "A233",
       "phase": "Phase 5",
       "famille": "Jupe"
-
     },
     {
       "id": 4,
       "ref": "A250",
       "phase": "Phase 2",
       "famille": "Veste"
- 
     },
     {
       "id": 5,
       "ref": "A271",
       "phase": "Phase 3",
       "famille": "Jupe"
- 
     },
     {
       "id": 6,
       "ref": "A296",
       "phase": "Phase 1",
       "famille": "Pull-over"
-   
     },
     {
       "id": 7,
@@ -404,8 +376,59 @@
       "famille": "T-Shirt"
     }
   ],
-
-  "profile": {
-    "name": "typicode"
-  }
+  "users": [
+    {
+      "id": 0,
+      "username": "manager123",
+      "firstname": "Manager",
+      "lastname": "Quality",
+      "password": "********",
+      "email": "manager@gmail.com",
+      "role": "Manager"
+    },
+    {
+      "id": "User1",
+      "firstname": "Firas",
+      "lastname": "Filali",
+      "password": "12345678",
+      "email": "manager@gmail.com",
+      "role": "manager"
+    },
+    {
+      "id": 1,
+      "username": "firas55",
+      "firstname": "Firas2",
+      "lastname": "Filali2",
+      "password": "12345678",
+      "email": "aziz@gmail.com",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "azizba015@gmail.com",
+      "firstname": "kkkkk",
+      "lastname": "kkkkk",
+      "password": "12345678",
+      "email": "kkkkk",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "username": "ffffff",
+      "firstname": "jjkpoj",
+      "lastname": "mjoi,k,",
+      "password": "12345678",
+      "email": "firas@klll.com",
+      "role": "manager"
+    },
+    {
+      "id": 4,
+      "username": "ffffff",
+      "firstname": "jjkpoj",
+      "lastname": "mjoi,k,",
+      "password": "12345678",
+      "email": "firas@klll.com",
+      "role": "manager"
+    }
+  ]
 }

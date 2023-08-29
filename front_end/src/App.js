@@ -19,7 +19,10 @@ import Prototype from "./scenes/parametre/prototype";
 import { BrowserRouter, Route, Routes, React } from "react-router-dom";
 import Sidebar from "./scenes/global/Sidebar2";
 import Login from "./scenes/login";
+import Users from "./scenes/users/users";
+import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "react-query";
+
 
 
 const queryClient = new QueryClient();
@@ -45,6 +48,10 @@ function App() {
     { path: "/param_matiere_fournisseur", component: <ParametreMatiereFour /> },
     { path: "/param_typeNC-AC", component: <TypeNcAc /> },
     { path: "/prototype", component: <Prototype /> },
+    { path: "/users", component: <Users /> },
+    
+  
+
 
 
   ];
@@ -52,7 +59,9 @@ function App() {
   return (
     
     <div>
+      
       <QueryClientProvider client={queryClient}>
+        <ToastContainer></ToastContainer>
       <BrowserRouter>
         <Routes>
           {routes.map((route, index) => (

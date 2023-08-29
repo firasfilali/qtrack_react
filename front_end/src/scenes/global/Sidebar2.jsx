@@ -19,7 +19,7 @@ import { SearchIconWrapper } from "../../assets/styleJs/SearchIconWrapper";
 import { NotifIconWrapper } from "../../assets/styleJs/NotifIconWrapper";
 import { StyledInputBase } from "../../assets/styleJs/StyledInputBase";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../../store/reducer";
+import store from "../../store/store";
 import { route } from "../../utils/data";
 
 
@@ -177,7 +177,7 @@ function Sidebar(props) {
               ml: "20px",
             }}
           >
-            {currentPage}
+           
           </Typography>
           <Search sx={{ marginRight: "20px" }}>
             <SearchIconWrapper>

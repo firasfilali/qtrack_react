@@ -126,6 +126,12 @@ export const route = [
  
     ]
   },
+  {
+    url: "/users",
+    handleLinkClick: "users",
+    handleButtonClick: "Utilisateurs",
+    title: "Utilisateurs",
+  },
 ];
 
 export const data = [

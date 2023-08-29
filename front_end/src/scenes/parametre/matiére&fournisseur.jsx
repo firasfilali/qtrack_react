@@ -38,10 +38,19 @@ export default function ParametreMatiereFour() {
   const handleCloseFourn = () => {
     setOpenFour(false);
   };
-  const deleteUser = React.useCallback(
+  const deleteMatiere = React.useCallback(
     (id) => () => {
       setTimeout(() => {
         setTableData((prevRows) => prevRows.filter((row) => row.id !== id));
+      });
+    },
+    []
+  );
+
+  const deleteFournisseur = React.useCallback(
+    (id) => () => {
+      setTimeout(() => {
+        setTableDataFournisseur((prevRows) => prevRows.filter((row) => row.id !== id));
       });
     },
     []
@@ -114,7 +123,7 @@ export default function ParametreMatiereFour() {
         <GridActionsCellItem
           icon={<i className="bi bi-trash" style={{ color: "red" }}></i>}
           label="Delete"
-          onClick={deleteUser(params.id)}
+          onClick={deleteMatiere(params.id)}
         />,
       ],
     },
@@ -149,7 +158,7 @@ export default function ParametreMatiereFour() {
         <GridActionsCellItem
           icon={<i className="bi bi-trash" style={{ color: "red" }}></i>}
           label="Delete"
-          onClick={deleteUser(params.id)}
+          onClick={deleteFournisseur(params.id)}
         />,
       ],
     },

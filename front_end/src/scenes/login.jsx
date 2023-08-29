@@ -1,8 +1,8 @@
 import React from 'react';
 import loginImg from '../assets/img/login.png';
 import { useNavigate } from 'react-router-dom';
-import '../assets/css/login.css'
-
+import '../assets/css/login.css';
+import Logo from '../assets/logo_black.png'
 
 export default function Login(){
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function Login(){
             <img src={loginImg} alt='logo' className='log-img'></img>
             </div> 
            <div className="col-md-6 p-50">
-            <span>logo</span>
+            <span><img src={Logo} alt="logo" width="15%" /></span>
             <div className="text-center mt-5">
                 
                 <h1 className='title-login'>Bienvenue</h1>
