@@ -77,23 +77,7 @@ export default function Prototype() {
           flex: 0.1,
           align: "center"
         },
-        {
-          field: "phase",
-          headerName: "Phases",
-          flex: 0.2,
-          align: "center",
-          renderCell: (cellValues) => {
-            return (
-              <div
-                style={{
-                  
-                }}
-              >
-                {cellValues.value}
-              </div>
-            );
-          },
-        },
+       
         {
             field: "famille",
             headerName: "Famille",
@@ -176,35 +160,7 @@ export default function Prototype() {
                         required
                       />
                     </FormControl>
-                    <FormControl>
-                      <FormLabel>Phases</FormLabel>
-
-                      <Select
-                      
-                      variant="soft"
-                        slotProps={{
-                          listbox: {
-                            sx: {
-                              zIndex: 1400,
-                              innerHeight: "50px",
-                              maxHeight: 150
-                              
-                            },
-                          },
-                        }}
-                        
-                        onChange={handleSelectChange}
-                        placeholder="Séléctionner phases…"
-                        indicator={<KeyboardArrowRightIcon />}
-                      >
-                        {tableData.map(item => (
-                          <Option key={item.id} value={item.phase}>
-                            {item.phase}
-                          </Option>
-                        ))} 
-                    
-                      </Select>
-                    </FormControl>
+                
                     <FormControl>
                       <FormLabel>Famille</FormLabel>
                       <Select
@@ -232,7 +188,7 @@ export default function Prototype() {
                     
                       </Select>
                     </FormControl>
-
+                    <div style={{ marginTop: "100px" }}>
                     <DialogActions>
                       <Button
                         type="submit"
@@ -258,6 +214,7 @@ export default function Prototype() {
                         Annuler
                       </Button>
                     </DialogActions>
+                    </div>
                   </Stack>
                 </form>
               </DialogContent>

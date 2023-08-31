@@ -136,6 +136,7 @@ export default function Reference() {
           headerName: "Références",
           flex: 0.1,
           align: "center",
+          editable: true,
           renderCell: (cellValues) => {
             return (
               <div

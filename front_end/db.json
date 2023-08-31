@@ -378,57 +378,38 @@
   ],
   "users": [
     {
-      "id": 0,
-      "username": "manager123",
-      "firstname": "Manager",
-      "lastname": "Quality",
-      "password": "********",
-      "email": "manager@gmail.com",
-      "role": "Manager"
-    },
-    {
-      "id": "User1",
+      "id": "Firas12",
+      "username": "",
       "firstname": "Firas",
       "lastname": "Filali",
       "password": "12345678",
+      "email": "aziz@gmail.com",
+      "role": "manager"
+    },
+    {
+      "id": "azizba015@gmail.com",
+      "username": "",
+      "firstname": "Manager1",
+      "lastname": "Responsable",
+      "password": "12345678",
       "email": "manager@gmail.com",
       "role": "manager"
     },
     {
+      "id": "oumaima",
+      "username": "",
+      "firstname": "Manager1",
+      "lastname": "Responsable",
+      "password": "0000",
+      "email": "manager@gmail.com",
+      "role": "admin"
+    }
+  ],
+  "phases": [
+    {
       "id": 1,
-      "username": "firas55",
-      "firstname": "Firas2",
-      "lastname": "Filali2",
-      "password": "12345678",
-      "email": "aziz@gmail.com",
-      "role": "admin"
-    },
-    {
-      "id": 2,
-      "username": "azizba015@gmail.com",
-      "firstname": "kkkkk",
-      "lastname": "kkkkk",
-      "password": "12345678",
-      "email": "kkkkk",
-      "role": "admin"
-    },
-    {
-      "id": 3,
-      "username": "ffffff",
-      "firstname": "jjkpoj",
-      "lastname": "mjoi,k,",
-      "password": "12345678",
-      "email": "firas@klll.com",
-      "role": "manager"
-    },
-    {
-      "id": 4,
-      "username": "ffffff",
-      "firstname": "jjkpoj",
-      "lastname": "mjoi,k,",
-      "password": "12345678",
-      "email": "firas@klll.com",
-      "role": "manager"
+      "phase": "Phase 1",
+      "description": "phase de finition"
     }
   ]
 }

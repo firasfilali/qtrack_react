@@ -11,7 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Nav } from "react-bootstrap";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation,useNavigate } from "react-router-dom";
 import { useState, useContext, memo, Fragment } from "react";
 import logo from "../../assets/logo.png";
 import { Search } from "../../assets/styleJs/Search";
@@ -21,11 +21,33 @@ import { StyledInputBase } from "../../assets/styleJs/StyledInputBase";
 import { useDispatch, useSelector } from "react-redux";
 import store from "../../store/store";
 import { route } from "../../utils/data";
-
+import Avatar from '@mui/material/Avatar';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import Tooltip from '@mui/material/Tooltip';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Settings from '@mui/icons-material/Settings';
+import Logout from '@mui/icons-material/Logout';
 
 const drawerWidth = 270;
 
 function Sidebar(props) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openAccount = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    usenavigate('/login');
+      };
+
+  const usenavigate = useNavigate();
 
   const [showSubMenu, setShowSubMenu] = useState(false);
   const [showSubMenuParam, setShowSubMenuParam] = useState(false);
@@ -59,7 +81,7 @@ function Sidebar(props) {
 			className="flex-column">
 			{route.map((item, index) => (
 				<React.Fragment key={index}>
-					{item.title === "Historiques et indicateurs" ? ( // Check if it's the "Historique" NavLink
+					{item.title === "Utilisateurs" && localStorage.getItem('role') !== 'admin' ? null : item.title === "Historiques et indicateurs" ? ( // Check if it's the "Historique" NavLink
 						<>
 							<NavLink
 								to={item.url}
@@ -177,7 +199,7 @@ function Sidebar(props) {
               ml: "20px",
             }}
           >
-           
+           {currentPage}
           </Typography>
           <Search sx={{ marginRight: "20px" }}>
             <SearchIconWrapper>
@@ -192,7 +214,70 @@ function Sidebar(props) {
             <NotificationsNoneRoundedIcon />
           </NotifIconWrapper>
           <NotifIconWrapper>
-            <AccountCircleRoundedIcon />
+          <Tooltip title="Account settings">
+          <IconButton
+            onClick={handleClick}
+            size="small"
+            sx={{}}
+            aria-controls={openAccount ? 'account-menu' : undefined}
+            aria-haspopup="true"
+            aria-expanded={openAccount ? 'true' : undefined}
+          >
+            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+          </IconButton>
+        </Tooltip>
+        <Menu
+        anchorEl={anchorEl}
+        id="account-menu"
+        open={openAccount}
+        onClose={handleClose}
+        onClick={handleClose}
+        PaperProps={{
+          elevation: 0,
+          sx: {
+            overflow: 'visible',
+            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+            mt: 1.5,
+            '& .MuiAvatar-root': {
+              width: 32,
+              height: 32,
+              ml: -0.5,
+              mr: 1,
+            },
+            '&:before': {
+              content: '""',
+              display: 'block',
+              position: 'absolute',
+              top: 0,
+              right: 14,
+              width: 10,
+              height: 10,
+              bgcolor: 'background.paper',
+              transform: 'translateY(-50%) rotate(45deg)',
+              zIndex: 0,
+            },
+          },
+        }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+      >
+        <MenuItem onClick={handleClose}>
+          <Avatar /> Profile
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Settings fontSize="small" />
+          </ListItemIcon>
+          Settings
+        </MenuItem>
+        <MenuItem onClick={handleLogout}>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          Logout
+        </MenuItem>
+      </Menu>
           </NotifIconWrapper>
         </Toolbar>
       </AppBar>

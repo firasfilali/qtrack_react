@@ -19,10 +19,10 @@ export const route = [
     title: "Dashboard",
   },
   {
-    url: "/ccp",
-    handleLinkClick: "ccp",
-    handleButtonClick: "CCP & prototype",
-    title: "CCP & prototype",
+    url: "/cp",
+    handleLinkClick: "cp",
+    handleButtonClick: "CP & prototype",
+    title: "CP & prototype",
   },
   {
     url: "/controle",
@@ -87,6 +87,12 @@ export const route = [
     handleButtonClick: "Parametres",
     title: "Parametre",
     children: [
+      {
+        url: "/cproduction",
+        handleLinkClick: "cproduction",
+        handleButtonClick: "Parametres - Cycle de production",
+        title: "Cycle de production",
+      },
       {
         url: "/reference",
         handleLinkClick: "reference",

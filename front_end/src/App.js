@@ -22,16 +22,15 @@ import Login from "./scenes/login";
 import Users from "./scenes/users/users";
 import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "react-query";
-
-
+import Cproduction from "./scenes/parametre/cp";
 
 const queryClient = new QueryClient();
 
 function App() {
   const routes = [
-    { path: "/", component: <Login /> },
+    { path: "/login", component: <Login /> },
     { path: "/dashboard", component: <Dashboard /> },
-    { path: "/ccp", component: <Ccp /> },
+    { path: "/cp", component: <Ccp /> },
     { path: "/controle", component: <ControleFinale /> },
     { path: "/controle_operateurs", component: <ControleOperateur /> },
     { path: "/matiere_premiere", component: <MatiérePremiére /> },
@@ -48,37 +47,31 @@ function App() {
     { path: "/param_matiere_fournisseur", component: <ParametreMatiereFour /> },
     { path: "/param_typeNC-AC", component: <TypeNcAc /> },
     { path: "/prototype", component: <Prototype /> },
+    { path: "/cproduction", component: <Cproduction /> },
     { path: "/users", component: <Users /> },
-    
-  
-
-
-
   ];
 
   return (
-    
     <div>
-      
       <QueryClientProvider client={queryClient}>
         <ToastContainer></ToastContainer>
-      <BrowserRouter>
-        <Routes>
-          {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              element={
-                route.path === "/" ? (
-                  route.component
-                ) : (
-                  <Sidebar>{route.component}</Sidebar>
-                )
+        <BrowserRouter>
+          <Routes>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  route.path === "/login" ? (
+                    route.component
+                  ) : (
+                    <Sidebar>{route.component}</Sidebar>
+                  )
                 }
-            />
-          ))}
-        </Routes>
-      </BrowserRouter>
+              />
+            ))}
+          </Routes>
+        </BrowserRouter>
       </QueryClientProvider>
     </div>
   );

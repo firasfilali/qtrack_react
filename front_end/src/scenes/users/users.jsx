@@ -33,24 +33,58 @@ export default function Users() {
   const [open, setOpen] = React.useState(false);
   const [openFourn, setOpenFour] = React.useState(false);
   const navigate = useNavigate();
- 
+  const IsValidate = () => {
+    let isproceed = true;
+    let errormessage = 'Please enter the value in ';
+     if (id === null || id === '') {
+         isproceed = false;
+        errormessage += ' Username';
+     }
+    // if (username === null || username === '') {
+    //     isproceed = false;
+    //     errormessage += ' Fullname';
+    // }
+    if (password === null || password === '') {
+        isproceed = false;
+        errormessage += ' Password';
+    }
+    if (email === null || email === '') {
+        isproceed = false;
+        errormessage += ' Email';
+    }
+
+    if(!isproceed){
+        toast.warning(errormessage)
+    }else{
+        if(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)){
+
+        }else{
+            isproceed = false;
+            toast.warning('Please enter the valid email')
+        }
+    }
+    return isproceed;
+}
 
   const handlesubmit = (e) => {
     e.preventDefault();
     let regobj = { id, username, firstname, lastname, password, email, role };
     //console.log(regobj);
-
+    if (IsValidate()) {
     fetch("http://localhost:3030/users", {
       method:"POST",
       headers:{'content-type': 'application/json'},
       body: JSON.stringify(regobj)
     }).then((res) => {
-      toast.success('Registered successfully.')
-      navigate('/dashboard');
+      toast.success('Registered successfully.');
+      // window.location.reload();
+      setOpenFour(false);
+      
 
     }).catch((err) => {
       toast.error('Failed :' + err.message);
     });
+  }
   };
 
   const handleClickOpenFourn = () => {
@@ -62,15 +96,28 @@ export default function Users() {
 
   const deleteFournisseur = React.useCallback(
     (id) => () => {
-      setTimeout(() => {
+      fetch(`http://localhost:3030/users/${id}`, {
+        method: "DELETE",
+        headers: { 'content-type': 'application/json' },
+      })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return res.json();
+      })
+      .then((data) => {
+        toast.success('Deleted successfully.');
         setTableDataFournisseur((prevRows) =>
           prevRows.filter((row) => row.id !== id)
         );
+      })
+      .catch((err) => {
+        toast.error('Failed :' + err.message);
       });
     },
     []
   );
-
   const fetchDataFournisseur = () => {
     fetch("http://localhost:3030/users")
       .then((response) => {
@@ -84,27 +131,11 @@ export default function Users() {
 
   useEffect(() => {
     fetchDataFournisseur();
-  }, []);
+  }, [tableDataFournisseur]);
  
   const columnsFournisseur = [
-    {
-      field: "username",
-      headerName: "Nom d'utilisateur",
-      flex: 0.1,
-      align: "center",
-      renderCell: (cellValues) => {
-        // return (
-        //   <div
-        //     style={{
-        //       color: "black",
-        //       fontWeight: "bold",
-        //     }}
-        //   >
-        //     {cellValues.value}
-        //   </div>
-        // );
-      },
-    },
+ 
+    
     { field: "firstname", headerName: "Nom", flex: 0.1, align: "center" },
     { field: "lastname", headerName: "Prénom", flex: 0.1, align: "center" },
     { field: "email", headerName: "E-mail", flex: 0.1, align: "center" },
@@ -204,8 +235,8 @@ export default function Users() {
                           placeholder="saisir nom d'utilisateur"
                           autoFocus
                           required
-                          value={username}
-                          onChange={(e) => usernamechange(e.target.value)}
+                          value={id}
+                          onChange={(e) => idchange(e.target.value)}
                         />
                       </FormControl>
                     </Col>
