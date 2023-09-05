@@ -8,18 +8,28 @@ import { Row, Col } from "react-bootstrap";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import FormControl from "@mui/joy/FormControl";
-import FormLabel from "@mui/joy/FormLabel";
 import Input from "@mui/joy/Input";
 import Stack from "@mui/joy/Stack";
 import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import Select, { selectClasses } from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
+import { Select, MenuItem, FormControl, FormLabel } from "@mui/material";
+import { toast } from "react-toastify";
 
 export default function ParametreMatiereFour() {
+  const [id, idchange] = useState("");
+  const [ref, refchange] = useState("");
+  const [nom, nomchange] = useState("");
+  const [contact, contactchange] = useState("");
+
+
+const [idMatiere, idMatierechange] = useState("");
+  const [refMatiere, refMatierechange] = useState("");
+  const [type, typechange] = useState("");
+  const [fournisseur, fournisseurchange] = useState("");
+
   const [tableData, setTableData] = useState([]);
   const [tableDataFournisseur, setTableDataFournisseur] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
@@ -40,18 +50,50 @@ export default function ParametreMatiereFour() {
   };
   const deleteMatiere = React.useCallback(
     (id) => () => {
-      setTimeout(() => {
-        setTableData((prevRows) => prevRows.filter((row) => row.id !== id));
-      });
+      fetch(`http://localhost:3030/matiere1ere_rows/${id}`, {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          toast.success("Supprimé avec succès.");
+          setTableData((prevRows) =>
+            prevRows.filter((row) => row.id !== id)
+          );
+        })
+        .catch((err) => {
+          toast.error("Failed :" + err.message);
+        });
     },
     []
   );
 
   const deleteFournisseur = React.useCallback(
     (id) => () => {
-      setTimeout(() => {
-        setTableDataFournisseur((prevRows) => prevRows.filter((row) => row.id !== id));
-      });
+      fetch(`http://localhost:3030/fournisseur_rows/${id}`, {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          toast.success("Supprimé avec succès.");
+          setTableDataFournisseur((prevRows) =>
+            prevRows.filter((row) => row.id !== id)
+          );
+        })
+        .catch((err) => {
+          toast.error("Failed :" + err.message);
+        });
     },
     []
   );
@@ -62,7 +104,7 @@ export default function ParametreMatiereFour() {
       })
 
       .then((data) => {
-        setTableData(data.slice(0, 6));
+        setTableData(data);
       });
   };
 
@@ -77,19 +119,65 @@ export default function ParametreMatiereFour() {
       });
   };
 
-  useEffect(() => {
-    fetchDataFournisseur();
-    fetchData();
-    
-  }, []);
+  useEffect(
+    () => {
+      fetchDataFournisseur();
+      fetchData();
+    },
+    [tableDataFournisseur],
+    [tableData]
+  );
 
-  const handleSelectChange = event => {
+  const handleSelectChange = (event) => {
     const selectedItem = event.target.value;
     setSelectedItem(selectedItem);
   };
-  const columns = [
+  const handleOnChange = (event) => {
+    fournisseurchange(event.target.value);
+    handleSelectChange(event);
+  };
+
+  const handlesubmitFournisseur = (e) => {
+    e.preventDefault();
+    let obj = { id, ref, nom, contact };
+
+    fetch("http://localhost:3030/fournisseur_rows", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(obj),
+    })
+      .then((res) => {
+        toast.success("Fournisseur enregistrer.");
+        // window.location.reload();
+        setOpenFour(false);
+      })
+      .catch((err) => {
+        toast.error("Echoué :" + err.message);
+      });
+  };
+
+  const handlesubmitMatiere = (e) => {
+    e.preventDefault();
+    let objMat = { id, refMatiere, type, fournisseur };
+
+    fetch("http://localhost:3030/matiere1ere_rows", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(objMat),
+    })
+      .then((res) => {
+        toast.success("Matiére 1ere enregistrer.");
+        // window.location.reload();
+        setOpen(false);
+      })
+      .catch((err) => {
+        toast.error("Echoué :" + err.message);
+      });
+  };
+
+  const columnsMatiere = [
     {
-      field: "ref",
+      field: "refMatiere",
       headerName: "Référence matière",
       flex: 0.1,
       align: "center",
@@ -106,7 +194,7 @@ export default function ParametreMatiereFour() {
         );
       },
     },
-    { field: "type", headerName: "Type matière", flex: 0.1, align: "center" },
+    { field: "type", headerName: "Type", flex: 0.1, align: "center" },
     {
       field: "fournisseur",
       headerName: "Fournisseur",
@@ -148,6 +236,7 @@ export default function ParametreMatiereFour() {
       },
     },
     { field: "nom", headerName: "Nom fournisseur", flex: 0.1, align: "center" },
+    { field: "contact", headerName: "Contact", flex: 0.1, align: "center" },
     {
       field: "status",
       align: "center",
@@ -166,120 +255,7 @@ export default function ParametreMatiereFour() {
   return (
     <div style={{ height: "80vh" }}>
       <Row style={{ marginBottom: "13px" }}>
-        <Col xl="5" lg="5">
-          <div style={{ marginBottom: "10px" }}>
-            <BootstrapButton
-              onClick={handleClickOpenFourn}
-              variant="contained"
-              style={{ borderRadius: 10 }}
-              size="small"
-              startIcon={<AddRoundedIcon fontSize="small" />}
-            >
-              Ajouter Fournisseur
-            </BootstrapButton>
-            <Dialog
-              open={openFourn}
-              onClose={handleCloseFourn}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-              PaperProps={{
-                sx: {
-                  width: "100vh",
-                  height: "60vh",
-                  borderRadius: "0",
-                  paddingLeft: "15px",
-                  paddingRight: "15px",
-                },
-              }}
-            >
-              <DialogTitle id="alert-dialog-title" sx={{ marginTop: "17px" }}>
-                <Typography
-                  component="div"
-                  paragraph
-                  style={{ fontWeight: "bold" }}
-                  variant="h5"
-                  align="center"
-                >
-                  Ajouter Fournisseur
-                </Typography>
-              </DialogTitle>
-              <DialogContent>
-                <form
-                  onSubmit={(event) => {
-                    event.preventDefault();
-                    setOpen(false);
-                  }}
-                >
-                  <Stack spacing={3}>
-                    <FormControl>
-                      <FormLabel>Référence fournisseur</FormLabel>
-                      <Input
-                        sx={{
-                          "--Input-focusedThickness": "white",
-                          borderColor: "white",
-                        }}
-                        variant="soft"
-                        placeholder="saisir référence"
-                        autoFocus
-                        required
-                      />
-                    </FormControl>
-                    <FormControl>
-                      <FormLabel>Nom fournisseur</FormLabel>
-                      <Input
-                        sx={{
-                          "--Input-focusedThickness": "white",
-                          borderColor: "white",
-                        }}
-                        variant="soft"
-                        placeholder="saisir nom fournisseur"
-                        required
-                      />
-                    </FormControl>
-                    <div style={{ marginTop: "100px" }}>
-                      <DialogActions>
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          style={{
-                            backgroundColor: "#18202c",
-                            color: "white",
-                            textTransform: "none",
-                          }}
-                        >
-                          Ajouter
-                        </Button>
-                        <Button
-                          onClick={handleCloseFourn}
-                          variant="outlined"
-                          style={{
-                            backgroundColor: "white",
-                            color: "black",
-                            textTransform: "none",
-                            borderColor: "#18202c",
-                          }}
-                        >
-                          Annuler
-                        </Button>
-                      </DialogActions>
-                    </div>
-                  </Stack>
-                </form>
-              </DialogContent>
-            </Dialog>
-          </div>
-          <CustomDataGrid
-            rows={tableDataFournisseur}
-            columns={columnsFournisseur}
-            height="79vh"
-            className="custom-opp"
-            Pagination={CustomPagination}
-            rowHeight={40}
-            paginationPageSize={10}
-            borderRadius="10px"
-          />
-        </Col>
-        <Col xl="7" lg="7">
+        <Col xl="6" lg="6">
           <div style={{ marginBottom: "10px" }}>
             <BootstrapButton
               onClick={handleClickOpen}
@@ -323,9 +299,9 @@ export default function ParametreMatiereFour() {
                     setOpen(false);
                   }}
                 >
-                  <Stack spacing={3}>
+                  <Stack spacing={2}>
                     <FormControl>
-                      <FormLabel>Référence matière</FormLabel>
+                      <FormLabel sx={{ color: "black" }}>Référence matière</FormLabel>
                       <Input
                         sx={{
                           "--Input-focusedThickness": "white",
@@ -335,38 +311,12 @@ export default function ParametreMatiereFour() {
                         placeholder="saisir référence "
                         autoFocus
                         required
+                        value={refMatiere}
+                        onChange={(e) => refMatierechange(e.target.value)}
                       />
                     </FormControl>
                     <FormControl>
-                      <FormLabel>Nom fournisseur</FormLabel>
-
-                      <Select
-                      variant="soft"
-                        slotProps={{
-                          listbox: {
-                            sx: {
-                              zIndex: 1400,
-                              innerHeight: "50px",
-                              maxHeight: 150
-                              
-                            },
-                          },
-                        }}
-                        
-                        onChange={handleSelectChange}
-                        placeholder="Select fournisseur…"
-                        indicator={<KeyboardArrowRightIcon />}
-                      >
-                        {tableDataFournisseur.map(item => (
-                          <Option key={item.id} value={item.nom}>
-                            {item.nom}
-                          </Option>
-                        ))} 
-                    
-                      </Select>
-                    </FormControl>
-                    <FormControl>
-                      <FormLabel>Type matière</FormLabel>
+                      <FormLabel sx={{ color: "black" }}>Type matière</FormLabel>
                       <Input
                         sx={{
                           "--Input-focusedThickness": "white",
@@ -375,11 +325,30 @@ export default function ParametreMatiereFour() {
                         variant="soft"
                         placeholder="saisir type matière"
                         required
+                        value={type}
+                        onChange={(e) => typechange(e.target.value)}
                       />
+                    </FormControl>
+                    <FormControl
+                     sx={{ borderColor: "black" }}
+                     variant="filled"
+                     size="small" >
+                      <FormLabel sx={{ color: "black" }}>Fournisseur</FormLabel>
+                      <Select value={fournisseur} onChange={handleOnChange}>
+                        <MenuItem value="" disabled>
+                          Séléctionner fournisseur…
+                        </MenuItem>
+                        {tableDataFournisseur.map((item) => (
+                          <MenuItem key={item.id} value={item.nom}>
+                            {item.nom}
+                          </MenuItem>
+                        ))}
+                      </Select>
                     </FormControl>
 
                     <DialogActions>
                       <Button
+                      onClick={handlesubmitMatiere}
                         type="submit"
                         variant="contained"
                         style={{
@@ -410,7 +379,143 @@ export default function ParametreMatiereFour() {
           </div>
           <CustomDataGrid
             rows={tableData}
-            columns={columns}
+            columns={columnsMatiere}
+            height="79vh"
+            className="custom-opp"
+            Pagination={CustomPagination}
+            rowHeight={40}
+            paginationPageSize={10}
+            borderRadius="10px"
+          />
+        </Col>
+        <Col xl="6" lg="6">
+          <div style={{ marginBottom: "10px" }}>
+            <BootstrapButton
+              onClick={handleClickOpenFourn}
+              variant="contained"
+              style={{ borderRadius: 10 }}
+              size="small"
+              startIcon={<AddRoundedIcon fontSize="small" />}
+            >
+              Ajouter Fournisseur
+            </BootstrapButton>
+            <Dialog
+              open={openFourn}
+              onClose={handleCloseFourn}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+              PaperProps={{
+                sx: {
+                  width: "100vh",
+                  height: "60vh",
+                  borderRadius: "0",
+                  paddingLeft: "15px",
+                  paddingRight: "15px",
+                },
+              }}
+            >
+              <DialogTitle id="alert-dialog-title" sx={{ marginTop: "17px" }}>
+                <Typography
+                  component="div"
+                  paragraph
+                  style={{ fontWeight: "bold" }}
+                  variant="h5"
+                  align="center"
+                >
+                  Ajouter Fournisseur
+                </Typography>
+              </DialogTitle>
+              <DialogContent>
+                <form
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    setOpen(false);
+                  }}
+                >
+                  <Stack spacing={2}>
+                    <FormControl>
+                      <FormLabel sx={{ color: "black" }}>
+                        Référence fournisseur
+                      </FormLabel>
+                      <Input
+                        sx={{
+                          "--Input-focusedThickness": "white",
+                          borderColor: "white",
+                        }}
+                        variant="soft"
+                        placeholder="saisir référence"
+                        autoFocus
+                        required
+                        value={ref}
+                        onChange={(e) => refchange(e.target.value)}
+                      />
+                    </FormControl>
+                    <FormControl>
+                      <FormLabel sx={{ color: "black" }}>
+                        Nom fournisseur
+                      </FormLabel>
+                      <Input
+                        sx={{
+                          "--Input-focusedThickness": "white",
+                          borderColor: "white",
+                        }}
+                        variant="soft"
+                        placeholder="saisir nom fournisseur"
+                        required
+                        value={nom}
+                        onChange={(e) => nomchange(e.target.value)}
+                      />
+                    </FormControl>
+                    <FormControl>
+                      <FormLabel sx={{ color: "black" }}>Contact</FormLabel>
+                      <Input
+                        sx={{
+                          "--Input-focusedThickness": "white",
+                          borderColor: "white",
+                        }}
+                        variant="soft"
+                        placeholder="saisir contact fournisseur"
+                        required
+                        value={contact}
+                        onChange={(e) => contactchange(e.target.value)}
+                      />
+                    </FormControl>
+                    <div style={{ marginTop: "100px" }}>
+                      <DialogActions>
+                        <Button
+                          onClick={handlesubmitFournisseur}
+                          type="submit"
+                          variant="contained"
+                          style={{
+                            backgroundColor: "#18202c",
+                            color: "white",
+                            textTransform: "none",
+                          }}
+                        >
+                          Ajouter
+                        </Button>
+                        <Button
+                          onClick={handleCloseFourn}
+                          variant="outlined"
+                          style={{
+                            backgroundColor: "white",
+                            color: "black",
+                            textTransform: "none",
+                            borderColor: "#18202c",
+                          }}
+                        >
+                          Annuler
+                        </Button>
+                      </DialogActions>
+                    </div>
+                  </Stack>
+                </form>
+              </DialogContent>
+            </Dialog>
+          </div>
+          <CustomDataGrid
+            rows={tableDataFournisseur}
+            columns={columnsFournisseur}
             height="79vh"
             className="custom-opp"
             Pagination={CustomPagination}

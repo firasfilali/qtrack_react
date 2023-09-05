@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/css/ccp.css";
 import { GridToolbarContainer, GridToolbarExport } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
@@ -6,14 +6,7 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import { CustomPagination } from "../../assets/styleJs/Pagination";
 import CustomDataGrid from "../../components/CustomDataGrid";
-import {
-  PhaseColumnsCcp,
-  PhaseRows,
-  OperateurColumns,
-  OperateurRows,
-  StatiqueColumns,
-  StatiqueRows,
-} from "../../utils/data";
+
 import { Row, Col } from "react-bootstrap";
 
 function CustomToolbar() {
@@ -28,13 +21,260 @@ function CustomToolbar() {
 }
 
 export default function Ccp() {
+  const [tableData, setTableData] = useState([]);
+  const [tableDataPhase, setTableDataPhase] = useState([]);
+  const [tableDataOp, setTableDataOp] = useState([]);
+  const fetchData = () => {
+    fetch("http://localhost:3030/produits")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableData(data);
+      });
+  };
+
+  const fetchDataPhase = () => {
+    fetch("http://localhost:3030/phases")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataPhase(data);
+      });
+  };
+
+  const fetchDataOp = () => {
+    fetch("http://localhost:3030/operator_rows")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataOp(data);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+    fetchDataPhase();
+    
+  }, [tableData],[tableDataPhase]);
+
+  useEffect(() => {
+    fetchDataOp();
+    
+  }, [tableDataOp]);
+
+
+  const columnsProduit = [
+    {
+      field: "ref",
+      headerName: "Référence",
+      flex: 0.1,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "famille",
+      headerName: "Famille",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+    },
+
+    {
+      field: "taux_c",
+      headerName: "Taux de conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "taux_nc",
+      headerName: "Taux de non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+  ];
+
+  const columnsPhase = [
+    {
+      field: "phase",
+      headerName: "Phase",
+      flex: 0.1,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+     {
+      field: "taux_c",
+      headerName: "% conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+    {
+      field: "taux_nc",
+      headerName: "% non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+  ];
+
+  const columnsOp = [
+    {
+      field: "code",
+      headerName: "Code",
+      flex: 0.1,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "nom",
+      headerName: "Nom",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+    },
+
+     {
+      field: "taux_c",
+      headerName: "Taux de conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+    {
+      field: "taux_nc",
+      headerName: "Taux de non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+  ];
   return (
     <div>
       <Row>
         <Col xl="7" lg="7">
           <CustomDataGrid
-            rows={StatiqueRows}
-            columns={StatiqueColumns}
+            rows={tableData}
+            columns={columnsProduit}
             className="custom-ccp"
             Toolbar={CustomToolbar}
             height="85vh"
@@ -62,8 +302,8 @@ export default function Ccp() {
             </div>
 
             <CustomDataGrid
-              rows={PhaseRows}
-              columns={PhaseColumnsCcp}
+              rows={tableDataPhase}
+              columns={columnsPhase}
               height="250px"
               className="custom-ccp"
               hideFooter={true}
@@ -76,8 +316,8 @@ export default function Ccp() {
                 <h6>% Opérateur</h6>
               </div>
               <CustomDataGrid
-                rows={OperateurRows}
-                columns={OperateurColumns}
+                rows={tableDataOp}
+                columns={columnsOp}
                 height="250px"
                 className="custom-ccp"
                 hideFooter={true}

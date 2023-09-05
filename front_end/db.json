@@ -45,54 +45,40 @@
   ],
   "operator_rows": [
     {
-      "id": 2,
-      "code": "A200",
-      "nom": "Filali",
-      "prénom": "Firas",
-      "chipLabel": "Active",
-      "chipColor": "neutral"
+      "id": 5,
+      "code": "x365x",
+      "nom": "Operator 1",
+      "prénom": "Op",
+      "status": "Active",
+      "taux_c": "55.6 %",
+      "taux_nc": "12 %"
     },
     {
-      "id": 3,
-      "code": "A222",
-      "nom": "Filali",
-      "prénom": "Firas",
-      "chipLabel": "Active",
-      "chipColor": "neutral"
+      "id": 6,
+      "code": "x365x",
+      "nom": "Operator 2",
+      "prénom": "Op",
+      "status": "Active",
+      "taux_c": "55.6 %",
+      "taux_nc": "12 %"
     },
     {
-      "id": 4,
-      "code": "A222",
-      "nom": "Filali",
-      "prénom": "Firas",
-      "chipLabel": "Active",
-      "chipColor": "neutral"
+      "id": 7,
+      "code": "x3365x",
+      "nom": "Operator 3",
+      "prénom": "Oppp",
+      "status": "Desactive",
+      "taux_c": "55.6 %",
+      "taux_nc": "12 %"
     }
   ],
   "agentquality_rows": [
     {
-      "id": 0,
-      "code": "A411",
-      "nom": "Delpiero",
-      "prénom": "Alex",
-      "chipLabel": "Active",
-      "chipColor": "neutral"
-    },
-    {
       "id": 1,
-      "code": "A300",
-      "nom": "Nedved",
-      "prénom": "Pavel",
-      "chipLabel": "Active",
-      "chipColor": "neutral"
-    },
-    {
-      "id": 2,
-      "code": "A111",
-      "nom": "Buffon",
-      "prénom": "Gianluigi",
-      "chipLabel": "Active",
-      "chipColor": "neutral"
+      "code": "x365x",
+      "nom": "Agent 1",
+      "prénom": "Qualité",
+      "status": "Active"
     }
   ],
   "ref_rows": [
@@ -136,141 +122,38 @@
   "matiere1ere_rows": [
     {
       "id": 0,
-      "ref": "A200",
+      "refMatiere": "xxx999xxx",
       "type": "Cuire",
-      "fournisseur": "MMB"
-    },
-    {
-      "id": 1,
-      "ref": "A210",
-      "type": "Soie",
-      "fournisseur": "ABD"
-    },
-    {
-      "id": 2,
-      "ref": "A250",
-      "type": "Laine",
-      "fournisseur": "XXW"
-    },
-    {
-      "id": 3,
-      "ref": "A233",
-      "type": "Fourrure",
-      "fournisseur": "AZE"
-    },
-    {
-      "id": 4,
-      "ref": "A250",
-      "type": "Cuire",
-      "fournisseur": "SDF"
-    },
-    {
-      "id": 5,
-      "ref": "A271",
-      "type": "Fourrure",
-      "fournisseur": "AQW"
-    },
-    {
-      "id": 6,
-      "ref": "A296",
-      "type": "Laine",
-      "fournisseur": "FGH"
-    },
-    {
-      "id": 7,
-      "ref": "A225",
-      "type": "Cuire",
-      "fournisseur": "CVV"
-    },
-    {
-      "id": 8,
-      "ref": "A200",
-      "type": "Chemises",
-      "fournisseur": "MLO"
+      "fournisseur": "MMB",
+      "etat": "OK",
+      "action": "Exemple 1",
+      "typeNc": "Exemple 1",
+      "taux_c": "55.6 ",
+      "taux_nc": "12 "
     }
   ],
   "fournisseur_rows": [
     {
-      "id": 0,
-      "ref": "A200",
-      "nom": "MLO"
-    },
-    {
-      "id": 1,
-      "ref": "A200",
-      "nom": "XCV"
-    },
-    {
-      "id": 2,
-      "ref": "A200",
-      "nom": "QDS"
-    },
-    {
       "id": 3,
-      "ref": "A200",
-      "nom": "WXC"
-    },
-    {
-      "id": 4,
-      "ref": "A200",
-      "nom": "AZE"
-    },
-    {
-      "id": 5,
-      "ref": "A200",
-      "nom": "CCC"
+      "ref": "xxx888xxx",
+      "nom": "MLK",
+      "contact": "20200699",
+      "taux_c": "55.6 ",
+      "taux_nc": "12 "
     }
   ],
   "typeNC_rows": [
     {
       "id": 0,
-      "typenc": "Non-conformité de produit"
-    },
-    {
-      "id": 1,
-      "typenc": "Non-conformité de processus"
-    },
-    {
-      "id": 2,
-      "typenc": "Non-conformité réglementaire"
-    },
-    {
-      "id": 3,
-      "typenc": "Non-conformité documentaire "
-    },
-    {
-      "id": 4,
-      "typenc": "Non-conformité du fournisseur "
-    },
-    {
-      "id": 5,
-      "typenc": "Non-conformité réglementaire"
+      "typenc": "Test 1",
+      "taux_nc": "12 %"
     }
   ],
   "typeAC_rows": [
     {
-      "id": 0,
-      "typeac": "Correction immédiate"
-    },
-    {
       "id": 1,
-      "typeac": "Analyse de la cause racine"
-    },
-    {
-      "id": 2,
-      "typeac": "Modification du processus"
-    },
-    {
-      "id": 3,
-      "typeac": "Formation et sensibilisation"
-    },
-    {
-      "id": 4,
-      "typeac": "Mise à jour de la documentation"
-    },
-    {
-      "id": 5,
-      "typeac": "Mesures préventives"
+      "typeac": "Action de correction 1",
+      "agentquality": "Agent X"
     }
   ],
   "famille_rows": [
@@ -323,68 +206,26 @@
   "protoype_rows": [
     {
       "id": 0,
-      "ref": "A200",
-      "phase": "Phase 1",
-      "famille": "Pantalon"
-    },
-    {
-      "id": 1,
-      "ref": "A210",
-      "phase": "Phase 3",
-      "famille": "Jupe"
+      "refprototype": "A200",
+      "refproduit": "Phase 1",
+      "desc": "Pantalon"
     },
     {
       "id": 2,
-      "ref": "A250",
-      "phase": "Phase 2",
-      "famille": "Short"
-    },
-    {
-      "id": 3,
-      "ref": "A233",
-      "phase": "Phase 5",
-      "famille": "Jupe"
-    },
-    {
-      "id": 4,
-      "ref": "A250",
-      "phase": "Phase 2",
-      "famille": "Veste"
-    },
-    {
-      "id": 5,
-      "ref": "A271",
-      "phase": "Phase 3",
-      "famille": "Jupe"
-    },
-    {
-      "id": 6,
-      "ref": "A296",
-      "phase": "Phase 1",
-      "famille": "Pull-over"
-    },
-    {
-      "id": 7,
-      "ref": "A225",
-      "phase": "Phase 3",
-      "famille": "Jupe"
-    },
-    {
-      "id": 8,
-      "ref": "A200",
-      "phase": "Phase 6",
-      "famille": "T-Shirt"
+      "refprototype": "xxx999xxx",
+      "refproduit": "xxx999xxx",
+      "desc": "Contrôle en cours"
     }
   ],
   "users": [
     {
-      "id": "Firas12",
-      "username": "",
-      "firstname": "Firas",
-      "lastname": "Filali",
-      "password": "12345678",
-      "email": "aziz@gmail.com",
-      "role": "manager"
+      "nom": "",
+      "telephone": "555555555",
+      "prenom": "",
+      "mobile": "",
+      "email": "",
+      "adresse": "",
+      "id": "Firas12"
     },
     {
       "id": "azizba015@gmail.com",
@@ -393,7 +234,7 @@
       "lastname": "Responsable",
       "password": "12345678",
       "email": "manager@gmail.com",
-      "role": "manager"
+      "role": "admin"
     },
     {
       "id": "oumaima",
@@ -407,9 +248,59 @@
   ],
   "phases": [
     {
+      "id": 3,
+      "phase": "phase 1",
+      "phase_description": "test 1",
+      "cycle": "Nom du cycle de production",
+      "qt_controlé": 10,
+      "taux_c": "55.6 %",
+      "taux_nc": "12 %"
+    },
+    {
+      "id": 4,
+      "phase": "phase 1",
+      "phase_description": "test 1",
+      "cycle": "cycle de production xxxx",
+      "taux_c": "60.6 %",
+      "taux_nc": "30 %",
+      "qt_controlé": 40
+    },
+    {
+      "id": 5,
+      "phase": "Phase 3",
+      "phase_description": "Test 3",
+      "cycle": "Finition",
+      "taux_c": "80.3 %",
+      "taux_nc": "5.7 %",
+      "qt_controlé": 100
+    }
+  ],
+  "cycle_production": [
+    {
       "id": 1,
-      "phase": "Phase 1",
-      "description": "phase de finition"
+      "titre": "Nom du cycle de production",
+      "description": "Exemple de déscription du cycle de production",
+      "date": "2015-01-12"
+    },
+    {
+      "id": 2,
+      "titre": "Finition",
+      "description": "Test 2",
+      "date": "2023-08-20"
+    }
+  ],
+  "produits": [
+    {
+      "id": 0,
+      "ref": "xxx999xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Pantalon",
+      "taux_c": "55.6 %",
+      "taux_nc": "12 %",
+      "qt_controlé": 10,
+      "typeNc": "Exemple 1",
+      "agentquality": "Agent X",
+      "etat": "OK"
     }
   ]
 }

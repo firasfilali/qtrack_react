@@ -18,6 +18,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Typography } from "@mui/material";
+import { toast } from "react-toastify";
 
 const theme = createTheme({
   palette: {
@@ -34,7 +35,12 @@ const theme = createTheme({
 });
 
 const Data = () => {
-  const [tableData, setTableData] = useState([]);
+  const [id, idchange] = useState("");
+  const [code, codechange] = useState("");
+  const [nom, nomchange] = useState("");
+  const [prénom, prénomchange] = useState("");
+  const [status, statuschange] = useState("Active");
+   const [tableData, setTableData] = useState([]);
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -45,80 +51,6 @@ const Data = () => {
     setOpen(false);
   };
 
-  // const handleDelete = (postIndex) => {
-  //   setTableData((prevPosts) =>
-  //     prevPosts.filter((_, index) => index !== postIndex)
-  //   );
-  // };
-  // const saveRowChanges = (id, newData) => {
-  //   // Make an HTTP PUT or PATCH request to the JSON server to update the row
-  //   fetch(`http://localhost:3030/rows/${id}`, {
-  //     method: "PUT", // or "PATCH" if you prefer partial updates
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(newData),
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         // If the update was successful, update the state with the modified row
-  //         setTableData((prevData) =>
-  //           prevData.map((row) =>
-  //             row.id === id ? { ...row, ...newData } : row
-  //           )
-  //         );
-  //       } else {
-  //         // Handle the error or show a message to the user if the update failed
-  //         console.error("Failed to update row");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error occurred while updating row:", error);
-  //     });
-  // };
-
-  // const handleSave = (id, newData) => {
-  //   saveRowChanges(id, newData);
-  // };
-
-  // const handleDelete = (id) => {
-  //   // Make an HTTP DELETE request to the JSON server to delete the row
-  //   fetch(`http://localhost:3030/rows/${id}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         // If the deletion was successful, update the state by filtering out the deleted row
-  //         setTableData((prevData) => prevData.filter((row) => row.id !== id));
-  //       } else {
-  //         // Handle the error or show a message to the user if the deletion failed
-  //         console.error("Failed to delete row");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error occurred while deleting row:", error);
-  //     });
-  // };
-
-  const changeChipActive = (id) => {
-    setTableData((prevData) =>
-      prevData.map((item) =>
-        item.id === id
-          ? { ...item, chipLabel: "Active", chipColor: "neutral" }
-          : item
-      )
-    );
-  };
-
-  const changeChipDesactive = (id) => {
-    setTableData((prevData) =>
-      prevData.map((item) =>
-        item.id === id
-          ? { ...item, chipLabel: "Desactive", chipColor: "custom" }
-          : item
-      )
-    );
-  };
 
   const fetchData = () => {
     fetch("http://localhost:3030/operator_rows")
@@ -127,15 +59,101 @@ const Data = () => {
       })
 
       .then((data) => {
-        setTableData(data.slice(0, 6));
+        setTableData(data.map(item => ({
+          ...item,
+          chipLabel: item.status,
+          chipColor: item.status === 'Active' ? 'neutral' : 'custom'
+        })));
       });
+     
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [tableData]);
+  const deleteOp = React.useCallback(
+    (id) => () => {
+      fetch(`http://localhost:3030/operator_rows/${id}`, {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          toast.success("Supprimé avec succès.");
+          setTableData((prevRows) => prevRows.filter((row) => row.id !== id));
+        })
+        .catch((err) => {
+          toast.error("Failed :" + err.message);
+        });
+    },
+    []
+  );
+  const handlesubmit = (e) => {
+    e.preventDefault();
+    let obj = { id, code, nom, prénom, status};
+    //console.log(regobj);
 
-  console.log(tableData);
+    fetch("http://localhost:3030/operator_rows", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(obj),
+    })
+      .then((res) => {
+        toast.success("Cycle enregistrer.");
+        // window.location.reload();
+        setOpen(false);
+      })
+      .catch((err) => {
+        toast.error("Echoué :" + err.message);
+      });
+  };
+  const updateStatus = (id, status) => {
+    fetch(`http://localhost:3030/operator_rows/${id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ status }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          toast.success("Status updated.");
+        } else {
+          throw new Error("Failed to update status");
+        }
+      })
+      .catch((err) => {
+        toast.error("Echoué :" + err.message);
+      });
+  };
+  const changeChipActive = (id) => {
+    setTableData((prevData) =>
+      prevData.map((item) =>
+        item.id === id
+          ? { ...item, chipLabel: "Active", chipColor: "neutral", status: "Active" }
+          : item
+      )
+    );
+    updateStatus(id, "Active");
+  };
+
+  const changeChipDesactive = (id) => {
+    setTableData((prevData) =>
+      prevData.map((item) =>
+        item.id === id
+          ? { ...item, chipLabel: "Desactive", chipColor: "custom", status: "Desactive"  }
+          : item
+      )
+    );
+    updateStatus(id, "Desactive");
+  };
+
+
+
+  
   const columns = [
     {
       field: "code",
@@ -202,8 +220,14 @@ const Data = () => {
               //   chipColor: "success",
               // });
             }}
+            
           />
-        </ThemeProvider>,
+          <GridActionsCellItem
+          icon={<i className="bi bi-trash" style={{ color: "red" }}></i>}
+          label="Delete"
+          onClick={deleteOp(params.id)}
+        />
+        </ThemeProvider>
       ],
     },
   ];
@@ -264,6 +288,8 @@ const Data = () => {
                     placeholder="saisir code agent qualité"
                     autoFocus
                     required
+                    value={code}
+                    onChange={(e) => codechange(e.target.value)}
                   />
                 </FormControl>
                 <FormControl>
@@ -276,6 +302,8 @@ const Data = () => {
                     variant="soft"
                     placeholder="saisir nom"
                     required
+                    value={nom}
+                    onChange={(e) => nomchange(e.target.value)}
                   />
                 </FormControl>
                 <FormControl>
@@ -288,10 +316,13 @@ const Data = () => {
                     variant="soft"
                     placeholder="saisir prénom"
                     required
+                    value={prénom}
+                    onChange={(e) => prénomchange(e.target.value)}
                   />
                 </FormControl>
                 <DialogActions>
                   <Button
+                  onClick={handlesubmit}
                     type="submit"
                     variant="contained"
                     style={{

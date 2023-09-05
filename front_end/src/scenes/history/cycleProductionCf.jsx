@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
@@ -29,13 +29,170 @@ const theme = createTheme({
   },
 });
 
-export default function cycleProductionCf() {
+export default function CycleProductionCf() {
+  const [tableDataPhase, setTableDataPhase] = useState([]);
+  const [tableDataProduit, setTableDataProduit] = useState([]);
+
+  const fetchDataPhase = () => {
+    fetch("http://localhost:3030/phases")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataPhase(data);
+      });
+  };
+  const fetchDataProduit = () => {
+    fetch("http://localhost:3030/produits")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataProduit(data);
+      });
+  };
+  useEffect(
+    () => {
+      fetchDataPhase();
+      fetchDataProduit();
+    },
+    [tableDataPhase],
+    [tableDataProduit]
+  );
+
+  const columnsPhase = [
+    {
+      field: "phase",
+      headerName: "Phase",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "taux_c",
+      headerName: "% conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "taux_nc",
+      headerName: "% non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+  ];
+  const columnsProduit = [
+    {
+      field: "ref",
+      headerName: "Référence",
+      flex: 0.1,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "qt_controlé",
+      headerName: "Q.Controlé",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+    },
+
+    {
+      field: "taux_c",
+      headerName: "% conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "taux_nc",
+      headerName: "% Non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+  ];
   return (
     <div style={{ height: "80vh" }}>
       <Row>
-        <Col xl="4" lg="4" style={{width:"40%"}}>
+        <Col xl="4" lg="4" style={{ width: "40%" }}>
           <Autocomplete
-          
             disablePortal
             id="combo-box-demo"
             options={references}
@@ -60,7 +217,7 @@ export default function cycleProductionCf() {
           />
         </Col>
         <Col xl="3" lg="3">
-          <div className="datepicker" style={{ marginRight:"20px" }}>
+          <div className="datepicker" style={{ marginRight: "20px" }}>
             <DateRangePicker
               showOneCalendar
               format="dd/MM/yy"
@@ -77,8 +234,8 @@ export default function cycleProductionCf() {
             <span className="tttt">Cycle de production</span>
           </div>
           <CustomDataGrid
-            rows={PhaseRows}
-            columns={PhaseColumnsCcp}
+            rows={tableDataPhase}
+            columns={columnsPhase}
             height="31vh"
             className="custom-ccp"
             hideFooter={true}
@@ -88,11 +245,11 @@ export default function cycleProductionCf() {
           />
 
           <div className="ttt">
-            <span className="tttt">% Opérateurs</span>
+            <span className="tttt">Opérateurs</span>
           </div>
           <CustomDataGrid
-            rows={StatiqueRows}
-            columns={OpColumns}
+            rows={tableDataProduit}
+            columns={columnsProduit}
             hideFooter={true}
             className="custom-ccp"
             height="31vh"
@@ -102,25 +259,12 @@ export default function cycleProductionCf() {
           />
         </Col>
         <Col xl="5" lg="5">
-          <div className="ttt">
-            <span className="tttt">Contrôle finale</span>
-          </div>
-          <CustomDataGrid
-            rows={controleFinalRow}
-            columns={controleFinalCol}
-            hideFooter={true}
-            className="custom-ccp"
-            height="31vh"
-            marginBottom="10px"
-            paginationPageSize={6}
-            borderRadius="10px"
-          />
-          <div className="cadre-graph">
+          <div className="cadre-graph" style={{marginTop:"150px"}}>
             <div className="cadre-3">
               <span className="typenc-3">Graphe des risques</span>
             </div>
 
-            <Row>
+            <Row >
               <PieChart
                 series={[
                   {
@@ -135,7 +279,7 @@ export default function cycleProductionCf() {
                   "--ChartsLegend-rootOffsetY": "-20px",
                 }}
                 width={450}
-                height={210}
+                height={300}
               />
             </Row>
           </div>

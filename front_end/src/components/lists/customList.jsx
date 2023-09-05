@@ -22,7 +22,7 @@ export default function PinnedSubheaderList() {
         <li key={`item-${item}`}>
           <ul>
             <ListItem >
-              <ListItemText primary={`Item ${item}`} />
+              <ListItemText primary={`Action de correction ${item}`} />
             </ListItem>
           </ul>
         </li>

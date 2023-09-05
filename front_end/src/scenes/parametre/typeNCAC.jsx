@@ -11,11 +11,16 @@ import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import Textarea from "@mui/joy/Textarea";
 import { Col, Row } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 export default function TypeNcAc() {
   const [tableDataTypeNC, setTableDataTypeNC] = useState([]);
   const [tableDataTypeAC, setTableDataTypeAC] = useState([]);
   const [open, setOpen] = React.useState(false);
+  const [id, idchange] = useState("");
+  const [typenc, typencchange] = useState("");
+  const [typeac, typeacchange] = useState("");
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -35,24 +40,85 @@ export default function TypeNcAc() {
   };
   const deleteTypeNc = React.useCallback(
     (id) => () => {
-      setTimeout(() => {
-        setTableDataTypeNC((prevRows) =>
-          prevRows.filter((row) => row.id !== id)
-        );
-      });
+      fetch(`http://localhost:3030/typeNC_rows/${id}`, {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          toast.success("Supprimé avec succès.");
+          setTableDataTypeNC((prevRows) => prevRows.filter((row) => row.id !== id));
+        })
+        .catch((err) => {
+          toast.error("Failed :" + err.message);
+        });
     },
     []
   );
   const deleteTypeAc = React.useCallback(
     (id) => () => {
-      setTimeout(() => {
-        setTableDataTypeAC((prevRows) =>
-          prevRows.filter((row) => row.id !== id)
-        );
-      });
+      fetch(`http://localhost:3030/typeAC_rows/${id}`, {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          toast.success("Supprimé avec succès.");
+          setTableDataTypeAC((prevRows) => prevRows.filter((row) => row.id !== id));
+        })
+        .catch((err) => {
+          toast.error("Failed :" + err.message);
+        });
     },
     []
   );
+
+  const handlesubmitTypeNc = (e) => {
+    e.preventDefault();
+    let obj = { id, typenc };
+
+    fetch("http://localhost:3030/typeNC_rows", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(obj),
+    })
+      .then((res) => {
+        toast.success("Non-Conformité enregistrer.");
+        // window.location.reload();
+        setOpen(false);
+      })
+      .catch((err) => {
+        toast.error("Echoué :" + err.message);
+      });
+  };
+  const handlesubmitTypeAc = (e) => {
+    e.preventDefault();
+    let objAc = { id, typeac };
+
+    fetch("http://localhost:3030/typeAC_rows", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(objAc),
+    })
+      .then((res) => {
+        toast.success("Action de correction enregistrer.");
+        // window.location.reload();
+        setOpenAC(false);
+      })
+      .catch((err) => {
+        toast.error("Echoué :" + err.message);
+      });
+  };
 
   const fetchDataNc = () => {
     fetch("http://localhost:3030/typeNC_rows")
@@ -61,7 +127,7 @@ export default function TypeNcAc() {
       })
 
       .then((data) => {
-        setTableDataTypeNC(data.slice(0, 6));
+        setTableDataTypeNC(data);
       });
   };
   const fetchDataAc = () => {
@@ -78,7 +144,7 @@ export default function TypeNcAc() {
   useEffect(() => {
     fetchDataNc();
     fetchDataAc();
-  }, []);
+  }, [tableDataTypeNC],[tableDataTypeAC]);
 
   const columnsNc = [
     {
@@ -198,6 +264,8 @@ export default function TypeNcAc() {
                     required
                     minRows={5}
                     variant="soft"
+                    value={typenc}
+                    onChange={(e) => typencchange(e.target.value)}
                     sx={{
                       "--Textarea-focusedThickness": "white",
                       "--Textarea-minHeight": "3rem",
@@ -208,6 +276,7 @@ export default function TypeNcAc() {
                   />
                   <DialogActions sx={{ marginTop: "100px" }}>
                     <Button
+                      onClick={handlesubmitTypeNc}
                       type="submit"
                       variant="contained"
                       style={{
@@ -302,6 +371,8 @@ export default function TypeNcAc() {
                       required
                       minRows={5}
                       variant="soft"
+                      value={typeac}
+                    onChange={(e) => typeacchange(e.target.value)}
                       sx={{
                         "--Textarea-focusedThickness": "white",
                         "--Textarea-minHeight": "3rem",
@@ -311,6 +382,7 @@ export default function TypeNcAc() {
                     />
                     <DialogActions sx={{ marginTop: "100px" }}>
                       <Button
+                        onClick={handlesubmitTypeAc}
                         type="submit"
                         variant="contained"
                         style={{

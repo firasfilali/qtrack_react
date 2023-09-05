@@ -20,6 +20,7 @@ import { BrowserRouter, Route, Routes, React } from "react-router-dom";
 import Sidebar from "./scenes/global/Sidebar2";
 import Login from "./scenes/login";
 import Users from "./scenes/users/users";
+import Profil from "./scenes/users/profil";
 import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Cproduction from "./scenes/parametre/cp";
@@ -28,6 +29,7 @@ const queryClient = new QueryClient();
 
 function App() {
   const routes = [
+    { path: "/profil/646e1b36c36absj3f666c8567", component: <Profil /> },
     { path: "/login", component: <Login /> },
     { path: "/dashboard", component: <Dashboard /> },
     { path: "/cp", component: <Ccp /> },
@@ -58,6 +60,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             {routes.map((route, index) => (
+              
               <Route
                 key={index}
                 path={route.path}

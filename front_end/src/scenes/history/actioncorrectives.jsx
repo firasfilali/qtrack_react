@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
@@ -10,6 +10,7 @@ import { TypeRows, actionColumns, references, data1 } from "../../utils/data";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { DateRangePicker } from "rsuite";
 import "../../assets/css/matiere1ere.css";
+import { BarChart } from "@mui/x-charts/BarChart";
 
 const theme = createTheme({
   palette: {
@@ -20,9 +21,142 @@ const theme = createTheme({
   },
 });
 
-export default function actioncorrectives() {
+export default function Actioncorrectives() {
+  const [tableDataTypeNC, setTableDataTypeNC] = useState([]);
+  const [tableDataTypeAC, setTableDataTypeAC] = useState([]);
+  const [tableDataPro, setTableDataPro] = useState([]);
+
+  const fetchDataNc = () => {
+    fetch("http://localhost:3030/typeNC_rows")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataTypeNC(data);
+      });
+  };
+  const fetchDataAC = () => {
+    fetch("http://localhost:3030/typeAC_rows")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataTypeAC(data);
+      });
+  };
+
+  const fetchDataProduit = () => {
+    fetch("http://localhost:3030/produits")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataPro(data);
+      });
+  };
+
+  useEffect(
+    () => {
+      fetchDataNc();
+      fetchDataAC();
+    },
+    [tableDataTypeNC],
+    [tableDataTypeAC]
+  );
+
+  useEffect(
+    () => {
+      fetchDataProduit();
+    },
+    [tableDataPro],
+    []
+  );
+
+  const columnsNc = [
+    {
+      field: "typenc",
+      headerName: "Type NC",
+      flex: 0.5,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "taux_nc",
+      headerName: "% non-conformité",
+      flex: 0.5,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+  ];
+
+  const columnsAC = [
+    {
+      field: "typeac",
+      headerName: "Action de correction",
+      flex: 0.5,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "agentquality",
+      headerName: "Pilote",
+      flex: 0.5,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+  ];
+  const pData = [20, 20, 20, 10, 20, 10, 30];
+  const xLabels = ["Mai", "Juin", "Juillet", "Aug", "Sep ", "Oct ", "Nov "];
   return (
-    <div style={{height: "80vh"}}>
+    <div style={{ height: "80vh" }}>
       <Row>
         <Col xl="7" lg="7">
           <Row>
@@ -30,7 +164,7 @@ export default function actioncorrectives() {
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
-                options={references}
+                options={tableDataPro}
                 getOptionLabel={(option) => option.ref}
                 renderInput={(params) => (
                   <ThemeProvider theme={theme}>
@@ -58,7 +192,6 @@ export default function actioncorrectives() {
                   format="dd/MM/yy"
                   size="lg"
                   character=" - "
-                  
                 />
               </div>
             </Col>
@@ -68,8 +201,8 @@ export default function actioncorrectives() {
           </div>
           <CustomDataGrid
             key="conformiteTypeGrid"
-            rows={TypeRows}
-            columns={actionColumns}
+            rows={tableDataTypeNC}
+            columns={columnsNc}
             className="custom-header-action"
             hideFooter={true}
             height="32vh"
@@ -82,8 +215,8 @@ export default function actioncorrectives() {
           </div>
           <CustomDataGrid
             key="conformiteTypeGrid2"
-            rows={TypeRows}
-            columns={actionColumns}
+            rows={tableDataTypeAC}
+            columns={columnsAC}
             className="custom-header-action"
             hideFooter={true}
             height="32vh"
@@ -113,15 +246,23 @@ export default function actioncorrectives() {
                   "--ChartsLegend-rootOffsetY": "-20px",
                 }}
                 width={450}
-                height={200}
+                height={225}
               />
             </Row>
           </div>
           <div className="ttt">
             <span className="tttt">Graphe des actions correctives</span>
           </div>
+
           <div className="barchart">
-            <Row></Row>
+            <Row>
+              <BarChart
+                width={500}
+                height={350}
+                series={[{ data: pData, label: "nombre d'action", id: "pvId" }]}
+                xAxis={[{ data: xLabels, scaleType: "band" }]}
+              />
+            </Row>
           </div>
         </Col>
       </Row>

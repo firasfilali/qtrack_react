@@ -1,22 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GridToolbarContainer, GridToolbarExport } from "@mui/x-data-grid";
 import { CustomPagination } from "../../assets/styleJs/Pagination";
-import {
-  PhaseColumnsCcp,
-  PhaseRows,
-  OperateurColumns,
-  OperateurRows,
-  listOperateurs,
-  StatiqueRows,
-  OpColumns,
-} from "../../utils/data";
+
 import CustomDataGrid from "../../components/CustomDataGrid";
 import "../../assets/css/controleoperateur.css";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Row, Col} from "react-bootstrap";
-import { useState } from "react";
+
 
 const theme = createTheme({
   palette: {
@@ -40,18 +32,263 @@ function CustomToolbar() {
 
 export default function ControleOperateur() {
   const [selectedCode, setSelectedCode] = useState("");
+  const [tableDataOp, setTableDataOp] = useState([]);
+  const [tableDataPhase, setTableDataPhase] = useState([]);
+
+  const [tableDataProduit, setTableDataProduit] = useState([]);
+
 
   const handleChange = (event, newValue) => {
-    setSelectedCode(newValue ? newValue.label : "");
+    setSelectedCode(newValue ? newValue.nom : "");
   };
 
+  const fetchDataOp = () => {
+    fetch("http://localhost:3030/operator_rows")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataOp(data);
+      });
+  };
+  const fetchDataProduit = () => {
+    fetch("http://localhost:3030/produits")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataProduit(data);
+      });
+  };
+
+  const fetchDataPhase = () => {
+    fetch("http://localhost:3030/phases")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataPhase(data);
+      });
+  };
+  useEffect(() => {
+    fetchDataOp();
+    fetchDataProduit();
+    
+  }, [tableDataOp],[tableDataProduit]);
+
+  useEffect(() => {
+    fetchDataPhase();
+    
+  }, [tableDataPhase]);
+
+  const columnsOp = [
+    {
+      field: "code",
+      headerName: "Code",
+      flex: 0.1,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "nom",
+      headerName: "Nom",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+    },
+
+     {
+      field: "taux_c",
+      headerName: "Taux de conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+    {
+      field: "taux_nc",
+      headerName: "Taux de non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+  ];
+
+  const columnsProduit = [
+    {
+      field: "ref",
+      headerName: "Référence",
+      flex: 0.1,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "famille",
+      headerName: "Famille",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+    },
+
+    {
+      field: "taux_c",
+      headerName: "Taux de conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "taux_nc",
+      headerName: "Taux de non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+  ];
+  const columnsPhase = [
+    {
+      field: "phase",
+      headerName: "Phase",
+      flex: 0.1,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+     {
+      field: "taux_c",
+      headerName: "% conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+    {
+      field: "taux_nc",
+      headerName: "% non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+  ];
   return (
     <div style={{height: "80vh"}}>
       <Row>
         <Col xl="7" lg="7">
           <CustomDataGrid
-            rows={OperateurRows}
-            columns={OperateurColumns}
+            rows={tableDataOp}
+            columns={columnsOp}
             height="88vh"
             className="custom-ccp"
             Toolbar={CustomToolbar}
@@ -69,7 +306,7 @@ export default function ControleOperateur() {
                 <Autocomplete
                   disablePortal
                   id="combo-box-demo"
-                  options={listOperateurs}
+                  options={tableDataOp}
                   getOptionLabel={(option) => option.code}
                   onChange={handleChange}
                   renderInput={(params) => (
@@ -94,8 +331,8 @@ export default function ControleOperateur() {
             </div>
 
             <CustomDataGrid
-              rows={StatiqueRows}
-              columns={OpColumns}
+              rows={tableDataProduit}
+              columns={columnsProduit}
               hideFooter={true}
               className="custom-ccp"
               height="33vh"
@@ -104,8 +341,8 @@ export default function ControleOperateur() {
               borderRadius="10px"
             />
             <CustomDataGrid
-              rows={PhaseRows}
-              columns={PhaseColumnsCcp}
+              rows={tableDataPhase}
+              columns={columnsPhase}
               hideFooter={true}
               className="custom-ccp"
               height="33vh"

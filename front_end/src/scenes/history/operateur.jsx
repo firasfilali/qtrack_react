@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import CustomDataGrid from "../../components/CustomDataGrid";
 import {
@@ -25,7 +25,261 @@ const theme = createTheme({
   },
 });
 
-export default function operateur() {
+export default function Operateur() {
+  const [tableDataProduit, setTableDataProduit] = useState([]);
+  const [tableDataPhase, setTableDataPhase] = useState([]);
+  const [tableDataOp, setTableDataOp] = useState([]);
+
+
+
+  const fetchDataOp = () => {
+    fetch("http://localhost:3030/operator_rows")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataOp(data);
+      });
+  };
+
+  const fetchDataPhase = () => {
+    fetch("http://localhost:3030/phases")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataPhase(data);
+      });
+  };
+  const fetchDataProduit = () => {
+    fetch("http://localhost:3030/produits")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataProduit(data);
+      });
+  };
+  useEffect(() => {
+    fetchDataOp();
+    fetchDataPhase();
+    
+  }, [tableDataOp],[tableDataPhase]);
+  useEffect(() => {
+    fetchDataProduit();
+    
+  }, [tableDataProduit],[]);
+
+  const columnsOp = [
+    {
+      field: "code",
+      headerName: "Code",
+      flex: 0.1,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "nom",
+      headerName: "Nom",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+    },
+
+     {
+      field: "taux_c",
+      headerName: "% conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+    {
+      field: "taux_nc",
+      headerName: "% Non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+  ];
+
+  const columnsPhase = [
+    {
+      field: "phase",
+      headerName: "Phase",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "qt_controlé",
+      headerName: "Q.Controlé",
+      flex: 0.2,
+      align: "center",
+      editable: true
+    },
+
+     {
+      field: "taux_c",
+      headerName: "% conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+    {
+      field: "taux_nc",
+      headerName: "% non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+      
+    },
+  ];
+
+  const columnsProduit = [
+    {
+      field: "ref",
+      headerName: "Référence",
+      flex: 0.1,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "qt_controlé",
+      headerName: "Q.Controlé",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+    },
+
+    {
+      field: "taux_c",
+      headerName: "% conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    {
+      field: "taux_nc",
+      headerName: "% Non-conformité",
+      flex: 0.2,
+      align: "center",
+      editable: true,
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#ea2525",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+  ];
   return (
     <div style={{height: "79vh"}}>
       <Row >
@@ -39,8 +293,8 @@ export default function operateur() {
             />
           </div>
           <CustomDataGrid
-            rows={OperateurRows}
-            columns={OperateurColumns}
+            rows={tableDataOp}
+            columns={columnsOp}
             height="79vh"
             className="custom-ccp"
             Pagination={CustomPagination}
@@ -55,7 +309,7 @@ export default function operateur() {
             sx={{marginBottom: "10px"}}
             disablePortal
             id="combo-box-demo"
-            options={references}
+            options={tableDataProduit}
             getOptionLabel={(option) => option.ref}
             renderInput={(params) => (
               <ThemeProvider theme={theme}>
@@ -76,8 +330,8 @@ export default function operateur() {
             )}
           />
           <CustomDataGrid
-            rows={PhaseRows}
-            columns={PhaseColumnsCcp}
+            rows={tableDataPhase}
+            columns={columnsPhase}
             height="37vh"
             className="custom-ccp"
             hideFooter={true}
@@ -86,8 +340,8 @@ export default function operateur() {
             paginationPageSize={8}
           />
           <CustomDataGrid
-            rows={PhaseRows}
-            columns={PhaseColumnsCcp}
+            rows={tableDataProduit}
+            columns={columnsProduit}
             height="37vh"
             className="custom-ccp"
             hideFooter={true}

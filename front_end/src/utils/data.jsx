@@ -97,7 +97,7 @@ export const route = [
         url: "/reference",
         handleLinkClick: "reference",
         handleButtonClick: "Parametres - Reférence & Famille",
-        title: "Reférence / Famille",
+        title: "Produits",
       },
       {
         url: "/param_matiere_fournisseur",

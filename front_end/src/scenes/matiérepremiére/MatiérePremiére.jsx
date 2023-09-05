@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { CustomPagination } from "../../assets/styleJs/Pagination";
-import { matiereColumns, matiereRows, references } from "../../utils/data";
 import { GridToolbarContainer, GridToolbarExport } from "@mui/x-data-grid";
 import CustomDataGrid from "../../components/CustomDataGrid";
 import TextField from "@mui/material/TextField";
@@ -9,7 +8,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "../../assets/css/matiere1ere.css";
 import Card from "../../components/cards/card";
 import { Row, Col } from "react-bootstrap";
-import { useState } from "react";
 
 const theme = createTheme({
   palette: {
@@ -32,6 +30,10 @@ function CustomToolbar() {
 }
 
 export default function MatiérePremiére() {
+  const [tableData, setTableData] = useState([]);
+  const [tableDataFournisseur, setTableDataFournisseur] = useState([]);
+  const [tableDataTypeNC, setTableDataTypeNC] = useState([]);
+  const [tableDataTypeAC, setTableDataTypeAC] = useState([]);
   const [selectedValues, setSelectedValues] = useState({
     selectedReference: "",
     selectedEtat: "",
@@ -58,18 +60,106 @@ export default function MatiérePremiére() {
       ...prevState,
       selectedRef: newValue ? newValue.ref : "",
       selectedFamille: newValue ? newValue.famille : "",
-      selectedUp: newValue ? newValue.up : "",
-      selectedDown: newValue ? newValue.down : "",
+      selectedUp: newValue ? newValue.taux_c : "",
+      selectedDown: newValue ? newValue.taux_nc : "",
     }));
   };
+  const fetchData = () => {
+    fetch("http://localhost:3030/matiere1ere_rows")
+      .then((response) => {
+        return response.json();
+      })
 
+      .then((data) => {
+        setTableData(data);
+      });
+  };
+
+  const fetchDataFournisseur = () => {
+    fetch("http://localhost:3030/fournisseur_rows")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataFournisseur(data.slice(0, 6));
+      });
+  };
+
+  useEffect(
+    () => {
+      fetchDataFournisseur();
+      fetchData();
+    },
+    [tableDataFournisseur],
+    [tableData]
+  );
+  const fetchDataNc = () => {
+    fetch("http://localhost:3030/typeNC_rows")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataTypeNC(data.slice(0, 6));
+      });
+  };
+  const fetchDataAc = () => {
+    fetch("http://localhost:3030/typeAC_rows")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableDataTypeAC(data.slice(0, 6));
+      });
+  };
+  useEffect(() => {
+    fetchDataNc();
+    fetchDataAc();
+  }, [tableDataTypeNC],[tableDataTypeAC]);
+
+  const columnsMatiere = [
+    {
+      field: "refMatiere",
+      headerName: "Référence",
+      flex: 0.1,
+      align: "center",
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    { field: "type", headerName: "Type", flex: 0.1, align: "center" },
+    {
+      field: "fournisseur",
+      headerName: "Fournisseur",
+      flex: 0.1,
+      align: "center",
+    },
+    {
+      field: "etat",
+      headerName: "Etat",
+      flex: 0.1,
+      align: "center",
+    },
+    
+  ];
   return (
     <div>
       <Row>
         <Col xl="7" lg="7">
           <CustomDataGrid
-            rows={matiereRows}
-            columns={matiereColumns}
+            rows={tableData}
+            columns={columnsMatiere}
             height="85vh"
             className="custom-ccp"
             Toolbar={CustomToolbar}
@@ -86,8 +176,8 @@ export default function MatiérePremiére() {
               <Autocomplete
                 disablePortal
                 id="combo-box-demo"
-                options={references}
-                getOptionLabel={(option) => option.ref}
+                options={tableData}
+                getOptionLabel={(option) => option.refMatiere}
                 onChange={handleChange}
                 renderInput={(params) => (
                   <ThemeProvider theme={theme}>
@@ -136,15 +226,15 @@ export default function MatiérePremiére() {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={references}
-              getOptionLabel={(option) => option.ref}
+              options={tableDataFournisseur}
+              getOptionLabel={(option) => option.nom}
               onChange={handleEvent}
               className="autocomplete"
               renderInput={(params) => (
                 <ThemeProvider theme={theme}>
                   <TextField
                     {...params}
-                    label="Insérer Référence"
+                    label="Insérer Fournisseur"
                     color="custom"
                     className="autocomple"
                   />

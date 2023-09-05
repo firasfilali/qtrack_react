@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
 import CustomDataGrid from "../../components/CustomDataGrid";
 import {
@@ -14,6 +14,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import SearchIcon from "@mui/icons-material/Search";
 import "../../assets/css/matiere1ere.css";
 import up from "../../assets/up.png";
+import down from "../../assets/down.png";
 import { PieChart } from "@mui/x-charts/PieChart";
 import InputAdornment from "@mui/material/InputAdornment";
 import { DateRangePicker } from 'rsuite';
@@ -32,7 +33,84 @@ const theme = createTheme({
   },
 });
 
-export default function history() {
+export default function History() {
+  const [tableData, setTableData] = useState([]);
+  const [selectedValues, setSelectedValues] = useState({
+    selectedTauxConf: "",
+    selectedTauxNonConf: "",
+    
+  });
+
+  const handleChange = (event, newValue) => {
+    setSelectedValues((prevState) => ({
+      ...prevState,
+      selectedTauxConf: newValue ? newValue.taux_c : "",
+      selectedTauxNonConf: newValue ? newValue.taux_nc : "",
+         }));
+  };
+  const fetchData = () => {
+    fetch("http://localhost:3030/matiere1ere_rows")
+      .then((response) => {
+        return response.json();
+      })
+
+      .then((data) => {
+        setTableData(data);
+      });
+  };
+  useEffect(
+    () => {
+      fetchData();
+    },
+    [],
+    [tableData]
+  );
+  const columnsMatiere = [
+    {
+      field: "refMatiere",
+      headerName: "Référence",
+      flex: 0.1,
+      align: "center",
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "black",
+              fontWeight: "bold",
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    { field: "type", headerName: "Type", flex: 0.1, align: "center" },
+    {
+      field: "fournisseur",
+      headerName: "Fournisseur",
+      flex: 0.1,
+      align: "center",
+    },
+    {
+      field: "etat",
+      headerName: "Etat",
+      flex: 0.1,
+      align: "center",
+      renderCell: (cellValues) => {
+        return (
+          <div
+            style={{
+              color: "#2bc48a",
+              
+            }}
+          >
+            {cellValues.value}
+          </div>
+        );
+      },
+    },
+    
+  ];
   return (
     <div style={{height: "82vh"}}>
       <Row>
@@ -42,8 +120,8 @@ export default function history() {
           <DateRangePicker showOneCalendar format="dd/MM/yy" size="lg" character=" - "/>
           </div>
           <CustomDataGrid
-            rows={matiereRows}
-            columns={matiereColumns}
+            rows={tableData}
+            columns={columnsMatiere}
             height="75vh"
             className="custom-ccp"
             Pagination={CustomPagination}
@@ -56,8 +134,9 @@ export default function history() {
           <Autocomplete
             disablePortal
             id="combo-box-demo"
-            options={references}
-            getOptionLabel={(option) => option.ref}
+            options={tableData}
+            getOptionLabel={(option) => option.refMatiere}
+            onChange={handleChange}
             renderInput={(params) => (
               <ThemeProvider theme={theme}>
                 <TextField
@@ -90,13 +169,13 @@ export default function history() {
               <Col xl="6" lg="6" className="card-cont">
                 <img src={up} className="img" />
                 <div style={{ marginLeft: "10px", marginTop: "10px" }}>
-                  <p className="up">+3.48%</p>
+                  <p className="up"> +{selectedValues.selectedTauxConf || "__"}%</p>
                 </div>
               </Col>
               <Col xl="6" lg="6" className="card-cont">
-                <img src={up} className="img" />
+                <img src={down} className="img" />
                 <div style={{ marginLeft: "10px", marginTop: "10px" }}>
-                  <p className="up">+3.48%</p>
+                  <p className="up">-{selectedValues.selectedTauxNonConf || "__"}%</p>
                 </div>
               </Col>
             </Row>
@@ -120,7 +199,7 @@ export default function history() {
                 "--ChartsLegend-rootOffsetY": "-20px",
               }}
               width={450}
-              height={200}
+              height={325}
             /></Row>
           </div>
         </Col>

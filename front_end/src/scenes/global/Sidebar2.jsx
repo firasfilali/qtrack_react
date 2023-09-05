@@ -40,6 +40,7 @@ function Sidebar(props) {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
+    usenavigate('/profil/646e1b36c36absj3f666c8567');
     setAnchorEl(null);
   };
 

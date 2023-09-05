@@ -18,6 +18,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { toast } from "react-toastify";
+
 import "../../assets/css/sidebar.css";
 
 const theme = createTheme({
@@ -37,6 +39,11 @@ const theme = createTheme({
 export default function QualityAgent() {
   const [tableData, setTableData] = useState([]);
   const [open, setOpen] = React.useState(false);
+  const [id, idchange] = useState("");
+  const [code, codechange] = useState("");
+  const [nom, nomchange] = useState("");
+  const [prénom, prénomchange] = useState("");
+  const [status, statuschange] = useState("Active");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -50,20 +57,22 @@ export default function QualityAgent() {
     setTableData((prevData) =>
       prevData.map((item) =>
         item.id === id
-          ? { ...item, chipLabel: "Active", chipColor: "neutral" }
+          ? { ...item, chipLabel: "Active", chipColor: "neutral", status: "Active" }
           : item
       )
     );
+    updateStatus(id, "Active");
   };
 
   const changeChipDesactive = (id) => {
     setTableData((prevData) =>
       prevData.map((item) =>
         item.id === id
-          ? { ...item, chipLabel: "Desactive", chipColor: "custom" }
+          ? { ...item, chipLabel: "Desactive", chipColor: "custom", status: "Desactive"  }
           : item
       )
     );
+    updateStatus(id, "Desactive");
   };
   const fetchData = () => {
     fetch("http://localhost:3030/agentquality_rows")
@@ -72,15 +81,77 @@ export default function QualityAgent() {
       })
 
       .then((data) => {
-        setTableData(data.slice(0, 6));
+        setTableData(data.map(item => ({
+          ...item,
+          chipLabel: item.status,
+          chipColor: item.status === 'Active' ? 'neutral' : 'custom'
+        })));
       });
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [tableData]);
 
-  console.log(tableData);
+  const deleteAgent = React.useCallback(
+    (id) => () => {
+      fetch(`http://localhost:3030/agentquality_rows/${id}`, {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          toast.success("Supprimé avec succès.");
+          setTableData((prevRows) => prevRows.filter((row) => row.id !== id));
+        })
+        .catch((err) => {
+          toast.error("Failed :" + err.message);
+        });
+    },
+    []
+  );
+
+  const handlesubmit = (e) => {
+    e.preventDefault();
+    let obj = { id, code, nom, prénom, status};
+    //console.log(regobj);
+
+    fetch("http://localhost:3030/agentquality_rows", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(obj),
+    })
+      .then((res) => {
+        toast.success("Cycle enregistrer.");
+        // window.location.reload();
+        setOpen(false);
+      })
+      .catch((err) => {
+        toast.error("Echoué :" + err.message);
+      });
+  };
+  const updateStatus = (id, status) => {
+    fetch(`http://localhost:3030/agentquality_rows/${id}`, {
+      method: "PATCH",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ status }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          toast.success("Status updated.");
+        } else {
+          throw new Error("Failed to update status");
+        }
+      })
+      .catch((err) => {
+        toast.error("Echoué :" + err.message);
+      });
+  };
 
   const columns = [
     {
@@ -141,6 +212,11 @@ export default function QualityAgent() {
               changeChipDesactive(params.row.id);
             }}
           />
+          <GridActionsCellItem
+          icon={<i className="bi bi-trash" style={{ color: "red" }}></i>}
+          label="Delete"
+          onClick={deleteAgent(params.id)}
+        />
         </ThemeProvider>,
       ],
     },
@@ -179,7 +255,7 @@ export default function QualityAgent() {
               variant="h5"
               align="center"
             >
-              Ajouter Agent Qualité{" "}
+              Ajouter Agent Qualité
             </Typography>
           </DialogTitle>
           <DialogContent>
@@ -201,6 +277,8 @@ export default function QualityAgent() {
                     placeholder="saisir code agent qualité"
                     autoFocus
                     required
+                    value={code}
+                    onChange={(e) => codechange(e.target.value)}
                   />
                 </FormControl>
                 <FormControl>
@@ -213,6 +291,8 @@ export default function QualityAgent() {
                     variant="soft"
                     placeholder="saisir nom"
                     required
+                    value={nom}
+                    onChange={(e) => nomchange(e.target.value)}
                   />
                 </FormControl>
                 <FormControl>
@@ -225,10 +305,13 @@ export default function QualityAgent() {
                     variant="soft"
                     placeholder="saisir prénom"
                     required
+                    value={prénom}
+                    onChange={(e) => prénomchange(e.target.value)}
                   />
                 </FormControl>
                 <DialogActions>
                   <Button
+                  onClick={handlesubmit}
                     type="submit"
                     variant="contained"
                     style={{
