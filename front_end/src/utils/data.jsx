@@ -117,12 +117,7 @@ export const route = [
       handleButtonClick: "Parametres - Opérateur",
       title: "Opérateur",
     },
-    {
-      url: "/quality_agent",
-      handleLinkClick: "quality_agen",
-      handleButtonClick: "Parametres - Agent quality",
-      title: "Agent qualité",
-    },
+ 
     {
       url: "/prototype",
       handleLinkClick: "prototype",
@@ -138,6 +133,13 @@ export const route = [
     handleButtonClick: "Utilisateurs",
     title: "Utilisateurs",
   },
+  {
+    url: "/controle_chaine",
+    handleLinkClick: "controle_chaine",
+    handleButtonClick: "Contrôle à la chaine ",
+    title: "Contrôle à la chaine",
+  },
+
 ];
 
 export const data = [

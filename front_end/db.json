@@ -45,31 +45,18 @@
   ],
   "operator_rows": [
     {
-      "id": 5,
+      "id": 1,
       "code": "x365x",
-      "nom": "Operator 1",
-      "prénom": "Op",
-      "status": "Active",
-      "taux_c": "55.6 %",
-      "taux_nc": "12 %"
+      "nom": "Opérateur 1",
+      "prénom": "Slim",
+      "status": "Active"
     },
     {
-      "id": 6,
+      "id": 2,
       "code": "x365x",
-      "nom": "Operator 2",
-      "prénom": "Op",
-      "status": "Active",
-      "taux_c": "55.6 %",
-      "taux_nc": "12 %"
-    },
-    {
-      "id": 7,
-      "code": "x3365x",
-      "nom": "Operator 3",
-      "prénom": "Oppp",
-      "status": "Desactive",
-      "taux_c": "55.6 %",
-      "taux_nc": "12 %"
+      "nom": "Opérateur 2",
+      "prénom": "Mohamed",
+      "status": "Desactive"
     }
   ],
   "agentquality_rows": [
@@ -121,25 +108,18 @@
   ],
   "matiere1ere_rows": [
     {
-      "id": 0,
-      "refMatiere": "xxx999xxx",
+      "id": 1,
+      "refMatiere": "xxx777xxx",
       "type": "Cuire",
-      "fournisseur": "MMB",
-      "etat": "OK",
-      "action": "Exemple 1",
-      "typeNc": "Exemple 1",
-      "taux_c": "55.6 ",
-      "taux_nc": "12 "
+      "fournisseur": "Fournisseur X"
     }
   ],
   "fournisseur_rows": [
     {
-      "id": 3,
-      "ref": "xxx888xxx",
-      "nom": "MLK",
-      "contact": "20200699",
-      "taux_c": "55.6 ",
-      "taux_nc": "12 "
+      "id": 1,
+      "ref": "xx200xx",
+      "nom": "Fournisseur X",
+      "contact": "Adresse ou numéro téléphone  "
     }
   ],
   "typeNC_rows": [
@@ -205,102 +185,57 @@
   ],
   "protoype_rows": [
     {
-      "id": 0,
-      "refprototype": "A200",
-      "refproduit": "Phase 1",
-      "desc": "Pantalon"
-    },
-    {
-      "id": 2,
-      "refprototype": "xxx999xxx",
+      "id": 1,
+      "refprototype": "xxx555xxx",
       "refproduit": "xxx999xxx",
-      "desc": "Contrôle en cours"
+      "desc": "Spécification technique"
     }
   ],
   "users": [
     {
-      "nom": "",
-      "telephone": "555555555",
-      "prenom": "",
-      "mobile": "",
-      "email": "",
-      "adresse": "",
-      "id": "Firas12"
-    },
-    {
-      "id": "azizba015@gmail.com",
+      "id": "Firas123",
       "username": "",
-      "firstname": "Manager1",
-      "lastname": "Responsable",
-      "password": "12345678",
-      "email": "manager@gmail.com",
+      "firstname": "Filali",
+      "lastname": "Firas",
+      "password": "000000",
+      "email": "firas@gmail.com",
       "role": "admin"
     },
     {
-      "id": "oumaima",
+      "id": "Alex",
       "username": "",
-      "firstname": "Manager1",
-      "lastname": "Responsable",
-      "password": "0000",
-      "email": "manager@gmail.com",
-      "role": "admin"
+      "firstname": "Del Piero",
+      "lastname": "Alessandro ",
+      "password": "101010",
+      "email": "Alex@gmail.com",
+      "phone": "72365848",
+      "mobile": "27405858",
+      "adresse": "Torino, Italie",
+      "role": "manager"
     }
   ],
   "phases": [
     {
-      "id": 3,
-      "phase": "phase 1",
-      "phase_description": "test 1",
-      "cycle": "Nom du cycle de production",
-      "qt_controlé": 10,
-      "taux_c": "55.6 %",
-      "taux_nc": "12 %"
-    },
-    {
-      "id": 4,
-      "phase": "phase 1",
-      "phase_description": "test 1",
-      "cycle": "cycle de production xxxx",
-      "taux_c": "60.6 %",
-      "taux_nc": "30 %",
-      "qt_controlé": 40
-    },
-    {
-      "id": 5,
-      "phase": "Phase 3",
-      "phase_description": "Test 3",
-      "cycle": "Finition",
-      "taux_c": "80.3 %",
-      "taux_nc": "5.7 %",
-      "qt_controlé": 100
+      "id": 1,
+      "phase": "Phase x",
+      "phase_description": "Exemple de phase attaché à un process",
+      "cycle": "Process 1"
     }
   ],
   "cycle_production": [
     {
       "id": 1,
-      "titre": "Nom du cycle de production",
-      "description": "Exemple de déscription du cycle de production",
-      "date": "2015-01-12"
-    },
-    {
-      "id": 2,
-      "titre": "Finition",
-      "description": "Test 2",
-      "date": "2023-08-20"
+      "titre": "Process 1",
+      "description": "Exemple de process",
+      "date": "2023-08-17"
     }
   ],
   "produits": [
     {
-      "id": 0,
+      "id": 1,
       "ref": "xxx999xxx",
       "matiere1ere": "Cuire",
-      "famille": "Pantalon",
-      "taux_c": "55.6 %",
-      "taux_nc": "12 %",
-      "qt_controlé": 10,
-      "typeNc": "Exemple 1",
-      "agentquality": "Agent X",
-      "etat": "OK"
+      "famille": "Pantalon"
     }
   ]
 }

@@ -87,7 +87,7 @@ export default function Reference() {
       })
 
       .then((data) => {
-        setTableData(data.slice(0, 6));
+        setTableData(data);
       });
   };
   const fetchDataMatiere = () => {

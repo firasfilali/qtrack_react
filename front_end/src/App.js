@@ -24,12 +24,13 @@ import Profil from "./scenes/users/profil";
 import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Cproduction from "./scenes/parametre/cp";
+import ControleChaine from "./scenes/controleQualité/controleChaine";
 
 const queryClient = new QueryClient();
 
 function App() {
   const routes = [
-    { path: "/profil/646e1b36c36absj3f666c8567", component: <Profil /> },
+    { path: "/profil/6", component: <Profil /> },
     { path: "/login", component: <Login /> },
     { path: "/dashboard", component: <Dashboard /> },
     { path: "/cp", component: <Ccp /> },
@@ -51,6 +52,7 @@ function App() {
     { path: "/prototype", component: <Prototype /> },
     { path: "/cproduction", component: <Cproduction /> },
     { path: "/users", component: <Users /> },
+    { path: "/controle_chaine", component: <ControleChaine /> },
   ];
 
   return (

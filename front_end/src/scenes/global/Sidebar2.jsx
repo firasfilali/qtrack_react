@@ -36,19 +36,23 @@ const drawerWidth = 270;
 function Sidebar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openAccount = Boolean(anchorEl);
+  const usenavigate = useNavigate();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    usenavigate('/profil/646e1b36c36absj3f666c8567');
-    setAnchorEl(null);
+  const handleProfil = () => {
+    usenavigate('/profil/6');
+    
   };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  }
 
   const handleLogout = () => {
     usenavigate('/login');
       };
 
-  const usenavigate = useNavigate();
 
   const [showSubMenu, setShowSubMenu] = useState(false);
   const [showSubMenuParam, setShowSubMenuParam] = useState(false);
@@ -262,7 +266,7 @@ function Sidebar(props) {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleProfil}>
           <Avatar /> Profile
         </MenuItem>
         <Divider />

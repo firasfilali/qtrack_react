@@ -314,6 +314,12 @@ export default function Users() {
                           label="Manager"
                           onChange={(e) => rolechange(e.target.value)}
                         />
+                            <FormControlLabel
+                          value="agent"
+                          control={<Radio checked={role === 'agent'} />}
+                          label="Agent"
+                          onChange={(e) => rolechange(e.target.value)}
+                        />
                       </RadioGroup>
                     </FormControl>
                   </Row>

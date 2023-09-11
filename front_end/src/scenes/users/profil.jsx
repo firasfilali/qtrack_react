@@ -75,7 +75,7 @@ export default function Profil() {
     //     fetchUserData();
     // }, [formData]);
     useEffect(() => {
-        fetch("http://localhost:3030/users/Firas12")
+        fetch("http://localhost:3030/users/Alex")
             .then(response => response.json())
             .then(data => {
                 setUser(data);
@@ -88,7 +88,7 @@ export default function Profil() {
         event.preventDefault();
     
         try {
-            const response = await fetch('http://localhost:3030/users/Firas12', {
+            const response = await fetch('http://localhost:3030/users/Alex', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -137,10 +137,9 @@ export default function Profil() {
        >
          Manager
        </Chip>
-       <Typography level="title-lg">Josephine Blanton</Typography>
+       <Typography level="title-lg">{user.lastname} {user.firstname} </Typography>
        <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
-         Hello, this is my bio and I am a PRO member of MUI. I am a developer and I
-         love to code.
+         Hello, this is my bio.
        </Typography>
        <Box
          sx={{
@@ -168,7 +167,7 @@ export default function Profil() {
      <CardOverflow sx={{ bgcolor: 'background.level1' }}>
        <CardActions buttonFlex="1">
        <ButtonGroup variant="outlined" sx={{ bgcolor: 'background.surface' }}>
-           <Button onClick={handleClickOpenFourn}>Edit profil</Button>
+           <Button onClick={handleClickOpenFourn}>Modifier profil</Button>
            <Dialog
             open={openFourn}
             onClose={handleCloseFourn}
@@ -370,7 +369,7 @@ export default function Profil() {
       }}
    >
        <Typography >
-       <span style={{fontWeight:'bold'}}>Nom et prénom :</span>   <span> {user.nom}</span><span> {user.prenom}</span>
+       <span style={{fontWeight:'bold'}}>Nom complet :</span>   <span>{user.lastname} {user.firstname} </span>
        </Typography>
     <Divider orientation="horizontal" sx={{height:'5px', backgroundColor: '#000000'}} />
     <Typography>
@@ -378,7 +377,7 @@ export default function Profil() {
        </Typography>
        <Divider orientation="horizontal" sx={{height:'5px', backgroundColor: '#000000'}} />
        <Typography>
-       <span style={{fontWeight:'bold'}}>Phone :  </span>  <span>{user.telephone}</span>
+       <span style={{fontWeight:'bold'}}>Phone :  </span>  <span>{user.phone}</span>
        </Typography>
        <Divider orientation="horizontal" sx={{height:'5px', backgroundColor: '#000000'}} />
        <Typography>

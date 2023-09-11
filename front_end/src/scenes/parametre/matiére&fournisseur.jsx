@@ -289,7 +289,7 @@ const [idMatiere, idMatierechange] = useState("");
                   variant="h5"
                   align="center"
                 >
-                  Ajouter Matière 1ere
+                  Ajouter Matière première
                 </Typography>
               </DialogTitle>
               <DialogContent>
