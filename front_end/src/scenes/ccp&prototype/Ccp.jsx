@@ -25,7 +25,7 @@ export default function Ccp() {
   const [tableDataPhase, setTableDataPhase] = useState([]);
   const [tableDataOp, setTableDataOp] = useState([]);
   const fetchData = () => {
-    fetch("http://localhost:3030/produits")
+    fetch("http://localhost:3030/controle")
       .then((response) => {
         return response.json();
       })
@@ -71,7 +71,7 @@ export default function Ccp() {
 
   const columnsProduit = [
     {
-      field: "ref",
+      field: "ref_cntrl",
       headerName: "Référence",
       flex: 0.1,
       align: "center",
@@ -98,7 +98,7 @@ export default function Ccp() {
     },
 
     {
-      field: "taux_c",
+      field: "conforme",
       headerName: "Taux de conformité",
       flex: 0.2,
       align: "center",
@@ -117,7 +117,7 @@ export default function Ccp() {
       },
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "Taux de non-conformité",
       flex: 0.2,
       align: "center",
@@ -139,7 +139,7 @@ export default function Ccp() {
 
   const columnsPhase = [
     {
-      field: "phase",
+      field: "phase_cntrl",
       headerName: "Phase",
       flex: 0.1,
       align: "center",
@@ -158,7 +158,7 @@ export default function Ccp() {
       },
     },
      {
-      field: "taux_c",
+      field: "conforme",
       headerName: "% conformité",
       flex: 0.2,
       align: "center",
@@ -178,7 +178,7 @@ export default function Ccp() {
       
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "% non-conformité",
       flex: 0.2,
       align: "center",
@@ -228,7 +228,7 @@ export default function Ccp() {
     },
 
      {
-      field: "taux_c",
+      field: "conforme",
       headerName: "Taux de conformité",
       flex: 0.2,
       align: "center",
@@ -248,7 +248,7 @@ export default function Ccp() {
       
     },
     {
-      field: "taux_nc",
+      field: "nConforme",
       headerName: "Taux de non-conformité",
       flex: 0.2,
       align: "center",
@@ -302,7 +302,7 @@ export default function Ccp() {
             </div>
 
             <CustomDataGrid
-              rows={tableDataPhase}
+              rows={tableData}
               columns={columnsPhase}
               height="250px"
               className="custom-ccp"

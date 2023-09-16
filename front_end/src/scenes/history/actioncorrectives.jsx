@@ -153,7 +153,7 @@ export default function Actioncorrectives() {
       },
     },
   ];
-  const pData = [20, 20, 20, 10, 20, 10, 30];
+  const pData = [10, 20, 15, 10, 2, 0, 0];
   const xLabels = ["Mai", "Juin", "Juillet", "Aug", "Sep ", "Oct ", "Nov "];
   return (
     <div style={{ height: "80vh" }}>

@@ -1,5 +1,6 @@
 import * as React from "react";
 import "../../assets/css/sidebar.css";
+import Badge from '@mui/joy/Badge';
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -9,7 +10,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneRoundedIcon from "@mui/icons-material/NotificationsNoneRounded";
-import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
 import { Nav } from "react-bootstrap";
 import { NavLink, Link, useLocation,useNavigate } from "react-router-dom";
 import { useState, useContext, memo, Fragment } from "react";
@@ -27,7 +27,6 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 
@@ -56,7 +55,7 @@ function Sidebar(props) {
 
   const [showSubMenu, setShowSubMenu] = useState(false);
   const [showSubMenuParam, setShowSubMenuParam] = useState(false);
-
+  const [openNotif, setOpenNotif] = React.useState(false);
   const [activeLink, setActiveLink] = useState("dashboard");
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -83,10 +82,10 @@ function Sidebar(props) {
 
      <Nav
 			as="div"
-			className="flex-column">
+			className="flex-column" style={{marginTop:'10px'}}>
 			{route.map((item, index) => (
 				<React.Fragment key={index}>
-					{item.title === "Utilisateurs" && localStorage.getItem('role') !== 'admin' ? null : item.title === "Historiques et indicateurs" ? ( // Check if it's the "Historique" NavLink
+					{item.title === "Utilisateurs" && localStorage.getItem('role') !== 'admin' ? null : item.title === "Indicateurs" ? ( // Check if it's the "Historique" NavLink
 						<>
 							<NavLink
 								to={item.url}
@@ -216,7 +215,11 @@ function Sidebar(props) {
             />
           </Search>
           <NotifIconWrapper sx={{ marginRight: "20px" }}>
+            <IconButton>
+            <Badge badgeContent={1} badgeInset="-20%">
             <NotificationsNoneRoundedIcon />
+            </Badge>
+            </IconButton>
           </NotifIconWrapper>
           <NotifIconWrapper>
           <Tooltip title="Account settings">

@@ -31,7 +31,7 @@ const Controle = () => {
   const [tableData, setTableData] = useState([]);
   const [tableDataTypeNC, setTableDataTypeNC] = useState([]);
   const fetchData = () => {
-    fetch("http://localhost:3030/produits")
+    fetch("http://localhost:3030/controle")
       .then((response) => {
         return response.json();
       })
@@ -60,7 +60,7 @@ const Controle = () => {
 
   const columnsProduit = [
     {
-      field: "ref",
+      field: "ref_cntrl",
       headerName: "Référence",
       flex: 0.1,
       align: "center",
@@ -87,7 +87,7 @@ const Controle = () => {
     },
 
     {
-      field: "taux_c",
+      field: "conforme",
       headerName: "Taux de conformité",
       flex: 0.2,
       align: "center",
@@ -106,7 +106,7 @@ const Controle = () => {
       },
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "Taux de non-conformité",
       flex: 0.2,
       align: "center",
@@ -127,7 +127,7 @@ const Controle = () => {
   ];
   const columnsQuantity = [
     {
-      field: "qt_controlé",
+      field: "qt_cntrl",
       headerName: "Quantité contrôlé",
       flex: 0.1,
       align: "center",
@@ -146,7 +146,7 @@ const Controle = () => {
       },
     },
     {
-      field: "taux_c",
+      field: "conforme",
       headerName: "Taux de conformité",
       flex: 0.2,
       align: "center",
@@ -165,7 +165,7 @@ const Controle = () => {
       },
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "Taux de non-conformité",
       flex: 0.2,
       align: "center",

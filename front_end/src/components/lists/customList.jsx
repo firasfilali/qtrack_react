@@ -11,14 +11,14 @@ export default function PinnedSubheaderList() {
         width: "100%",
         bgcolor: "white",
         overflow: "auto",
-        maxHeight: 200,
+        height: 200,
         borderRadius: "20px",
 
         "& ul": { padding: 0 },
       }}
       subheader={<li />}
     >
-      {[0, 1, 2, 3,4,5,6].map((item) => (
+      {[1].map((item) => (
         <li key={`item-${item}`}>
           <ul>
             <ListItem >

@@ -15,7 +15,7 @@
 
 .span2{
     font-size: 18px;
-    font-weight: bold;
+    
     
 }
 .span3{
@@ -85,17 +85,10 @@
 }
 .type-confir2{
    
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 10px;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    margin-left: 616px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    width: 25vh;
+    display: flex;
+  justify-content: flex-end;  
+  align-items: flex-end; 
+  margin-right: 50px; 
    
     
 }

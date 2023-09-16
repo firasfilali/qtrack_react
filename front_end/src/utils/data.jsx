@@ -1,8 +1,8 @@
 import "../assets/css/customColumns.css";
 
 export const data1 = [
-  { id: 0, value: 10, label: "Non conformité", color: "#F90219" },
-  { id: 1, value: 15, label: "Conformité", color: "#2DCE98" },
+  { id: 0, value: 5, label: "Non conformité", color: "#F90219" },
+  { id: 1, value: 5, label: "Conformité", color: "#2DCE98" },
 ];
 
 export const dataPieChart = [
@@ -22,7 +22,7 @@ export const route = [
     url: "/cp",
     handleLinkClick: "cp",
     handleButtonClick: "CP & prototype",
-    title: "CP & prototype",
+    title: "Cycle production",
   },
   {
     url: "/controle",
@@ -52,7 +52,7 @@ export const route = [
     url: "/matiere_1ere&fournisseur",
     handleLinkClick: "historique",
     handleButtonClick: "Historiques et indicateurs",
-    title: "Historiques et indicateurs",
+    title: "Indicateurs",
     children: [
       {
         url: "/matiere_1ere&fournisseur",
@@ -133,12 +133,36 @@ export const route = [
     handleButtonClick: "Utilisateurs",
     title: "Utilisateurs",
   },
-  {
-    url: "/controle_chaine",
-    handleLinkClick: "controle_chaine",
-    handleButtonClick: "Contrôle à la chaine ",
-    title: "Contrôle à la chaine",
-  },
+  // {
+  //   url: "/controle_chaine",
+  //   handleLinkClick: "controle_chaine",
+  //   handleButtonClick: "Contrôle à la chaine ",
+  //   title: "Contrôle à la chaine",
+  // },
+  // {
+  //   url: "/controle_finale",
+  //   handleLinkClick: "controle_finale",
+  //   handleButtonClick: "Contrôle finale ",
+  //   title: "Contrôle finale",
+  // },
+  // {
+  //   url: "/controle_prototype",
+  //   handleLinkClick: "controle_prototype",
+  //   handleButtonClick: "Prototype ",
+  //   title: "Prototype",
+  // },
+  // {
+  //   url: "/controle_matiere1er",
+  //   handleLinkClick: "controle_matiere1er",
+  //   handleButtonClick: "Matière première ",
+  //   title: "Matière première",
+  // },
+  // {
+  //   url: "/actions_corrective",
+  //   handleLinkClick: "actions_corrective",
+  //   handleButtonClick: "Action correctives ",
+  //   title: "Action Correctives",
+  // },
 
 ];
 
@@ -147,8 +171,8 @@ export const data = [
     id: 0,
     section: "Contrôle à la chaine",
     reference: "A200",
-    conforme: "4.15",
-    Nconforme: "2.15",
+    conforme: "50",
+    Nconforme: "50",
   },
   {
     id: 1,

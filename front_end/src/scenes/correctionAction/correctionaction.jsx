@@ -12,7 +12,9 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
-
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 const theme = createTheme({
   palette: {
     custom: {
@@ -28,29 +30,28 @@ export default function Correctionaction() {
   const [tableDataAgent, setTableDataAgent] = useState([]);
   const [tableDataNC, setTableDataNC] = useState([]);
 
-
-
   const [selectedValues, setSelectedValues] = useState({
     selectedReference: "",
     selectedPilote: "",
     selectedEtat: "",
+    selectedAction: "",
   });
 
   const handleChange = (event, newValue) => {
     setSelectedValues((prevState) => ({
       ...prevState,
-      selectedReference: newValue ? newValue.typeNc : "",
-      selectedPilote: newValue ? newValue.agentquality : "",
+      selectedReference: newValue ? newValue.typenc_cntrl : "",
+      selectedPilote: newValue ? newValue.agent : "",
       selectedEtat: newValue ? newValue.etat : "",
+      selectedAction: newValue ? newValue.action_cntrl : "",
     }));
   };
 
-  const handlesubmit = () =>{
-    toast.success("Planification envoyer.");
-
-  }
+  const handlesubmit = () => {
+    toast.success("Action de correction créée avec succès.");
+  };
   const fetchData = () => {
-    fetch("http://localhost:3030/produits")
+    fetch("http://localhost:3030/controle")
       .then((response) => {
         return response.json();
       })
@@ -70,7 +71,7 @@ export default function Correctionaction() {
       });
   };
 
-  const fetchDataAgent= () => {
+  const fetchDataAgent = () => {
     fetch("http://localhost:3030/agentquality_rows")
       .then((response) => {
         return response.json();
@@ -80,7 +81,7 @@ export default function Correctionaction() {
         setTableDataAgent(data);
       });
   };
-  const fetchDataNC= () => {
+  const fetchDataNC = () => {
     fetch("http://localhost:3030/typeNC_rows")
       .then((response) => {
         return response.json();
@@ -90,7 +91,6 @@ export default function Correctionaction() {
         setTableDataNC(data);
       });
   };
-  
 
   useEffect(
     () => {
@@ -119,7 +119,7 @@ export default function Correctionaction() {
               disablePortal
               id="combo-box-demo"
               options={tableData}
-              getOptionLabel={(option) => option.ref}
+              getOptionLabel={(option) => option.ref_cntrl}
               onChange={handleChange}
               sx={{ backgroundColor: "white", marginTop: "30px" }}
               renderInput={(params) => (
@@ -134,9 +134,32 @@ export default function Correctionaction() {
             />
 
             <div className="list">
-              <PinnedSubheaderList />
+              <List
+                sx={{
+                  width: "100%",
+                  bgcolor: "white",
+                  overflow: "auto",
+                  height: 200,
+                  borderRadius: "20px",
+
+                  "& ul": { padding: 0 },
+                }}
+                subheader={<li />}
+              >
+                {[1].map((item) => (
+                  <li key={`item-${item}`}>
+                    <ul>
+                      <ListItem>
+                        <ListItemText
+                          primary={selectedValues.selectedAction || "-"}
+                        />
+                      </ListItem>
+                    </ul>
+                  </li>
+                ))}
+              </List>
             </div>
-            <span className="span2">Type de non-conformité</span>
+            <span className="span-pilote">Type de non-conformité</span>
             <div className="type-conf">
               <span className="span2">
                 {selectedValues.selectedReference || "-"}
@@ -171,8 +194,7 @@ export default function Correctionaction() {
               disablePortal
               id="combo-box-demo"
               options={tableData}
-              getOptionLabel={(option) => option.ref}
-              
+              getOptionLabel={(option) => option.ref_cntrl}
               sx={{ backgroundColor: "white", marginTop: "30px" }}
               renderInput={(params) => (
                 <ThemeProvider theme={theme}>
@@ -190,8 +212,8 @@ export default function Correctionaction() {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tableDataTypeAC}
-              getOptionLabel={(option) => option.typeac}
+              options={tableData}
+              getOptionLabel={(option) => option.action_cntrl}
               sx={{ backgroundColor: "white", marginTop: "30px" }}
               renderInput={(params) => (
                 <ThemeProvider theme={theme}>
@@ -207,8 +229,8 @@ export default function Correctionaction() {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tableDataAgent}
-              getOptionLabel={(option) => option.code}
+              options={tableData}
+              getOptionLabel={(option) => option.code_cntrl}
               sx={{ backgroundColor: "white", marginTop: "30px" }}
               renderInput={(params) => (
                 <ThemeProvider theme={theme}>
@@ -228,8 +250,8 @@ export default function Correctionaction() {
             <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tableDataNC}
-              getOptionLabel={(option) => option.typenc}
+              options={tableData}
+              getOptionLabel={(option) => option.typenc_cntrl}
               sx={{ backgroundColor: "white", marginTop: "30px" }}
               renderInput={(params) => (
                 <ThemeProvider theme={theme}>
@@ -241,28 +263,30 @@ export default function Correctionaction() {
                 </ThemeProvider>
               )}
             />
-            
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={["DatePicker"]}>
-                  <DatePicker sx={{backgroundColor:"white", marginTop:"10px"}} />
-                </DemoContainer>
-              </LocalizationProvider>
-            
+
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={["DatePicker"]}>
+                <DatePicker
+                  sx={{ backgroundColor: "white", marginTop: "10px" }}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
+
             <div className="right">
               <div className="type-confir">
-              <Button
-                    onClick={handlesubmit}
-                    type="submit"
-                    variant="contained"
-                    style={{
-                      backgroundColor: "black",
-                      color: "white",
-                      textTransform: "none",
-                      fontSize: "18px"
-                    }}
-                  >
-                    Ajouter
-                  </Button>
+                <Button
+                  onClick={handlesubmit}
+                  type="submit"
+                  variant="contained"
+                  style={{
+                    backgroundColor: "black",
+                    color: "white",
+                    textTransform: "none",
+                    fontSize: "18px",
+                  }}
+                >
+                  Ajouter
+                </Button>
               </div>
             </div>
           </div>

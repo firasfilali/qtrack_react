@@ -4,12 +4,15 @@ import { Select, MenuItem, FormControl, FormLabel } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import { Typography } from "@mui/material";
 import Input from "@mui/joy/Input";
-import Button from "@mui/material/Button";
+
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { toast } from "react-toastify";
-
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import Button from '@mui/joy/Button';
 const theme = createTheme({
     palette: {
       custom: {
@@ -18,7 +21,8 @@ const theme = createTheme({
       },
     },
   });
-export default function ControleChaine() {
+export default function ActionCorrective() {
+  
     const [tableData, setTableData] = useState([]);
     const [tableDataOp, setTableDataOp] = useState([]);
     const [tableDataPhase, setTableDataPhase] = useState([]);
@@ -120,7 +124,6 @@ export default function ControleChaine() {
         fetchDataTypeNC();
         fetchDataTypeAC();
     }, []);
-    
   return (
     <div style={{background: '#EBEBEE', padding: '10px', borderRadius: '8px'}}>
       <Row >
@@ -133,11 +136,11 @@ export default function ControleChaine() {
             variant="h3"
             align="center"
           >
-            Contrôle à la chaine
+            Action de correction
           </Typography>
         </Col>
         <Col xl="2" lg="2">
-          <FormControl
+          {/* <FormControl
             style={{ width: "200px", marginLeft: "25px" }}
             fullWidth
             sx={{ borderColor: "black" }}
@@ -162,10 +165,10 @@ export default function ControleChaine() {
                 </ThemeProvider>
               )}
             />
-          </FormControl>
+          </FormControl> */}
         </Col>
         <Col xl="3" lg="3">
-          <FormControl
+          {/* <FormControl
             style={{ marginLeft: "25px" }}
             fullWidth
             sx={{ borderColor: "black" }}
@@ -190,9 +193,9 @@ export default function ControleChaine() {
                 </ThemeProvider>
               )}
             />
-          </FormControl>
+          </FormControl> */}
         </Col>
-        <Col xl="3" lg="3">
+        <Col xl="2" lg="2">
           <FormControl
             style={{ width: "200px", marginLeft: "25px" }}
             fullWidth
@@ -200,19 +203,19 @@ export default function ControleChaine() {
             variant="filled"
             size="large"
           >
-               <Autocomplete
+            <Autocomplete
               disablePortal
               id="combo-box-demo"
-              options={tableDataPhase}
-              value={phase}
-              onChange={(event, newValue) => phasechange(newValue)}
-              getOptionLabel={(option) => option.phase?option.phase:''}
-              sx={{ backgroundColor: "white", }}
+              options={tableData}
+              getOptionLabel={(option) => option.ref?option.ref:''}
+              value={ref}
+              onChange={(event, newValue) => refchange(newValue)}
+              sx={{ backgroundColor: "white" }}
               renderInput={(params) => (
                 <ThemeProvider theme={theme}>
                   <TextField
                     {...params}
-                    label="Phase"
+                    label="Insérer Référence"
                     color="custom"
                   />
                 </ThemeProvider>
@@ -221,32 +224,22 @@ export default function ControleChaine() {
           </FormControl>
         </Col>
       </Row>
-      <Row style={{ marginTop: "150px" }}>
-        <Col xl="3" lg="3" style={{ marginLeft: "90px" }}>
-          <div>
+      <Row style={{ marginTop: "80px" }}>
+        <Col xl="2" lg="2" style={{ marginLeft: "50px" }}>
+        <div>
             <FormControl>
               <FormLabel
                 sx={{
                   color: "black",
                   marginBottom: "30px",
+                  marginTop:"10px",
                   fontWeight: "bold",
                   fontSize: "20px",
                 }}
               >
-                Quantité controlée
+                
               </FormLabel>
-              <Input
-                sx={{
-                  "--Input-focusedThickness": "white",
-                }}
-                size="lg"
-                color="primary"
-                placeholder="saisir quantité controlé "
-                autoFocus
-                required
-                value={qt_cntrl}
-                onChange={(e) => qt_cntrlchange(e.target.value)}
-              />
+              <Button size="lg" color="primary" variant="outlined" style={{width: "200px", height:"60px"}}>Problème Résolu</Button>
             </FormControl>
           </div>
           <div>
@@ -260,100 +253,90 @@ export default function ControleChaine() {
                   fontSize: "20px",
                 }}
               >
-                Quantité NC
+                
               </FormLabel>
-              <Input
-                sx={{
-                  "--Input-focusedThickness": "white",
-                }}
-                size="lg"
-                color="danger"
-                placeholder="saisir quantité NC "
-                autoFocus
-                required
-                value={qt_nc}
-                onChange={(e) => qt_ncchange(e.target.value)}
-              />
+              <Button size="lg" color="danger" variant="outlined" style={{height:"60px"}}>Problème non Résolu</Button>
             </FormControl>
           </div>
         </Col>
 
-        <Col xl="7" lg="7">
+        <Col xl="4" lg="4" style={{marginLeft:"50px"}}>
           <Typography
             component="div"
             paragraph
-            style={{ fontWeight: "bold", marginLeft: "27px" }}
-            variant="h5"
-          >
-            Type de non-conformité
-          </Typography>
-
-          <FormControl
-            style={{ marginLeft: "30px" }}
-            fullWidth
-            sx={{ borderColor: "black" }}
-            variant="filled"
-            size="large"
-          >
-           <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={tableDataTypeNC}
-              value={typenc}
-              onChange={(event, newValue) => typencchange(newValue)}
-              getOptionLabel={(option) => option.typenc?option.typenc:''}
-              sx={{ backgroundColor: "white", }}
-              renderInput={(params) => (
-                <ThemeProvider theme={theme}>
-                  <TextField
-                    {...params}
-                    label="Insérer type de non-conformité"
-                    color="custom"
-                  />
-                </ThemeProvider>
-              )}
-            />
-          </FormControl>
-          <Typography
-            component="div"
-            paragraph
-            style={{ fontWeight: "bold", marginLeft: "27px", marginTop:'30px' }}
+            style={{ fontWeight: "bold",  }}
             variant="h5"
           >
             Action de correction
           </Typography>
 
           <FormControl
-            style={{ marginLeft: "30px" }}
+            style={{ }}
             fullWidth
             sx={{ borderColor: "black" }}
             variant="filled"
             size="large"
           >
-           <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={tableDataTypeAC}
-              value={action}
-              onChange={(event, newValue) => actionchange(newValue)}
-              getOptionLabel={(option) => option.typeac?option.typeac:''}
-              sx={{ backgroundColor: "white", }}
-              renderInput={(params) => (
-                <ThemeProvider theme={theme}>
-                  <TextField
-                    {...params}
-                    label="Code employée"
-                    color="custom"
-                  />
-                </ThemeProvider>
-              )}
-            />
+            <div>
+              <List
+                sx={{
+                  width: 500,
+                  bgcolor: "white",
+                  overflow: "auto",
+                  height: 150,
+                  borderRadius: "20px",
+                  marginBottom: "30px",
+
+                  "& ul": { padding: 0 },
+                }}
+                subheader={<li />}
+              >
+                {[1,2].map((item) => (
+                  <li key={`item-${item}`}>
+                    <ul>
+                      <ListItem>
+                        <ListItemText
+                          primary={`Action de correction ${item}`}
+                        />
+                      </ListItem>
+                    </ul>
+                  </li>
+                ))}
+              </List>
+            </div>
           </FormControl>
          
-  
+
+       
+         
+        
                   
                   
               
+        </Col>
+        <Col xl="4" lg="4" style={{marginLeft: "130px"}}>
+        <Typography
+            component="div"
+            paragraph
+            style={{ fontWeight: "bold", }}
+            variant="h5"
+          >
+            Etat d'avancement
+          </Typography>
+          <Input
+                sx={{
+                  
+                  width:"205px",
+                  height:"70px",
+                 
+                }}
+                size="lg"
+                
+                placeholder="saisir etat d'avancement "
+                autoFocus
+                required
+              
+              />
         </Col>
         <div className="type-confir2">
               <Button
@@ -361,15 +344,15 @@ export default function ControleChaine() {
                     type="submit"
                     variant="contained"
                     style={{
-                      
-                        backgroundColor: "black",
-                        color: "white",
-                        textTransform: "none",
-                        fontSize: "20px",
-                        marginRight: "110px",
-                        height:"60px",
-                        width: "200px",
-                     
+                      backgroundColor: "black",
+                      color: "white",
+                      textTransform: "none",
+                      fontSize: "20px",
+                      marginRight: "100px",
+                      marginTop:"50px",
+                      marginBottom: "30px",
+                      height:"60px",
+                      width: "200px",
                     }}
                   >
                     Confirmer
@@ -378,4 +361,5 @@ export default function ControleChaine() {
       </Row>
     </div>
   );
+  
 }

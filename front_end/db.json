@@ -3,44 +3,37 @@
     {
       "id": 0,
       "section": "Contrôle à la chaine",
-      "reference": "A200",
-      "conforme": "4.15",
-      "Nconforme": "2.15"
+      "reference": "xxx999xxx",
+      "conforme": "50",
+      "Nconforme": "50"
     },
     {
       "id": 1,
       "section": "Contrôle finale",
-      "reference": "A911",
+      "reference": "xxx999xxx",
       "conforme": "4.15",
       "Nconforme": "2.15"
     },
     {
       "id": 2,
       "section": "Prototype",
-      "reference": "A200",
-      "conforme": "4.15",
-      "Nconforme": "2.15"
+      "reference": "xxx555xxx",
+      "conforme": "100",
+      "Nconforme": "00"
     },
     {
       "id": 3,
       "section": "Contrôle opérateur",
-      "reference": "A200",
-      "conforme": "4.15",
-      "Nconforme": "2.15"
-    },
-    {
-      "id": 4,
-      "section": "Contrôle AQ",
-      "reference": "A200",
-      "conforme": "4.15",
-      "Nconforme": "2.15"
+      "reference": "x365x",
+      "conforme": "100",
+      "Nconforme": "00"
     },
     {
       "id": 5,
       "section": "Alerte",
-      "reference": "A200",
-      "conforme": "4.15",
-      "Nconforme": "2.15"
+      "reference": "__",
+      "conforme": "100",
+      "Nconforme": "00"
     }
   ],
   "operator_rows": [
@@ -49,14 +42,9 @@
       "code": "x365x",
       "nom": "Opérateur 1",
       "prénom": "Slim",
-      "status": "Active"
-    },
-    {
-      "id": 2,
-      "code": "x365x",
-      "nom": "Opérateur 2",
-      "prénom": "Mohamed",
-      "status": "Desactive"
+      "status": "Active",
+      "conforme": "50%",
+      "nConforme": "50%"
     }
   ],
   "agentquality_rows": [
@@ -125,8 +113,8 @@
   "typeNC_rows": [
     {
       "id": 0,
-      "typenc": "Test 1",
-      "taux_nc": "12 %"
+      "typenc": "Type XY",
+      "taux_nc": "50 %"
     }
   ],
   "typeAC_rows": [
@@ -236,6 +224,48 @@
       "ref": "xxx999xxx",
       "matiere1ere": "Cuire",
       "famille": "Pantalon"
+    }
+  ],
+  "controle": [
+    {
+      "id": 1,
+      "ref_cntrl": "xxx999xxx",
+      "code_cntrl": "x365x",
+      "phase_cntrl": "Phase x",
+      "typenc_cntrl": "Type XY",
+      "action_cntrl": "Action de correction 1",
+      "qt_cntrl": "10",
+      "qt_nc": "5",
+      "conforme": "50 %",
+      "nonConforme": "50%",
+      "famille": "Famille XX",
+      "agent": "x366x",
+      "etat": "en cours"
+    },
+    {
+      "id": 2,
+      "ref_cntrl": "xxx888xxx",
+      "code_cntrl": "x365x",
+      "phase_cntrl": "Phase x",
+      "typenc_cntrl": "Type XY",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "10",
+      "qt_nc": "5",
+      "conforme": "50 %",
+      "nonConforme": "50%",
+      "famille": "Famille XX",
+      "agent": "x366x",
+      "etat": "en cours"
+    },
+    {
+      "id": 3,
+      "ref_cntrl": "",
+      "code_cntrl": "",
+      "phase_cntrl": "",
+      "typenc_cntrl": "",
+      "action_cntrl": "",
+      "qt_cntrl": "",
+      "qt_nc": ""
     }
   ]
 }

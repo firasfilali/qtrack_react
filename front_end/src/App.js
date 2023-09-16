@@ -25,6 +25,7 @@ import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Cproduction from "./scenes/parametre/cp";
 import ControleChaine from "./scenes/controleQualité/controleChaine";
+import ActionCorrective from "./scenes/controleQualité/actionCorrective";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ function App() {
     { path: "/cproduction", component: <Cproduction /> },
     { path: "/users", component: <Users /> },
     { path: "/controle_chaine", component: <ControleChaine /> },
+    { path: "/actions_corrective", component: <ActionCorrective /> },
   ];
 
   return (

@@ -34,7 +34,7 @@ export default function CycleProductionCf() {
   const [tableDataProduit, setTableDataProduit] = useState([]);
 
   const fetchDataPhase = () => {
-    fetch("http://localhost:3030/phases")
+    fetch("http://localhost:3030/controle")
       .then((response) => {
         return response.json();
       })
@@ -64,7 +64,7 @@ export default function CycleProductionCf() {
 
   const columnsPhase = [
     {
-      field: "phase",
+      field: "phase_cntrl",
       headerName: "Phase",
       flex: 0.2,
       align: "center",
@@ -83,7 +83,7 @@ export default function CycleProductionCf() {
       },
     },
     {
-      field: "taux_c",
+      field: "conforme",
       headerName: "% conformité",
       flex: 0.2,
       align: "center",
@@ -102,7 +102,7 @@ export default function CycleProductionCf() {
       },
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "% non-conformité",
       flex: 0.2,
       align: "center",
@@ -123,7 +123,7 @@ export default function CycleProductionCf() {
   ];
   const columnsProduit = [
     {
-      field: "ref",
+      field: "code_cntrl",
       headerName: "Référence",
       flex: 0.1,
       align: "center",
@@ -142,7 +142,7 @@ export default function CycleProductionCf() {
       },
     },
     {
-      field: "qt_controlé",
+      field: "qt_cntrl",
       headerName: "Q.Controlé",
       flex: 0.2,
       align: "center",
@@ -150,7 +150,7 @@ export default function CycleProductionCf() {
     },
 
     {
-      field: "taux_c",
+      field: "conforme",
       headerName: "% conformité",
       flex: 0.2,
       align: "center",
@@ -169,7 +169,7 @@ export default function CycleProductionCf() {
       },
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "% Non-conformité",
       flex: 0.2,
       align: "center",
@@ -195,8 +195,8 @@ export default function CycleProductionCf() {
           <Autocomplete
             disablePortal
             id="combo-box-demo"
-            options={references}
-            getOptionLabel={(option) => option.ref}
+            options={tableDataPhase}
+            getOptionLabel={(option) => option.ref_cntrl}
             renderInput={(params) => (
               <ThemeProvider theme={theme}>
                 <TextField
@@ -248,7 +248,7 @@ export default function CycleProductionCf() {
             <span className="tttt">Opérateurs</span>
           </div>
           <CustomDataGrid
-            rows={tableDataProduit}
+            rows={tableDataPhase}
             columns={columnsProduit}
             hideFooter={true}
             className="custom-ccp"
