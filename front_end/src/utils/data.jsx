@@ -1,8 +1,8 @@
 import "../assets/css/customColumns.css";
 
 export const data1 = [
-  { id: 0, value: 5, label: "Non conformité", color: "#F90219" },
-  { id: 1, value: 5, label: "Conformité", color: "#2DCE98" },
+  { id: 0, value: 2, label: "Non conformité", color: "#F90219" },
+  { id: 1, value: 8, label: "Conformité", color: "#2DCE98" },
 ];
 
 export const dataPieChart = [

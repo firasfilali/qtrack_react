@@ -102,7 +102,7 @@ export default function Operateur() {
     },
 
      {
-      field: "taux_c",
+      field: "conforme",
       headerName: "% conformité",
       flex: 0.2,
       align: "center",
@@ -122,7 +122,7 @@ export default function Operateur() {
       
     },
     {
-      field: "taux_nc",
+      field: "nConforme",
       headerName: "% Non-conformité",
       flex: 0.2,
       align: "center",

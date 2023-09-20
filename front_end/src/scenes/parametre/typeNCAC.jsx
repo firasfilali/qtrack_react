@@ -137,7 +137,7 @@ export default function TypeNcAc() {
       })
 
       .then((data) => {
-        setTableDataTypeAC(data.slice(0, 6));
+        setTableDataTypeAC(data);
       });
   };
 

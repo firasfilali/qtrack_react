@@ -82,7 +82,7 @@ export default function MatiérePremiére() {
       })
 
       .then((data) => {
-        setTableDataFournisseur(data.slice(0, 6));
+        setTableDataFournisseur(data);
       });
   };
 
@@ -101,7 +101,7 @@ export default function MatiérePremiére() {
       })
 
       .then((data) => {
-        setTableDataTypeNC(data.slice(0, 6));
+        setTableDataTypeNC(data);
       });
   };
   const fetchDataAc = () => {
@@ -111,7 +111,7 @@ export default function MatiérePremiére() {
       })
 
       .then((data) => {
-        setTableDataTypeAC(data.slice(0, 6));
+        setTableDataTypeAC(data);
       });
   };
   useEffect(() => {

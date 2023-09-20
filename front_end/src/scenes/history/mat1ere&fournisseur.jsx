@@ -38,6 +38,7 @@ export default function History() {
   const [selectedValues, setSelectedValues] = useState({
     selectedTauxConf: "",
     selectedTauxNonConf: "",
+    selectedType: "",
     
   });
 
@@ -46,6 +47,7 @@ export default function History() {
       ...prevState,
       selectedTauxConf: newValue ? newValue.taux_c : "",
       selectedTauxNonConf: newValue ? newValue.taux_nc : "",
+      selectedType: newValue ? newValue.type : "",
          }));
   };
   const fetchData = () => {
@@ -162,7 +164,7 @@ export default function History() {
             </div>
             <div className="cadre-2">
               <div className="cadre-3">
-                <span className="typenc-2">Non-conformité dimonsionnelle</span>
+                <span className="typenc-2">{selectedValues.selectedType || "Non-conformité dimonsionnelle"}</span>
               </div>
             </div>
             <Row style={{ marginTop: "20px" }}>

@@ -187,7 +187,7 @@ const Controle = () => {
 
   const columnsType = [
     {
-      field: "typenc",
+      field: "typenc_cntrl",
       headerName: "Type",
       flex: 0.1,
       align: "center",
@@ -206,7 +206,7 @@ const Controle = () => {
       },
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "%",
       flex: 0.2,
       align: "center",
@@ -282,7 +282,7 @@ const Controle = () => {
               </div>
               <CustomDataGrid
                 key="conformiteGrid"
-                rows={tableDataTypeNC}
+                rows={tableData}
                 columns={columnsType}
                 className="custom-header"
                 hideFooter={true}

@@ -38,24 +38,64 @@
   ],
   "operator_rows": [
     {
-      "id": 1,
-      "code": "x365x",
-      "nom": "Opérateur 1",
-      "prénom": "Slim",
-      "status": "Active",
-      "conforme": "50%",
-      "nConforme": "50%",
-      "qt_cntrl": "10"
-    },
-    {
       "id": 2,
       "code": "x366x",
-      "nom": "Joe",
-      "prénom": "Doe",
+      "nom": "Opérateur 2",
+      "prénom": "Op 2",
+      "status": "Active",
+      "conforme": "60%",
+      "nConforme": "40%",
+      "qt_cntrl": "110"
+    },
+    {
+      "id": 3,
+      "code": "x367x",
+      "nom": "Opérateur 3",
+      "prénom": "Op 3",
+      "status": "Active",
+      "conforme": "40%",
+      "nConforme": "60%",
+      "qt_cntrl": "80"
+    },
+    {
+      "id": 4,
+      "code": "x370x",
+      "nom": "Opérateur 4",
+      "prénom": "Op 4",
+      "status": "Active",
+      "conforme": "75%",
+      "nConforme": "25%",
+      "qt_cntrl": "150"
+    },
+    {
+      "id": 5,
+      "code": "x380x",
+      "nom": "Opérateur 5",
+      "prénom": "Op 5",
+      "status": "Active",
+      "conforme": "72%",
+      "nConforme": "28%",
+      "qt_cntrl": "100"
+    },
+    {
+      "id": 6,
+      "code": "x390x",
+      "nom": "Opérateur 6",
+      "prénom": "Op 6",
       "status": "Active",
       "conforme": "50%",
       "nConforme": "50%",
-      "qt_cntrl": "10"
+      "qt_cntrl": "100"
+    },
+    {
+      "id": 7,
+      "code": "x400x",
+      "nom": "Operator 7",
+      "prénom": "Op 7",
+      "conforme": "50%",
+      "nConforme": "50%",
+      "qt_cntrl": "100",
+      "status": "Active"
     }
   ],
   "agentquality_rows": [
@@ -112,41 +152,54 @@
       "type": "Type 1",
       "fournisseur": "Fournisseur X",
       "taux_nc": "20",
-      "taux_c": "20"
+      "taux_c": "20",
+      "etat": "OK"
     },
     {
       "id": 2,
       "refMatiere": "A300",
       "type": "Type 1",
       "fournisseur": "Fournisseur X",
-      "taux_nc": "20",
-      "taux_c": "20"
+      "taux_nc": "60",
+      "taux_c": "40",
+      "etat": "NOK"
     },
     {
       "id": 3,
       "refMatiere": "A400",
       "type": "Type 4",
       "fournisseur": "Fournisseur X",
-      "taux_nc": "20",
-      "taux_c": "20"
+      "taux_nc": "50",
+      "taux_c": "50",
+      "etat": "OK"
     },
     {
       "id": 4,
       "refMatiere": "A500",
       "type": "Type 3",
       "fournisseur": "Fournisseur X",
-      "taux_nc": "20",
-      "taux_c": "20"
+      "taux_nc": "70",
+      "taux_c": "30",
+      "etat": "NOK"
     },
     {
       "id": 5,
       "refMatiere": "A600",
       "type": "Type 2",
       "fournisseur": "Fournisseur X",
+      "taux_nc": "5",
+      "taux_c": "95",
+      "etat": "OK"
+    },
+    {
+      "id": 6,
+      "refMatiere": "A900",
+      "type": "Type X",
+      "fournisseur": "Fournisseur X",
+      "etat": "OK",
       "taux_nc": "20",
-      "taux_c": "20"
+      "taux_c": "80"
     }
-
   ],
   "fournisseur_rows": [
     {
@@ -157,21 +210,55 @@
     },
     {
       "id": 2,
-      "ref": "xx235xx",
+      "ref": "xx230xx",
       "nom": "Fournisseur Y",
       "contact": "Adresse ou num"
+    },
+    {
+      "id": 3,
+      "ref": "xx240xx",
+      "nom": "Fournisseur Z",
+      "contact": "Adresse ou num"
+    },
+    {
+      "id": 4,
+      "ref": "xx250xx",
+      "nom": "Fournisseur X",
+      "contact": "Adresse ou num"
+    },
+    {
+      "id": 5,
+      "ref": "xx260xx",
+      "nom": "Fournisseur Z",
+      "contact": "Adresse ou num"
+    },
+    {
+      "id": 6,
+      "ref": "x270x",
+      "nom": "Fournisseur F",
+      "contact": "Torino, Italie"
     }
   ],
   "typeNC_rows": [
     {
-      "id": 0,
-      "typenc": "Type XY",
+      "id": 1,
+      "typenc": "Type B",
       "taux_nc": "50 %"
     },
     {
-      "id": 1,
-      "typenc": "Type YG",
+      "id": 2,
+      "typenc": "Type C",
       "taux_nc": "50 %"
+    },
+    {
+      "id": 3,
+      "typenc": "Type D",
+      "taux_nc": "50 %"
+    },
+    {
+      "id": 4,
+      "typenc": "Type A"
+      
     }
   ],
   "typeAC_rows": [
@@ -182,7 +269,48 @@
     },
     {
       "id": 2,
-      "typeac": "Action de correction 2"
+      "typeac": "Action de correction 2",
+      "agentquality": "Agent X"
+    },
+    {
+      "id": 3,
+      "typeac": "Action de correction 3",
+      "agentquality": "Agent X"
+    },
+    {
+      "id": 4,
+      "typeac": "Action de correction 4",
+      "agentquality": "Agent X"
+    },
+    {
+      "id": 5,
+      "typeac": "Action de correction 5",
+      "agentquality": "Agent X"
+    },
+    {
+      "id": 6,
+      "typeac": "Action de correction 6",
+      "agentquality": "Agent X"
+    },
+    {
+      "id": 7,
+      "typeac": "Action de correction 7",
+      "agentquality": "Agent X"
+    },
+    {
+      "id": 8,
+      "typeac": "Action de correction 8",
+      "agentquality": "Agent X"
+    },
+    {
+      "id": 10,
+      "typeac": "Action de correction 10",
+      "agentquality": "Agent X"
+    },
+    {
+      "id": 11,
+      "typeac": "Action de correction 9",
+      "agentquality": "Agent X"
     }
   ],
   "famille_rows": [
@@ -235,15 +363,33 @@
   "protoype_rows": [
     {
       "id": 1,
-      "refprototype": "xxx555xxx",
+      "refprototype": "ppp999ppp",
       "refproduit": "xxx999xxx",
       "desc": "Spécification technique"
     },
     {
       "id": 2,
-      "refprototype": "xxx555xxx",
+      "refprototype": "ppp888ppp",
       "refproduit": "xxx888xxx",
       "desc": "Déscription du prototype(détail)"
+    },
+    {
+      "id": 3,
+      "refprototype": "ppp555ppp",
+      "refproduit": "xxx555xxx",
+      "desc": "Déscription du prototype(détail)"
+    },
+    {
+      "id": 4,
+      "refprototype": "ppp666ppp",
+      "refproduit": "xxx666xxx",
+      "desc": "Déscription du prototype(détail)"
+    },
+    {
+      "id": 5,
+      "refprototype": "ppp444ppp",
+      "refproduit": "xxx444xxx",
+      "desc": "Détail prototype "
     }
   ],
   "users": [
@@ -292,6 +438,12 @@
       "phase": "Phase Y",
       "phase_description": "Phase de production des etc...",
       "cycle": "Process 2"
+    },
+    {
+      "id": 3,
+      "phase": "Phase A",
+      "phase_description": "Déscription pour la phase",
+      "cycle": "Process 3"
     }
   ],
   "cycle_production": [
@@ -306,6 +458,12 @@
       "titre": "Process 2",
       "description": "Exemple de process pour test",
       "date": "2023-09-13"
+    },
+    {
+      "id": 3,
+      "titre": "Process 3",
+      "description": "Exemple de process 3",
+      "date": "2023-09-20"
     }
   ],
   "produits": [
@@ -325,7 +483,7 @@
       "id": 3,
       "ref": "xxx777xxx",
       "matiere1ere": "Cuire",
-      "famille": "Famille 2"
+      "famille": "Famille XX"
     },
     {
       "id": 4,
@@ -370,52 +528,142 @@
       "famille": "Famille 5"
     },
     {
-      "id": 11,
-      "ref": "yyy111xxx",
-      "matiere1ere": "Cuire",
-      "famille": "Famille 1"
-    },
-    {
       "id": 12,
       "ref": "zzz111zzz",
-      "matiere1ere": "Matière 1",
+      "matiere1ere": "Matière 2",
       "famille": "Famille 0"
+    },
+    {
+      "id": 13,
+      "ref": "zzz222zzz",
+      "matiere1ere": "Type 4",
+      "famille": "Famille 10"
     }
   ],
   "controle": [
     {
       "id": 1,
       "ref_cntrl": "xxx999xxx",
-      "code_cntrl": "x365x",
+      "code_cntrl": "x366x",
       "phase_cntrl": "Phase x",
       "typenc_cntrl": "Type XY",
       "action_cntrl": "Action de correction 1",
-      "qt_cntrl": "10",
-      "qt_nc": "5",
+      "qt_cntrl": "20",
+      "qt_nc": "10",
       "conforme": "50 %",
-      "nonConforme": "50%",
-      "famille": "Famille XX",
+      "nonConforme": "50 %",
+      "famille": "Famille 2",
       "agent": "x366x",
       "etat": "en cours"
     },
     {
       "id": 2,
       "ref_cntrl": "xxx888xxx",
-      "code_cntrl": "x365x",
+      "code_cntrl": "x366x",
       "phase_cntrl": "Phase x",
       "typenc_cntrl": "Type XY",
       "action_cntrl": "Action de correction 2",
       "qt_cntrl": "10",
-      "qt_nc": "5",
-      "conforme": "50 %",
-      "nonConforme": "50%",
-      "famille": "Famille XX",
+      "qt_nc": "8",
+      "conforme": "20 %",
+      "nonConforme": "80 %",
+      "famille": "Famille 1",
       "agent": "x366x",
       "etat": "en cours"
     },
     {
+      "id": 3,
+      "ref_cntrl": "xxx777xxx",
+      "code_cntrl": "x366x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type YG",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "80",
+      "qt_nc": "20",
+      "conforme": "80 %",
+      "nonConforme": "20 %",
+      "famille": "Famille XX",
+      "agent": "x365x",
+      "etat": "en cours"
+    },
+    {
       "id": 4,
-      "ref_cntrl": "xxx999xxx",
+      "ref_cntrl": "xxx666xxx",
+      "code_cntrl": "x390x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type YG",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "195",
+      "qt_nc": "25",
+      "conforme": "75 %",
+      "nonConforme": "25 %",
+      "famille": "Famille 3",
+      "agent": "x366x",
+      "etat": "en cours"
+    },
+    {
+      "id": 5,
+      "ref_cntrl": "xxx555xxx",
+      "code_cntrl": "x390x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type YG",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "100",
+      "qt_nc": "50",
+      "conforme": "50 %",
+      "nonConforme": "50%",
+      "famille": "Famille 5",
+      "agent": "x366x",
+      "etat": "en cours"
+    },
+    {
+      "id": 6,
+      "ref_cntrl": "xxx444xxx",
+      "code_cntrl": "x400x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type YG",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "100",
+      "qt_nc": "50",
+      "conforme": "50 %",
+      "nonConforme": "50%",
+      "famille": "Famille 7",
+      "agent": "x400x",
+      "etat": "en cours"
+    },
+    {
+      "id": 7,
+      "ref_cntrl": "xxx333xxx",
+      "code_cntrl": "x366x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type YG",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "100",
+      "qt_nc": "10",
+      "conforme": "90 %",
+      "nonConforme": "10 %",
+      "famille": "Famille 7",
+      "agent": "x366x",
+      "etat": "en cours"
+    },
+    {
+      "id": 8,
+      "ref_cntrl": "xxx222xxx",
+      "code_cntrl": "x367x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type YG",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "80",
+      "qt_nc": "50",
+      "conforme": "40 %",
+      "nonConforme": "60%",
+      "famille": "Famille 2",
+      "agent": "x367x",
+      "etat": "en cours"
+    },
+    {
+      "id": 9,
+      "ref_cntrl": "xxx111xxx",
       "code_cntrl": "x366x",
       "phase_cntrl": "Phase Y",
       "typenc_cntrl": "Type YG",
@@ -424,7 +672,52 @@
       "qt_nc": "50",
       "conforme": "50 %",
       "nonConforme": "50%",
-      "famille": "Famille XX",
+      "famille": "Famille 8",
+      "agent": "x366x",
+      "etat": "en cours"
+    },
+    {
+      "id": 10,
+      "ref_cntrl": "xxx000xxx",
+      "code_cntrl": "x370x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type YG",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "150",
+      "qt_nc": "50",
+      "conforme": "75 %",
+      "nonConforme": "25%",
+      "famille": "Famille 5",
+      "agent": "x370x",
+      "etat": "en cours"
+    },
+    {
+      "id": 11,
+      "ref_cntrl": "zzz111zzz",
+      "code_cntrl": "x367x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type YG",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "100",
+      "qt_nc": "50",
+      "conforme": "50 %",
+      "nonConforme": "50%",
+      "famille": "Famille 0",
+      "agent": "x367x",
+      "etat": "en cours"
+    },
+    {
+      "id": 12,
+      "ref_cntrl": "zzz222zzz",
+      "code_cntrl": "x366x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type 4",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "100",
+      "qt_nc": "50",
+      "conforme": "50 %",
+      "nonConforme": "50%",
+      "famille": "Famille 10",
       "agent": "x366x",
       "etat": "en cours"
     }

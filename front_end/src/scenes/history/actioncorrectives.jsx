@@ -27,7 +27,7 @@ export default function Actioncorrectives() {
   const [tableDataPro, setTableDataPro] = useState([]);
 
   const fetchDataNc = () => {
-    fetch("http://localhost:3030/typeNC_rows")
+    fetch("http://localhost:3030/controle")
       .then((response) => {
         return response.json();
       })
@@ -77,7 +77,7 @@ export default function Actioncorrectives() {
 
   const columnsNc = [
     {
-      field: "typenc",
+      field: "typenc_cntrl",
       headerName: "Type NC",
       flex: 0.5,
       align: "center",
@@ -95,7 +95,7 @@ export default function Actioncorrectives() {
       },
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "% non-conformité",
       flex: 0.5,
       align: "center",
