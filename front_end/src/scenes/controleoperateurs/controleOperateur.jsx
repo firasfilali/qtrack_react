@@ -32,6 +32,7 @@ function CustomToolbar() {
 
 export default function ControleOperateur() {
   const [selectedCode, setSelectedCode] = useState("");
+  const [selectedQt, setSelectedQt] = useState("");
   const [tableDataOp, setTableDataOp] = useState([]);
   const [tableDataPhase, setTableDataPhase] = useState([]);
 
@@ -40,6 +41,7 @@ export default function ControleOperateur() {
 
   const handleChange = (event, newValue) => {
     setSelectedCode(newValue ? newValue.nom : "");
+    setSelectedQt(newValue ? newValue.qt_cntrl : "");
   };
 
   const fetchDataOp = () => {
@@ -53,7 +55,7 @@ export default function ControleOperateur() {
       });
   };
   const fetchDataProduit = () => {
-    fetch("http://localhost:3030/produits")
+    fetch("http://localhost:3030/controle")
       .then((response) => {
         return response.json();
       })
@@ -113,7 +115,7 @@ export default function ControleOperateur() {
     },
 
      {
-      field: "taux_c",
+      field: "conforme",
       headerName: "Taux de conformité",
       flex: 0.2,
       align: "center",
@@ -133,7 +135,7 @@ export default function ControleOperateur() {
       
     },
     {
-      field: "taux_nc",
+      field: "nConforme",
       headerName: "Taux de non-conformité",
       flex: 0.2,
       align: "center",
@@ -156,7 +158,7 @@ export default function ControleOperateur() {
 
   const columnsProduit = [
     {
-      field: "ref",
+      field: "ref_cntrl",
       headerName: "Référence",
       flex: 0.1,
       align: "center",
@@ -183,7 +185,7 @@ export default function ControleOperateur() {
     },
 
     {
-      field: "taux_c",
+      field: "conforme",
       headerName: "Taux de conformité",
       flex: 0.2,
       align: "center",
@@ -202,7 +204,7 @@ export default function ControleOperateur() {
       },
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "Taux de non-conformité",
       flex: 0.2,
       align: "center",
@@ -223,7 +225,7 @@ export default function ControleOperateur() {
   ];
   const columnsPhase = [
     {
-      field: "phase",
+      field: "phase_cntrl",
       headerName: "Phase",
       flex: 0.1,
       align: "center",
@@ -242,7 +244,7 @@ export default function ControleOperateur() {
       },
     },
      {
-      field: "taux_c",
+      field: "conforme",
       headerName: "% conformité",
       flex: 0.2,
       align: "center",
@@ -262,7 +264,7 @@ export default function ControleOperateur() {
       
     },
     {
-      field: "taux_nc",
+      field: "nonConforme",
       headerName: "% non-conformité",
       flex: 0.2,
       align: "center",
@@ -341,7 +343,7 @@ export default function ControleOperateur() {
               borderRadius="10px"
             />
             <CustomDataGrid
-              rows={tableDataPhase}
+              rows={tableDataProduit}
               columns={columnsPhase}
               hideFooter={true}
               className="custom-ccp"
@@ -352,7 +354,7 @@ export default function ControleOperateur() {
             <div className="table-title-op">
               <h6>Quantité Controlée :</h6>
               <div className="square">
-                <span className="number">30</span>
+                <span className="number">{selectedQt || ""}</span>
               </div>
             </div>
           </div>

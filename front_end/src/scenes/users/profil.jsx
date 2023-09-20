@@ -26,12 +26,14 @@ export default function Profil() {
     const [user, setUser] = useState({});
     const [open, setOpen] = React.useState(false);
     const [formData, setFormData] = useState({
-        nom: '',
+        firstname: '',
         telephone: '',
-        prenom: '',
+        lastname: '',
         mobile: '',
         email: '',
-        adresse: ''
+        adresse: '',
+        actuel: '',
+        nouveau: ''
     });
 
     const [openFourn, setOpenFour] = React.useState(false);
@@ -74,21 +76,12 @@ export default function Profil() {
     
     //     fetchUserData();
     // }, [formData]);
-    useEffect(() => {
-        fetch("http://localhost:3030/users/Alex")
-            .then(response => response.json())
-            .then(data => {
-                setUser(data);
-            })
-             .catch(error => {
-                console.error("There was an error fetching the user data", error);
-            });
-    }, [user]);
+  
     const handleSubmit = async (event) => {
         event.preventDefault();
     
         try {
-            const response = await fetch('http://localhost:3030/users/Alex', {
+            const response = await fetch('http://localhost:3030/users/Alex123', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,7 +103,16 @@ export default function Profil() {
         setOpenFour(false);
     };
     
-
+    useEffect(() => {
+      fetch("http://localhost:3030/users/Alex123")
+          .then(response => response.json())
+          .then(data => {
+              setUser(data);
+          })
+           .catch(error => {
+              console.error("There was an error fetching the user data", error);
+          });
+  }, [user]);
 
   return (
    <Row>
@@ -137,7 +139,7 @@ export default function Profil() {
        >
          Manager
        </Chip>
-       <Typography level="title-lg">{user.lastname} {user.firstname} </Typography>
+       <Typography level="title-lg">{user.prenom} {user.nom} </Typography>
        <Typography level="body-sm" sx={{ maxWidth: '24ch' }}>
          Hello, this is my bio.
        </Typography>
@@ -201,11 +203,11 @@ export default function Profil() {
                   setOpen(false);
                 }}
               >
-                <Stack spacing={3}>
+                <Stack spacing={2}>
                   <Row>
                     <Col>
                       <FormControl sx={{ marginBottom: "10px" }}>
-                        <FormLabel>
+                        <FormLabel sx={{ color: "black" }}>
                           Nom 
                         </FormLabel>
                         <Input
@@ -224,7 +226,7 @@ export default function Profil() {
                         />
                       </FormControl>
                       <FormControl sx={{ marginBottom: "10px" }}>
-                        <FormLabel>
+                        <FormLabel sx={{ color: "black" }}>
                           Téléphone 
                         </FormLabel>
                         <Input
@@ -245,7 +247,7 @@ export default function Profil() {
                     </Col>
                     <Col>
                       <FormControl sx={{ marginBottom: "10px" }}>
-                        <FormLabel>
+                        <FormLabel sx={{ color: "black" }}>
                           Prénom 
                         </FormLabel>
                         <Input
@@ -263,8 +265,31 @@ export default function Profil() {
                         />
                       </FormControl>
                       <FormControl>
-                        <FormLabel>
+                        <FormLabel sx={{ color: "black" }}>
                           Mobile 
+                        </FormLabel>
+                        <Input
+                          id="filled-adornment-password"
+                          
+                          sx={{
+                            "--Input-focusedThickness": "white",
+                            borderColor: "white",
+                          }}
+                          variant="soft"
+                          placeholder="saisir mobile"
+                          autoFocus
+                          required
+                          name='mobile'
+                          value={formData.mobile}
+                          onChange={handleInputChange}
+                         
+                        />
+                      </FormControl>
+                    </Col>
+                    <Col>
+                    <FormControl>
+                        <FormLabel sx={{ color: "black" }}>
+                          Mot de passe actuel 
                         </FormLabel>
                         <Input
                           id="filled-adornment-password"
@@ -277,15 +302,40 @@ export default function Profil() {
                           placeholder="saisir mot de passe"
                           autoFocus
                           required
-                          name='mobile'
-                          value={formData.mobile}
+                          type={"password"}
+                          name='actuel'
+                          value={formData.actuel}
+                          onChange={handleInputChange}
+                         
+                        />
+                      </FormControl>
+                      </Col>
+                      <Col>
+                      <FormControl>
+                        <FormLabel sx={{ color: "black" }}>
+                          Nouveau mot de passe 
+                        </FormLabel>
+                        <Input
+                          id="filled-adornment-password"
+                          
+                          sx={{
+                            "--Input-focusedThickness": "white",
+                            borderColor: "white",
+                          }}
+                          variant="soft"
+                          placeholder="saisir mot de passe"
+                          autoFocus
+                          type={"password"}
+                          required
+                          name='nouveau'
+                          value={formData.nouveau}
                           onChange={handleInputChange}
                          
                         />
                       </FormControl>
                     </Col>
                     <FormControl sx={{ marginBottom: "10px" }}>
-                      <FormLabel>
+                      <FormLabel sx={{ color: "black" }}>
                         E-mail 
                       </FormLabel>
                       <Input
@@ -303,7 +353,7 @@ export default function Profil() {
                       />
                     </FormControl>
                     <FormControl sx={{ marginBottom: "10px" }}>
-                      <FormLabel>
+                      <FormLabel sx={{ color: "black" }}>
                         Adresse 
                       </FormLabel>
                       <Input
@@ -322,7 +372,7 @@ export default function Profil() {
                     </FormControl>
                 
                   </Row>
-                  <div style={{ marginTop: "20px" }}>
+                  <div style={{ marginTop: "8px" }}>
                     <DialogActions>
                       <Button
                         onClick={handleSubmit}
@@ -369,7 +419,7 @@ export default function Profil() {
       }}
    >
        <Typography >
-       <span style={{fontWeight:'bold'}}>Nom complet :</span>   <span>{user.lastname} {user.firstname} </span>
+       <span style={{fontWeight:'bold'}}>Nom complet :</span>   <span>{user.prenom} {user.nom} </span>
        </Typography>
     <Divider orientation="horizontal" sx={{height:'5px', backgroundColor: '#000000'}} />
     <Typography>

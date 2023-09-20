@@ -24,9 +24,11 @@ import { toast } from "react-toastify";
 export default function Users() {
   const [id, idchange] = useState("");
   const [username, usernamechange] = useState("");
-  const [firstname, firstnamechange] = useState("");
-  const [lastname, lastnamechange] = useState("");
+  const [prenom, prenomchange] = useState("");
+  const [nom, nomchange] = useState("");
   const [password, passwordchange] = useState("");
+  const [phone, phonechange] = useState("");
+  const [adresse, adressechange] = useState("");
   const [email, emailchange] = useState("");
   const [role, rolechange] = useState("admin");
   const [tableDataFournisseur, setTableDataFournisseur] = useState([]);
@@ -68,7 +70,7 @@ export default function Users() {
 
   const handlesubmit = (e) => {
     e.preventDefault();
-    let regobj = { id, username, firstname, lastname, password, email, role };
+    let regobj = { id, username, prenom, nom, password, email, role, phone, adresse };
     //console.log(regobj);
     if (IsValidate()) {
     fetch("http://localhost:3030/users", {
@@ -136,10 +138,11 @@ export default function Users() {
   const columnsFournisseur = [
  
     
-    { field: "firstname", headerName: "Nom", flex: 0.1, align: "center" },
-    { field: "lastname", headerName: "Prénom", flex: 0.1, align: "center" },
+    { field: "nom", headerName: "Nom", flex: 0.1, align: "center" },
+    { field: "prenom", headerName: "Prénom", flex: 0.1, align: "center" },
     { field: "email", headerName: "E-mail", flex: 0.1, align: "center" },
     { field: "role", headerName: "Rôle", flex: 0.1, align: "center" },
+    
 
     {
       field: "status",
@@ -202,7 +205,7 @@ export default function Users() {
                   setOpen(false);
                 }}
               >
-                <Stack spacing={3}>
+                <Stack spacing={2}>
                   <Row>
                     <Col>
                       <FormControl sx={{ marginBottom: "10px" }}>
@@ -218,8 +221,8 @@ export default function Users() {
                           placeholder="saisir nom"
                           autoFocus
                           required
-                          value={firstname}
-                          onChange={(e) => firstnamechange(e.target.value)}
+                          value={prenom}
+                          onChange={(e) => prenomchange(e.target.value)}
                         />
                       </FormControl>
                       <FormControl sx={{ marginBottom: "10px" }}>
@@ -240,6 +243,7 @@ export default function Users() {
                         />
                       </FormControl>
                     </Col>
+                   
                     <Col>
                       <FormControl sx={{ marginBottom: "10px" }}>
                         <FormLabel>
@@ -253,8 +257,8 @@ export default function Users() {
                           variant="soft"
                           placeholder="saisir prénom"
                           required
-                          value={lastname}
-                          onChange={(e) => lastnamechange(e.target.value)}
+                          value={nom}
+                          onChange={(e) => nomchange(e.target.value)}
                         />
                       </FormControl>
                       <FormControl>
@@ -277,11 +281,32 @@ export default function Users() {
                         />
                       </FormControl>
                     </Col>
+                    
+                    
+                    <Col>
                     <FormControl sx={{ marginBottom: "10px" }}>
-                      <FormLabel>
-                        E-mail <span className="errmsg">*</span>
-                      </FormLabel>
-                      <Input
+                        <FormLabel>
+                          Phone <span className="errmsg">*</span>
+                        </FormLabel>
+                        <Input
+                          sx={{
+                            "--Input-focusedThickness": "white",
+                            borderColor: "white",
+                          }}
+                          variant="soft"
+                          placeholder="saisir prénom"
+                          required
+                          value={phone}
+                          onChange={(e) => phonechange(e.target.value)}
+                        />
+                      </FormControl>
+                      </Col>
+                      <Col>
+                      <FormControl sx={{ marginBottom: "10px" }}>
+                        <FormLabel>
+                          E-mail <span className="errmsg">*</span>
+                        </FormLabel>
+                        <Input
                         sx={{
                           "--Input-focusedThickness": "white",
                           borderColor: "white",
@@ -291,6 +316,25 @@ export default function Users() {
                         required
                         value={email}
                         onChange={(e) => emailchange(e.target.value)}
+                      />
+                      </FormControl>
+                    </Col>
+                    
+                    <FormControl sx={{ marginBottom: "10px" }}>
+                      <FormLabel>
+                        Adresse <span className="errmsg">*</span>
+                      </FormLabel>
+                      <Input
+                        sx={{
+                          "--Input-focusedThickness": "white",
+                          borderColor: "white",
+                        }}
+                        variant="soft"
+                        placeholder="saisir e-mail"
+                        required
+                        value={adresse}
+                          onChange={(e) => adressechange(e.target.value)}
+                        
                       />
                     </FormControl>
                     <FormControl>

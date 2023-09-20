@@ -29,10 +29,20 @@ import Divider from '@mui/material/Divider';
 import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import { setCurrentPage } from "../../features/managment/actions";
 
 const drawerWidth = 270;
 
 function Sidebar(props) {
+  const dispatch = useDispatch();
+  
+  const page = useSelector(state => state.currentPage);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const openAccount = Boolean(anchorEl);
   const usenavigate = useNavigate();
@@ -42,6 +52,13 @@ function Sidebar(props) {
   const handleProfil = () => {
     usenavigate('/profil/6');
     
+  };
+  const handleClickOpenNotif = () => {
+    setOpenNotif(true);
+  };
+
+  const handleCloseNotif = () => {
+    setOpenNotif(false);
   };
 
   const handleClose = () => {
@@ -93,7 +110,7 @@ function Sidebar(props) {
 								activeclassname="active"
 								onClick={() => {
 									handleLinkClick(item.handleLinkClick);
-									handleButtonClick(item.handleButtonClick);
+									dispatch(setCurrentPage(item.handleButtonClick));
 									setShowSubMenu(!showSubMenu); // Toggle sub-menu visibility on NavLink click
 								}}>
 								{item.title}
@@ -107,7 +124,7 @@ function Sidebar(props) {
 												className="nav-link2"
 												activeclassname="active"
                         onClick={() => {
-                          handleButtonClick(subItem.handleButtonClick);
+                          dispatch(setCurrentPage(subItem.handleButtonClick));
                         }}>
 												{subItem.title}
 											</NavLink>
@@ -124,7 +141,7 @@ function Sidebar(props) {
               activeclassname="active"
               onClick={() => {
                 handleLinkClick(item.handleLinkClick);
-                handleButtonClick(item.handleButtonClick);
+                dispatch(setCurrentPage(item.handleButtonClick));
                 setShowSubMenuParam(!showSubMenuParam); // Toggle sub-menu visibility on NavLink click
               }}>
               {item.title}
@@ -138,7 +155,7 @@ function Sidebar(props) {
                       className="nav-link2"
                       activeclassname="active"
                       onClick={() => {
-                        handleButtonClick(subItem.handleButtonClick);
+                        dispatch(setCurrentPage(subItem.handleButtonClick));
                       }}
                       >
                       {subItem.title}
@@ -156,7 +173,7 @@ function Sidebar(props) {
 							activeclassname="active"
 							onClick={() => {
 								handleLinkClick(item.handleLinkClick);
-								handleButtonClick(item.handleButtonClick);
+								dispatch(setCurrentPage(item.handleButtonClick));
 							}}>
 							{item.title}
 						</NavLink>
@@ -203,7 +220,7 @@ function Sidebar(props) {
               ml: "20px",
             }}
           >
-           {currentPage}
+           
           </Typography>
           <Search sx={{ marginRight: "20px" }}>
             <SearchIconWrapper>
@@ -215,11 +232,36 @@ function Sidebar(props) {
             />
           </Search>
           <NotifIconWrapper sx={{ marginRight: "20px" }}>
-            <IconButton>
-            <Badge badgeContent={1} badgeInset="-20%">
+            <IconButton onClick={handleClickOpenNotif}>
+            <Badge badgeContent={0} badgeInset="-20%">
             <NotificationsNoneRoundedIcon />
             </Badge>
             </IconButton>
+            <Dialog
+        open={openNotif}
+        onClose={handleCloseNotif}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Use Google's location service?"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText sx={{height: "50px"}} id="alert-dialog-description">
+            <Typography>
+              blablabla
+            </Typography>
+            Let Google help apps determine location. This means sending anonymous
+            location data to Google, even when no apps are running.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseNotif}>Disagree</Button>
+          <Button onClick={handleCloseNotif} autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
           </NotifIconWrapper>
           <NotifIconWrapper>
           <Tooltip title="Account settings">

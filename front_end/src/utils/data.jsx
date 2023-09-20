@@ -21,7 +21,7 @@ export const route = [
   {
     url: "/cp",
     handleLinkClick: "cp",
-    handleButtonClick: "CP & prototype",
+    handleButtonClick: "Cycle production",
     title: "Cycle production",
   },
   {
@@ -39,19 +39,19 @@ export const route = [
   {
     url: "/matiere_premiere",
     handleLinkClick: "matiere_premiere",
-    handleButtonClick: "Matière 1ere",
+    handleButtonClick: "Matière première",
     title: "Matière 1ere",
   },
   {
     url: "/correction_action",
     handleLinkClick: "correction_action",
-    handleButtonClick: "Action Correctives & Préventives",
+    handleButtonClick: "Action Correctives",
     title: "Action Correctives",
   },
   {
     url: "/matiere_1ere&fournisseur",
     handleLinkClick: "historique",
-    handleButtonClick: "Historiques et indicateurs",
+    handleButtonClick: "Indicateurs",
     title: "Indicateurs",
     children: [
       {
@@ -82,7 +82,7 @@ export const route = [
   },
 
   {
-    url: "/parametre",
+    url: "/cproduction",
     handleLinkClick: "parametre",
     handleButtonClick: "Parametres",
     title: "Parametre",

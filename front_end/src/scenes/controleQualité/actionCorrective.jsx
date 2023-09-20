@@ -296,7 +296,7 @@ export default function ActionCorrective() {
                     <ul>
                       <ListItem>
                         <ListItemText
-                          primary={`Action de correction ${item}`}
+                          primary={"-"}
                         />
                       </ListItem>
                     </ul>

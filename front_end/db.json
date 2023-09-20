@@ -44,7 +44,18 @@
       "prénom": "Slim",
       "status": "Active",
       "conforme": "50%",
-      "nConforme": "50%"
+      "nConforme": "50%",
+      "qt_cntrl": "10"
+    },
+    {
+      "id": 2,
+      "code": "x366x",
+      "nom": "Joe",
+      "prénom": "Doe",
+      "status": "Active",
+      "conforme": "50%",
+      "nConforme": "50%",
+      "qt_cntrl": "10"
     }
   ],
   "agentquality_rows": [
@@ -97,10 +108,45 @@
   "matiere1ere_rows": [
     {
       "id": 1,
-      "refMatiere": "xxx777xxx",
-      "type": "Cuire",
-      "fournisseur": "Fournisseur X"
+      "refMatiere": "A200",
+      "type": "Type 1",
+      "fournisseur": "Fournisseur X",
+      "taux_nc": "20",
+      "taux_c": "20"
+    },
+    {
+      "id": 2,
+      "refMatiere": "A300",
+      "type": "Type 1",
+      "fournisseur": "Fournisseur X",
+      "taux_nc": "20",
+      "taux_c": "20"
+    },
+    {
+      "id": 3,
+      "refMatiere": "A400",
+      "type": "Type 4",
+      "fournisseur": "Fournisseur X",
+      "taux_nc": "20",
+      "taux_c": "20"
+    },
+    {
+      "id": 4,
+      "refMatiere": "A500",
+      "type": "Type 3",
+      "fournisseur": "Fournisseur X",
+      "taux_nc": "20",
+      "taux_c": "20"
+    },
+    {
+      "id": 5,
+      "refMatiere": "A600",
+      "type": "Type 2",
+      "fournisseur": "Fournisseur X",
+      "taux_nc": "20",
+      "taux_c": "20"
     }
+
   ],
   "fournisseur_rows": [
     {
@@ -108,12 +154,23 @@
       "ref": "xx200xx",
       "nom": "Fournisseur X",
       "contact": "Adresse ou numéro téléphone  "
+    },
+    {
+      "id": 2,
+      "ref": "xx235xx",
+      "nom": "Fournisseur Y",
+      "contact": "Adresse ou num"
     }
   ],
   "typeNC_rows": [
     {
       "id": 0,
       "typenc": "Type XY",
+      "taux_nc": "50 %"
+    },
+    {
+      "id": 1,
+      "typenc": "Type YG",
       "taux_nc": "50 %"
     }
   ],
@@ -122,6 +179,10 @@
       "id": 1,
       "typeac": "Action de correction 1",
       "agentquality": "Agent X"
+    },
+    {
+      "id": 2,
+      "typeac": "Action de correction 2"
     }
   ],
   "famille_rows": [
@@ -177,29 +238,46 @@
       "refprototype": "xxx555xxx",
       "refproduit": "xxx999xxx",
       "desc": "Spécification technique"
+    },
+    {
+      "id": 2,
+      "refprototype": "xxx555xxx",
+      "refproduit": "xxx888xxx",
+      "desc": "Déscription du prototype(détail)"
     }
   ],
   "users": [
     {
       "id": "Firas123",
       "username": "",
-      "firstname": "Filali",
-      "lastname": "Firas",
+      "nom": "Filali",
+      "prenom": "Firas",
       "password": "000000",
       "email": "firas@gmail.com",
       "role": "admin"
     },
     {
-      "id": "Alex",
+      "id": "Alex123",
       "username": "",
-      "firstname": "Del Piero",
-      "lastname": "Alessandro ",
-      "password": "101010",
-      "email": "Alex@gmail.com",
-      "phone": "72365848",
-      "mobile": "27405858",
-      "adresse": "Torino, Italie",
-      "role": "manager"
+      "prenom": "Alex ",
+      "nom": "Del pierro",
+      "password": "123456",
+      "email": "delpiero@gmail.com",
+      "role": "manager",
+      "phone": "+21627405858",
+      "adresse": "25 oman street",
+      "mobile": "96609103"
+    },
+    {
+      "id": "Issam123",
+      "username": "",
+      "prenom": "Issam",
+      "nom": "Ben slimen",
+      "password": "123123",
+      "email": "issam@gmail.com",
+      "role": "agent",
+      "phone": "22568478",
+      "adresse": "maamoura"
     }
   ],
   "phases": [
@@ -208,6 +286,12 @@
       "phase": "Phase x",
       "phase_description": "Exemple de phase attaché à un process",
       "cycle": "Process 1"
+    },
+    {
+      "id": 2,
+      "phase": "Phase Y",
+      "phase_description": "Phase de production des etc...",
+      "cycle": "Process 2"
     }
   ],
   "cycle_production": [
@@ -216,14 +300,86 @@
       "titre": "Process 1",
       "description": "Exemple de process",
       "date": "2023-08-17"
+    },
+    {
+      "id": 2,
+      "titre": "Process 2",
+      "description": "Exemple de process pour test",
+      "date": "2023-09-13"
     }
   ],
   "produits": [
     {
       "id": 1,
       "ref": "xxx999xxx",
+      "matiere1ere": "Matiére 1",
+      "famille": "Famille 2"
+    },
+    {
+      "id": 2,
+      "ref": "xxx888xxx",
       "matiere1ere": "Cuire",
-      "famille": "Pantalon"
+      "famille": "Famille 1"
+    },
+    {
+      "id": 3,
+      "ref": "xxx777xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Famille 2"
+    },
+    {
+      "id": 4,
+      "ref": "xxx666xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Famille 3"
+    },
+    {
+      "id": 5,
+      "ref": "xxx555xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Famille 5"
+    },
+    {
+      "id": 6,
+      "ref": "xxx444xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Famille 7"
+    },
+    {
+      "id": 7,
+      "ref": "xxx333xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Famille 7"
+    },
+    {
+      "id": 8,
+      "ref": "xxx222xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Famille 2"
+    },
+    {
+      "id": 9,
+      "ref": "xxx111xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Famille 8"
+    },
+    {
+      "id": 10,
+      "ref": "xxx000xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Famille 5"
+    },
+    {
+      "id": 11,
+      "ref": "yyy111xxx",
+      "matiere1ere": "Cuire",
+      "famille": "Famille 1"
+    },
+    {
+      "id": 12,
+      "ref": "zzz111zzz",
+      "matiere1ere": "Matière 1",
+      "famille": "Famille 0"
     }
   ],
   "controle": [
@@ -258,14 +414,26 @@
       "etat": "en cours"
     },
     {
-      "id": 3,
-      "ref_cntrl": "",
-      "code_cntrl": "",
-      "phase_cntrl": "",
-      "typenc_cntrl": "",
-      "action_cntrl": "",
-      "qt_cntrl": "",
-      "qt_nc": ""
+      "id": 4,
+      "ref_cntrl": "xxx999xxx",
+      "code_cntrl": "x366x",
+      "phase_cntrl": "Phase Y",
+      "typenc_cntrl": "Type YG",
+      "action_cntrl": "Action de correction 2",
+      "qt_cntrl": "100",
+      "qt_nc": "50",
+      "conforme": "50 %",
+      "nonConforme": "50%",
+      "famille": "Famille XX",
+      "agent": "x366x",
+      "etat": "en cours"
+    }
+  ],
+  "action": [
+    {
+      "ref_a": "xxx888xxx",
+      "action_c": "Action de correction 1",
+      "etat_av": "Términer"
     }
   ]
 }
